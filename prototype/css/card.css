@@ -1,0 +1,123 @@
+.header {
+	display:flex;
+	justify-content: space-between;
+    margin-bottom: 15px;
+    width: 100%;
+    position:absolute;
+    padding-top:1rem;
+}
+.header .header__header-column {
+	display: flex;
+	align-items: center;
+}
+.header .header__title {
+	font-size: 22px;
+	font-weight: 550;
+}
+.header .header__icon {
+	font-size: 22px;
+	cursor: pointer;
+    margin-right:20px;
+}
+.header .header__x-btn {
+	font-size:22px;
+    margin-left:20px;
+	cursor: pointer;
+}
+.header i{
+    color:#e0e0e0;
+}
+.header i:hover{
+    color:#000000;
+}
+.cv{
+    background:#ebebeb;
+}
+.cv-side{
+    width:100%;
+    float:left;
+    display:flex;
+    flex-direction: column;
+}
+.profile-picture{
+    max-width: 100%;
+}
+.cv-side .bio-panel{
+    margin-top:1.5rem;
+    margin-bottom:1rem;
+    margin-left:2rem;
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0rem 1rem;
+    border-left:1px dotted grey;
+}
+.cv-side .bio-logo{
+    width:2.5rem;
+    height:100%;
+    margin:auto 0;
+}
+.company-logo{
+    max-width: 100%;
+}
+.cv-side .bio-brief{
+    margin-left:2rem;
+    padding: 0.4rem 1.3rem;
+}
+.cv-side h3{
+    margin: 0px 5px 0px 5px;
+    font-weight: 600;
+    font-size:1.5rem;
+}
+.cv-side h4{
+    margin: 10px 5px 0px 5px;
+    font-weight: 600;
+    font-size:1.2rem;
+}
+.cv-side h5{
+    margin: 10px 5px 0px 5px;
+    font-weight: 600;
+    font-size:1rem;
+}
+.cv-side .side-panel{
+    display:flex;
+    align-items: center;
+    padding: 0.5rem;
+}
+.cv-side .side-panel a{
+    color:#000000;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+.cv-side .side-panel .side-panel-content{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height:3rem;
+}
+.bio-panel .side-panel-icon i{
+    width: 3rem;
+}
+.bio-panel-content{
+    margin-right:0.5rem;
+    margin-bottom: 0.5rem;
+}
+.side-panel-icon{
+    border: 3px solid #1a4523;
+    border-radius: 60%;
+    background-color: #c8f262;
+    width:2.5rem;
+    height:2.5rem;
+    align-self:flex-start;
+    display:block;
+    font-size:2rem;
+    margin:0 5px;
+}
+.side-panel-icon i{
+    color:#9e4429;
+    margin-top:0.25rem;
+    margin-left:0.3rem;
+}
+.fa-pen{
+    color:#999999;
+}

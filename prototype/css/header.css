@@ -1,0 +1,29 @@
+header{
+    background-color:#7ed493;
+    opacity: 0.9;
+    position:fixed;
+    top:0px;
+    left:0px;
+    width:100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 3rem;
+    z-index: 1;
+}
+.header-menu{
+    width:4rem;
+    display: flex;
+    justify-content: space-around;
+    margin-right:1rem;
+}
+
+h1{
+    display: grid;
+    grid-template-columns: auto auto;
+    align-items: center;
+    color:black;
+    font-size: 1.5rem;
+    font-weight:bold;
+    margin-left:1rem;
+}
