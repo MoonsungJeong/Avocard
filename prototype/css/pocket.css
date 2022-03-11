@@ -68,17 +68,17 @@ main{
 }
 .project-category{
     position: relative;
-    top:5px;
-    left:80%;
+    top:0px;
+    left:78%;
     background:#def7ec;
     padding: 0.125rem 0.75rem;
     border-radius: 9999px;
     
 }
-.project-title{
+.project-name{
     font-size:1.25rem;
 }
-.project-brief{
+.project-title{
 }
 @media (min-width:770px){
     .project-container{

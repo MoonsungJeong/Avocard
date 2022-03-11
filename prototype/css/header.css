@@ -35,3 +35,22 @@ h1{
     font-weight:bold;
     margin-left:1rem;
 }
+.search_bar_wrapper{
+    display:none;
+    width:13rem;
+    height:2rem;
+    position: absolute;
+    background-color: #ffffff;
+    top:3.1rem;
+    right:0.1rem;
+    border:1px solid #0099ff;
+}
+.search_bar_box{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:100%;
+}
+.search_bar{
+    height: 1rem;
+}
