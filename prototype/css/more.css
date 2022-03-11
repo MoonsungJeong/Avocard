@@ -1,0 +1,27 @@
+main{
+    margin-top: 3rem;
+}
+.more-container{
+    display: grid;
+    grid-template-columns: repeat(4,minmax(0,1fr));
+    grid-row-gap:2.5rem;
+}
+.more-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.more-icon-box{
+    width: 2rem;
+    height:2rem;
+    margin-bottom: 0.5rem;
+    border-radius: 60%;
+    border: 3px solid #1a4523;
+    background-color: #c8f262;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.more-icon-word{
+    font-weight: 600;
+}
