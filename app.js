@@ -10,3 +10,9 @@ server.listen(port, "192.168.1.223", () => {
 server.get("/", (req,res) => {
     console.log("ok");
 });
+
+// Serve static frontend resources
+server.use(express.static("frontend"));
+
+const userController = require("./backend/controllers/userController");
+server.use("/api", userController);
