@@ -3,7 +3,7 @@
 #### This is 3rd project with Node.js
 
 ### New Features 
-* 1
+* Rate limit
 * 2
 
 ## Summary
@@ -19,9 +19,23 @@
 ---
 ### 2. Project Plan
 #### 2-1. Service Definition
-
+* App that archive people's business card information
+* Users can create their own digital business card
+* Users can add other's business card in their pocket
+* Users can see list of other's business card in their pocket
+* Anonymous users can add other's business card in their pocket
+* Anonymous users can see list of other's business card in their pocket
 
 #### 2-2. Functional Feature
+* Login/authentication
+* Password hashing
+* Displaying cards information existing in the database
+* Admin page
+* CRUD business card
+* CRUD pocket (list of card)
+* Validation check in both (client and server) side(Form input validation check and input sanitizing before insert into the database)
+* Log system tracking every request
+* rate limit service to one request per second per user session
 
 
 #### 2-3. Minimum Visual Product
