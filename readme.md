@@ -37,25 +37,44 @@
 * Log system tracking every request
 * rate limit service to one request per second per user session
 
-
 #### 2-3. Minimum Visual Product
-
+* Register
+* Login
+* Pocket
+* MyCard
+* Notice (More)
+* Theme (More)
+* Info (More)
 
 #### 2-4. Technology and Modules
+HTML, CSS, JavaScript, NodeJS, Express, MySql
 
+express-session, bcrypt, validator, express-fileupload, express-rate-limit
 
 #### 2-5. Project Detail Design (Page, Server, Database)
 * Front Page List
-    - 1
-    - 2
+    - Index(front)
+    - Sign up
+    - Pocket
+    - Card
+    - Mycard
+    - Edit
+    - More
+    - Notice
+    - Theme
+    - Info
 
 * Server Function
-    - 1
-    - 2
+    - Sign up
+    - Log in
+    - Log out
+    - Validation (input sanitize)
+    - CRUD (Pocket, Card)
+    - Theme change
+    - Info change
 
 * Database
     - 1
-    - 2
 
 
 
