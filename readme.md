@@ -98,7 +98,14 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
 
 * Control
 
-        /api/user [get]     : show 
+        /api/user/:Code [get]       : show existing user with Code
+        /api/user/sign [post]       : create new user
+        /api/user/update [post]     : update an existing user
+        /api/user/delete [post]     : delete an existing user
+        /api/user/login [post]      : login process
+        /api/user/logout [post]     : logout process
+
+        /api/pocket [get]           : 
 
 
 * Model [
@@ -186,7 +193,7 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
 | F |User Name   |userName     |Varchar(30) |N.N  |   |
 | F |User Type   |userType     |Varchar(30) |N.N  |   |
 |   |Log Time    |logTime      |Datetime    |N.N  |   |
-|   |Action      |action       |
+|   |Action      |action       |VarChar(200)|N.N  |   |
 
 #### 2-8. API Access Right (Guest, User)
 * Guest
