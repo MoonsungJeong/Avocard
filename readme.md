@@ -74,34 +74,119 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
     - Info change
 
 * Database
-    - 1
-
+    - User
+    - Pocket
+    - Card
+    - Setting
+    - Notice
+    - Log
 
 
 #### 2-6. API (Model, View, Control)
 * View
 
         / [get]             : request "front" page
-
+        /sign-up [get]      : request "sign up" page
+        /pocket [get]       : request "pocket" page
+        /card/:Code [get]   : request card with code
+        /mycard             : request "mycard" page
+        /edit/:Code [get]   : request "edit" page with code
+        /more [get]         : request "more" page
+        /notice [get]       : request "notice" page
+        /theme [get]        : request "theme" page
+        /info [get]         : request "info" page
 
 * Control
 
         /api/user [get]     : show 
 
 
-* Model [userModel: uM, bookModel: bM]
+* Model [
+    userModel: uM, 
+    pocketModel: pM, 
+    cardModel: cM, 
+    settingModel: sM, 
+    noticeModel: nM, 
+    logModel: lM
+    ]
 
-        uM.getAllUsers      : get All users
+        uM.createUser           : request create user
+        uM.getUserByUserCode    : get user with usercode
+        uM.getUserByUsername    : get user with username
+        uM.updateUser           : request update user
+        uM.deleteUser           : request delete user
+        
+        pM.createPocket         : request create pocket
+        pM.getPocketByUserCode  : get pocket with usercode
+        pM.updatePocket         : request update pocket
+        pM.deletePocket         : request delete pocket
 
-        bM.getAllBooks      : get All books
+        cM.createCard           : request create card
+        cM.getCardByUserCode    : get card(list) with usercode
+        cM.getCardByCardCode    : get card with cardcode
+        cM.updateCard           : request update card
+        cM.deleteCard           : request delete card
+
+        sM.createSetting        : request create setting
+        sM.getSettingByUserCode : get setting with usercode
+        sM.updateSetting        : request update setting
+        sM.deleteSetting        : request delete setting
+
+        nM.createNotice         : request create notice
+        nM.getNotice            : get notice(list)
+        nM.updateNotice         : request update notice
+        nM.deleteNotice         : request delete notice
+
+        lM.createLog            : request create log
         
 
 #### 2-7. Database Tables
 |user|   |   |   |   |   |
-|-- |---- |---|---|---|---|
+|-- |------------|-------------|------------|-----|---|
 |Key|Logical_Name|Physical_Name|Datatype    |NULL?|Opt|
-| P |User Id    |userID     |INT(10)    |N.N   |A.I|
+| P |User Code   |userCode     |INT(10)     |N.N  |A.I|
+|   |User Name   |userName     |Varchar(30) |N.N  |   |
+|   |Password    |password     |Varchar(255)|N.N  |   |
+|   |Email       |email        |Varchar(255)|N.N  |   |
+|   |User Type   |userType     |Varchar(30) |N.N  |default user|
+|   |Delete Flag |deleteFlag   |TinyInt(1)  |N.N  |default 0|
 
+|Pocket|   |   |   |   |   |
+|-- |------------|-------------|------------|-----|---|
+|Key|Logical_Name|Physical_Name|Datatype    |NULL?|Opt|
+| F |User Code   |userCode     |INT(10)     |N.N  |A.I|
+|   |Card List   |cardList     |JSON        |NULL |List of encrypted Card Code|
+
+|Card|   |   |   |   |   |
+|-- |------------|-------------|------------|-----|---|
+|Key|Logical_Name|Physical_Name|Datatype    |NULL?|Opt|
+| P |Card Code   |cardCode     |Varchar(10) |N.N  |A.I|
+| F |User Code   |userCode     |INT(10)     |N.N  |A.I|
+|   |Card Detail |cardDetail   |JSON        |N.N  |{} |
+|   |Delete Flag |deleteFlag   |TinyInt(1)  |N.N  |default 0|
+
+|Setting|   |   |   |   |   |
+|-- |------------|-------------|------------|-----|---|
+|Key|Logical_Name|Physical_Name|Datatype    |NULL?|Opt|
+| F |User Code   |userCode     |INT(10)     |N.N  |A.I|
+|   |Setting     |setting      |JSON        |N.N  |{} |
+
+|Notice|   |   |   |   |   |
+|-- |------------|-------------|------------|-----|---|
+|Key|Logical_Name|Physical_Name|Datatype    |NULL?|Opt|
+|   |Date        |date         |Datetime    |N.N  |   |
+|   |Title       |title        |Varchar(100)|N.N  |   |
+|   |Content     |content      |Text        |N.N  |   |
+
+|Log|   |   |   |   |   |
+|-- |------------|-------------|------------|-----|---|
+|Key|Logical_Name|Physical_Name|Datatype    |NULL?|Opt|
+|PK |Log Code    |logCode      |INT(30)     |N.N  |A.I|
+|   |Session     |session      |JSON        |N.N  |   |
+| F |User Name   |userName     |Varchar(30) |N.N  |   |
+| F |User Type   |userType     |Varchar(30) |N.N  |   |
+|   |Log Time    |logTime      |Datetime    |N.N  |   |
+|   |Action      |action       |
 
 #### 2-8. API Access Right (Guest, User)
 * Guest
