@@ -172,7 +172,7 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
 |User|   |   |   |   |   |
 |-- |---------------|-------------|------------|-----|---|
 |Key|Logical_Name   |Physical_Name|Datatype    |NULL?|Opt|
-| P |User Code      |userCode     |INT(10)     |N.N  |A.I|
+| P |User Code      |userCode     |INT         |N.N  |A.I|
 |   |User Name      |userName     |Varchar(30) |N.N  |   |
 |   |Password       |password     |Varchar(255)|N.N  |   |
 |   |Email          |email        |Varchar(255)|N.N  |   |
@@ -182,27 +182,27 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
 |Pocket|   |   |   |   |   |
 |-- |---------------|-------------|------------|-----|---|
 |Key|Logical_Name   |Physical_Name|Datatype    |NULL?|Opt|
-| F |User Code      |userCode     |INT(10)     |N.N  |A.I|
+| F |User Code      |userCode     |INT         |N.N  |A.I|
 |   |Card List      |cardList     |JSON        |NULL |List of encrypted Card Code|
 
 |Card|   |   |   |   |   |
 |-- |---------------|-------------|------------|-----|---|
 |Key|Logical_Name   |Physical_Name|Datatype    |NULL?|Opt|
 | P |Card Code      |cardCode     |Varchar(10) |N.N  |A.I|
-| F |User Code      |userCode     |INT(10)     |N.N  |A.I|
+| F |User Code      |userCode     |INT         |N.N  |A.I|
 |   |Card Detail    |cardDetail   |JSON        |NULL |   |
 |   |Delete Flag    |deleteFlag   |TinyInt(1)  |N.N  |default 0|
 
 |Setting|   |   |   |   |   |
 |-- |---------------|-------------|------------|-----|---|
 |Key|Logical_Name   |Physical_Name|Datatype    |NULL?|Opt|
-| F |User Code      |userCode     |INT(10)     |N.N  |A.I|
+| F |User Code      |userCode     |INT         |N.N  |A.I|
 |   |Setting        |setting      |JSON        |NULL |   |
 
 |Notice|   |   |   |   |   |
 |-- |---------------|-------------|------------|-----|---|
 |Key|Logical_Name   |Physical_Name|Datatype    |NULL?|Opt|
-|PK |Notice Code    |noticeCode   |INT(10)     |N.N  |A.I|
+|PK |Notice Code    |noticeCode   |INT         |N.N  |A.I|
 |   |Notice Date    |noticeDate   |Datetime    |N.N  |   |
 |   |Notice Title   |noticeTitle  |Varchar(100)|N.N  |   |
 |   |Notice Content |noticeContent|Text        |N.N  |   |
@@ -210,13 +210,13 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
 |Log|   |   |   |   |   |
 |-- |---------------|-------------|------------|-----|---|
 |Key|Logical_Name   |Physical_Name|Datatype    |NULL?|Opt|
-|PK |Log Code       |logCode      |INT(30)     |N.N  |A.I|
-|   |Log IP         |logIp           |JSON        |N.N  |   |
+|PK |Log Code       |logCode      |INT         |N.N  |A.I|
+|   |Log IP         |logIp        |VARCHAR(15) |N.N  |   |
 |   |Session        |session      |JSON        |N.N  |   |
-| F |User Name      |userName     |Varchar(30) |N.N  |   |
-| F |User Type      |userType     |Varchar(30) |N.N  |   |
+|   |User Name      |userName     |Varchar(30) |N.N  |   |
+|   |User Type      |userType     |Varchar(30) |N.N  |   |
 |   |Log Time       |logTime      |Datetime    |N.N  |   |
-|   |Action         |action       |VarChar(200)|N.N  |   |
+|   |Action         |action       |JSON        |N.N  |   |
 
 #### 2-8. API Access Right (Guest, User)
 * Guest
