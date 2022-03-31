@@ -211,6 +211,7 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
 |-- |---------------|-------------|------------|-----|---|
 |Key|Logical_Name   |Physical_Name|Datatype    |NULL?|Opt|
 |PK |Log Code       |logCode      |INT(30)     |N.N  |A.I|
+|   |Log IP         |logIp           |JSON        |N.N  |   |
 |   |Session        |session      |JSON        |N.N  |   |
 | F |User Name      |userName     |Varchar(30) |N.N  |   |
 | F |User Type      |userType     |Varchar(30) |N.N  |   |
