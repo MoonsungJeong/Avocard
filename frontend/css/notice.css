@@ -1,0 +1,26 @@
+main{
+    padding:0;
+}
+.notice-container{
+}
+.notice-item{
+    border-bottom:1px solid #aaaaaa;
+}
+.notice-box{
+    padding:1rem;
+}
+.notice-date{
+    color:#aaaaaa;
+    margin-bottom: 0.5rem;
+}
+.notice-title{
+    font-size:1.25rem;
+}
+.notice-description{
+    background-color: #efefef;
+    padding:1rem;
+    font-size:1.1rem;
+}
+.notice-description{
+    display:none;
+}

@@ -98,6 +98,8 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
 
 * Control
 
+        /api/guest/login [post]     : guest login process
+
         /api/user/:Code [get]       : show user with Code
         /api/user/sign [post]       : create new user
         /api/user/update [post]     : update user
