@@ -89,7 +89,7 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
         /sign-up [get]      : request "sign up" page
         /pocket [get]       : request "pocket" page
         /card/:Code [get]   : request card with code
-        /mycard             : request "mycard" page
+        /mycard [get]       : request "mycard" page
         /edit/:Code [get]   : request "edit" page with code
         /more [get]         : request "more" page
         /notice [get]       : request "notice" page
@@ -98,15 +98,34 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
 
 * Control
 
-        /api/user/:Code [get]       : show existing user with Code
+        /api/user/:Code [get]       : show user with Code
         /api/user/sign [post]       : create new user
-        /api/user/update [post]     : update an existing user
-        /api/user/delete [post]     : delete an existing user
+        /api/user/update [post]     : update user
+        /api/user/delete [post]     : delete user
         /api/user/login [post]      : login process
         /api/user/logout [post]     : logout process
 
-        /api/pocket [get]           : 
+        /api/pocket [get]           : show pocket
+        /api/pocket/add    [post]   : add new card into pocket
+        /api/pocket/update   [post] : update pocket
+        /api/pocket/remove [post]   : remove a card from pocket
 
+        /api/card [get]             : show mycard
+        /api/card/:Code [get]       : show card with code
+        /api/card/create [post]     : create new card
+        /api/card/update [post]     : update card
+        /api/card/remove [post]     : remove a card
+
+        /api/setting/update [get]   : update setting
+        /api/setting/initialize [get] : initialize setting
+
+        /api/notice [get]           : show notice
+        /api/notice/:Code [get]     : show notice with code
+        /api/notice/create [post]   : create notice
+        /api/notice/update [post]   : update notice 
+        /api/notice/delete [post]   : delete notice
+
+        /api/log [get]              : show log
 
 * Model [
     userModel: uM, 
@@ -137,7 +156,7 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
         sM.createSetting        : request create setting
         sM.getSettingByUserCode : get setting with usercode
         sM.updateSetting        : request update setting
-        sM.deleteSetting        : request delete setting
+        sM.initializeSetting    : request initialize setting
 
         nM.createNotice         : request create notice
         nM.getNotice            : get notice(list)
@@ -181,6 +200,7 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
 |Notice|   |   |   |   |   |
 |-- |------------|-------------|------------|-----|---|
 |Key|Logical_Name|Physical_Name|Datatype    |NULL?|Opt|
+|PK |Notice Code |noticeCode   |INT(10)     |N.N  |A.I|
 |   |Date        |date         |Datetime    |N.N  |   |
 |   |Title       |title        |Varchar(100)|N.N  |   |
 |   |Content     |content      |Text        |N.N  |   |
