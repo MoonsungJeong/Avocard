@@ -88,9 +88,9 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
         / [get]             : request "front" page
         /sign-up [get]      : request "sign up" page
         /pocket [get]       : request "pocket" page
-        /card/:Code [get]   : request card with code
+        /card/:code [get]   : request card with code
         /mycard [get]       : request "mycard" page
-        /edit/:Code [get]   : request "edit" page with code
+        /edit/:code [get]   : request "edit" page with code
         /more [get]         : request "more" page
         /notice [get]       : request "notice" page
         /theme [get]        : request "theme" page
@@ -100,20 +100,20 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
 
         /api/guest/login [post]     : guest login process
 
-        /api/user/:Code [get]       : show user with Code
+        /api/user/:code [get]       : show user with code
         /api/user/sign [post]       : create new user
         /api/user/update [post]     : update user
         /api/user/delete [post]     : delete user
         /api/user/login [post]      : login process
         /api/user/logout [post]     : logout process
 
-        /api/pocket/:list [get]     : show card in pocket
+        /api/pocket/:List [get]     : show card in pocket
         /api/pocket/add    [post]   : add new card into pocket 
         /api/pocket/update   [post] : update pocket
         /api/pocket/remove [post]   : remove a card from pocket
 
         /api/card [get]             : show mycard
-        /api/card/:Code [get]       : show card with code
+        /api/card/:code [get]       : show card with code
         /api/card/create [post]     : create new card
         /api/card/update [post]     : update card
         /api/card/remove [post]     : remove a card
@@ -122,7 +122,7 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
         /api/setting/initialize [post] : initialize setting
 
         /api/notice [get]           : show notice title and date
-        /api/notice/:Code [get]     : show notice content with code
+        /api/notice/:code [get]     : show notice content with code
         /api/notice/create [post]   : create notice
         /api/notice/update [post]   : update notice 
         /api/notice/delete [post]   : delete notice
