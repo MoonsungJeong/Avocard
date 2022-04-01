@@ -10,16 +10,24 @@ function guestLogin(){
         alert(res)
         if (res === "Wellcome to Avocard!") {
             const localStorageCheck = localStorage.length;
-            const guestCheck = localStorage.getItem("Avocard")
+            const guestCheck = JSON.parse(localStorage.getItem("Avocard"));
             
-            if(!localStorageCheck || guestCheck != "guest"){
-                localStorage.clear();
+            if(!localStorageCheck || guestCheck == null){
                 let storage = {
-                    "user":"guest",
-                    "pocket":{
-                        "1":"apple",
-                        "2":"banana"
-                    },
+                    "pocket":[
+                        {
+                            "code":"111",
+                            "note":"nice man"
+                        },
+                        {
+                            "code":"112",
+                            "note":"good man"
+                        },
+                        {
+                            "code":"113",
+                            "note":"work well"
+                        }
+                    ],
                     "setting":{
                         "theme":"#000000"
                     }

@@ -1,3 +1,56 @@
+(function openPocket(){
+    const localStorageCheck = localStorage.length;
+    const guestCheck = JSON.parse(localStorage.getItem("Avocard"));
+    //guest user
+    if(localStorageCheck && guestCheck != null){
+        let pocketData = JSON.parse(localStorage.Avocard).pocket;
+        let pocketList = JSON.stringify(pocketData);
+        const sessionPocket = JSON.parse(sessionStorage.getItem("cardList"));
+        if(!sessionPocket){
+            fetch(`/api/pocket/${pocketList}`)
+            .then(res => res.json())
+            .then(list => {
+                sessionStorage.setItem("cardList",JSON.stringify(list));
+                seePocket(list);
+            })
+            .catch(error => {
+                console.log("see pocket failed - " + error);
+            })
+            return;
+        }
+        seePocket(sessionPocket);
+    }
+    // login user
+
+})();
+
+function seePocket(arr){
+    const container = document.querySelector(".project-container");
+    let result="";
+    for(i=0; i<arr.length; i++){
+        result+=`
+        <a href="#">
+            <div class="project-item">
+                <div class="project-explanation">
+                    <span class="project-category">${arr[i].note}</span>
+                    <div class="project-info">
+                        <input type="hidden" value="${arr[i].cardCode}">
+                        <div class="project-name">${arr[i].cardDetail.name}</div>
+                        <div class="project-title">${arr[i].cardDetail.title}</div>
+                        <div class="project-company">${arr[i].cardDetail.company}</div>
+                    </div>
+                </div>
+            </div>
+        </a>
+        `;
+    }
+    container.innerHTML=result;
+}
+
+
+
+//////////////////// search Function //////////////////////////////////////
+/* 
 let pocket = {
     "members":[
         {
@@ -26,10 +79,9 @@ let pocket = {
             "company": "Mellon"
         },
     ]
-}
+};
 localStorage.setItem("pocket", JSON.stringify(pocket));
-
-
+ */
 const searchBtn = document.querySelector(".search_btn");
 const searchBar = document.querySelector(".search_bar");
 
@@ -70,6 +122,7 @@ function searchCard(e){
                 <div class="project-explanation">
                     <span class="project-category">Note</span>
                     <div class="project-info">
+                        <input type="hidden" value="${cardCode}">
                         <div class="project-name">${list[i].name}</div>
                         <div class="project-title">${list[i].title}</div>
                         <div class="project-company">${list[i].company}</div>

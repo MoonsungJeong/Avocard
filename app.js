@@ -9,6 +9,9 @@ server.use(express.static("frontend"));
 const userController = require("./backend/controllers/userController");
 server.use("/api", userController);
 
+const pocketController = require("./backend/controllers/pocketController");
+server.use("/api", pocketController);
+
 server.listen(port, "192.168.1.223", () => {
     console.log("Backend listening on http://localhost:" + port);
 }); 

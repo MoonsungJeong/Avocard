@@ -145,7 +145,7 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
         uM.deleteUser           : request delete user
         
         pM.createPocket         : request create pocket
-        pM.getPocketByUserCode  : get pocket with usercode
+        pM.getCardByPocket      : get pocket with usercode
         pM.updatePocket         : request update pocket
         pM.deletePocket         : request delete pocket
 
