@@ -11,6 +11,7 @@
             .then(res => res.json())
             .then(list => {
                 sessionStorage.setItem("cardList",JSON.stringify(list));
+                console.log(list);
                 seePocket(list);
             })
             .catch(error => {
