@@ -118,11 +118,11 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
         /api/card/update [post]     : update card
         /api/card/remove [post]     : remove a card
 
-        /api/setting/update [get]   : update setting
-        /api/setting/initialize [get] : initialize setting
+        /api/setting/update [post]  : update setting
+        /api/setting/initialize [post] : initialize setting
 
-        /api/notice [get]           : show notice
-        /api/notice/:Code [get]     : show notice with code
+        /api/notice [get]           : show notice title and date
+        /api/notice/:Code [get]     : show notice content with code
         /api/notice/create [post]   : create notice
         /api/notice/update [post]   : update notice 
         /api/notice/delete [post]   : delete notice
