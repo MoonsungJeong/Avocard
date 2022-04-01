@@ -5,19 +5,19 @@
     if(localStorageCheck && guestCheck != null){
         let pocketData = JSON.parse(localStorage.Avocard).pocket;
         let pocketList = JSON.stringify(pocketData);
-        const sessionPocket = JSON.parse(sessionStorage.getItem("cardList"));
+        const sessionPocket = JSON.parse(sessionStorage.getItem("pocketList"));
+        
         if(!sessionPocket){
             fetch(`/api/pocket/${pocketList}`)
-            .then(res => res.json())
-            .then(list => {
-                sessionStorage.setItem("cardList",JSON.stringify(list));
-                console.log(list);
-                seePocket(list);
-            })
-            .catch(error => {
-                console.log("see pocket failed - " + error);
-            })
-            return;
+                .then(res => res.json())
+                .then(list => {
+                    sessionStorage.setItem("pocketList",JSON.stringify(list));
+                    seePocket(list);
+                })
+                .catch(error => {
+                    console.log("see pocket failed - " + error);
+                })
+                return;
         }
         seePocket(sessionPocket);
     }

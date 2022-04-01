@@ -6,7 +6,6 @@ const router = express.Router();
 router.get("/users", (req, res) => {
     userModel.getAllUsers()
         .then((result) => {
-            console.log(result);
             res.status(200).json(result);
         })
         .catch((error => {
