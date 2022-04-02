@@ -20,4 +20,23 @@ router.post("/guest/login", (req,res) =>{
     // res send 200
     res.status(200).json("Welcome Guest to Avocard!");
 });
+/* 
+router.post("/user/sign", (req,res) =>{
+    let user = req.body;
+    let hashedPassword = bcrypt.hashSync(user.password, 6);
+    userModel.createUser(
+        validator.escape(user.email),
+        validator.escape(user.username),
+        hashedPassword
+    )
+    .then((result) => {
+        res.status(201).json("user created");
+    })
+    .catch((error) => {
+        console.log(error);
+        res.status(500).json("query error - failed to create user");
+    });
+}); 
+*/
+
 module.exports = router;

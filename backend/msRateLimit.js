@@ -36,9 +36,10 @@ function msRateLimit(params){
              res.status(429).json("429");
              return;
          } 
+         //console.log(miniTime +"<"+timeDiff +"<"+ params.timePerOneClick);
          if(timeDiff > miniTime && timeDiff < params.timePerOneClick){
              console.log(params.timeMessage);
-             res.status(429).send("425");
+             res.status(429).json("425");
              return;
          }
          

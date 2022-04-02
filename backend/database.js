@@ -7,7 +7,6 @@ const connection = mysql.createPool({
     database:"avocado"
 });
 
-
 function query(sql, parameters) {
     return new Promise((resolve, reject) => {
         connection.query(sql, parameters, (error, results) => {

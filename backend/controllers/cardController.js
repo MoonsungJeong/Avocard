@@ -1,4 +1,5 @@
 const cardModel = require("../models/cardModel");
+const validator = require('validator');
 
 const express = require("express");
 const router = express.Router();
@@ -16,7 +17,7 @@ router.get("/card", (req, res) => {
 });
 
 router.get("/card/:code", (req, res) => {
-    const cardCode = req.params.code;
+    const cardCode = validator.escape(req.params.code);
     cardModel.getCardByCardCode(cardCode)
         .then((result) => {
             res.status(200).json(result[0]);

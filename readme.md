@@ -13,7 +13,24 @@
 
 ---
 ### 1. How to set up
+#### 1-1. File list to set up
 
+* app.js
+* avocard.sql
+* backend/database.js
+
+#### 1-2. Process to set up
+##### ①. "npm install" to install modules into node_modules
+##### ②. Check port number in "app.js" line 6
+##### ③. Use SQL in "avocard.sql" to set up database structure and insert example data into database (IP adress is "localhost" or "127.0.0.1")
+##### ④. Modify database information (line 4:host, line 5:user, line 6:password) in backend/database.js file
+
+#### 1-3. Login information (default)
+|  |  |  |
+|--|--|--|
+|Role|Username|Password|
+|Admin|cat|Passw0rd|
+|User|dog|Passw0rd123|
 
 
 ---
