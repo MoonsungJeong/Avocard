@@ -18,6 +18,6 @@ router.post("/guest/login", (req,res) =>{
     // @@ guest login @@
     // log create
     // res send 200
-    res.status(200).json("Wellcome to Avocard!");
+    res.status(200).json("Welcome Guest to Avocard!");
 });
 module.exports = router;

@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta charset="UTF-8">
+        
+        <link href="css/reset.css" rel="stylesheet">
+        <link href="css/sign.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+        <script defer src="js/sign.js"></script>
+        <script defer src="js/valid_check.js"></script>
+
+        <title>Abocard - Sign Up</title>
+    </head>
+    <body>
+        <div class="wrap">
+            <header>
+                <h1>Sign Up</h1>
+            </header>
+            <main>
+                <form class="sign_form" autocomplete="off">
+                        <section class="line">
+                            <div class="label_wrap">
+                                <h4><label for="email">Email</label></h4>
+                            </div>
+                            <div class="input_box">
+                                <div class="input_wrap">
+                                    <i class="far fa-envelope required"></i>
+                                    <input id="email" 
+                                    type="email" 
+                                    placeholder="Email" 
+                                    maxlength="50" 
+                                    title="Please type your email: example@example.com" 
+                                    pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$" 
+                                    onkeyup="check(this)"
+                                    required>
+                                </div>
+                                <div class="err"></div>
+                            </div> 
+                        </section>
+                        <section class="line">
+                            <div class="label_wrap">
+                                <h4><label for="username">User Name</label></h4>
+                            </div>
+                            <div class="input_box">
+                                <div class="input_wrap">
+                                    <i class="far fa-user required"></i>
+                                    <input id="username" 
+                                    type="text" 
+                                    placeholder="User Name" 
+                                    title="Must contain first uppercase letter and at least two letter" 
+                                    pattern="[A-Z]{1}[a-zA-Z]{1,}" 
+                                    onkeyup="check(this)"
+                                    required>
+                                </div>
+                                <div class="err"></div>
+                            </div>
+                        </section>
+                        <section class="line">
+                            <div class="label_wrap">
+                                <h4><label for="password">Password</label></h4>
+                            </div>
+                            <div class="input_box">
+                                <div class="input_wrap">
+                                    <i class="fas fa-key required"></i>
+                                    <input id="password" 
+                                    type="password" 
+                                    placeholder="Password" 
+                                    title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" 
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                                    onkeyup="check(this)"
+                                    required>
+                                </div>
+                                <div class="err"></div>
+                            </div>
+                        </section>
+                        <section class="line">
+                            <div class="label_wrap">
+                                <h4><label for="repassword">Retype Password</label></h4>
+                            </div>
+                            <div class="input_box">
+                                <div class="input_wrap">
+                                    <i class="fas fa-unlock-alt required"></i>
+                                    <input id="repassword" 
+                                    type="password" 
+                                    placeholder="Retype Password" 
+                                    title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" 
+                                    pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
+                                    onkeyup="check(this)"
+                                    onblur="password_check(this)"
+                                    required>
+                                </div>
+                                <div class="err"></div>
+                            </div>
+                        </section>
+                        <section class="line">
+                            <div class="btn_wrap">
+                                <img src="image/avocado7-5.PNG" class="sign__avocado">
+                                <input id="submit" class="btn_btn" type="submit" value="Sign Up">
+                            </div>
+                        </section>
+                </form>
+            </main>             
+        </div>
+    </body>
+</html>

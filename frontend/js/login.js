@@ -8,7 +8,7 @@ function guestLogin(){
     .then(res => res.json())
     .then(res => {
         alert(res)
-        if (res === "Wellcome to Avocard!") {
+        if (res === "Welcome Guest to Avocard!") {
             const localStorageCheck = localStorage.length;
             const guestCheck = JSON.parse(localStorage.getItem("Avocard"));
             
