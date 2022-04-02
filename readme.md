@@ -107,7 +107,7 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
         /api/user/login [post]      : login process
         /api/user/logout [post]     : logout process
 
-        /api/pocket/list [get]     : show card in pocket
+        /api/pocket/:list [get]     : show card in pocket
         /api/pocket/add    [post]   : add new card into pocket 
         /api/pocket/update   [post] : update pocket
         /api/pocket/remove [post]   : remove a card from pocket
