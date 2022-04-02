@@ -1,3 +1,27 @@
+(function getNoticeBrief(){
+    fetch(`/api/notice`)
+        .then(res => res.json())
+        .then(list => {
+            console.log(list);
+        })
+        .catch(error => {
+            console.log("request notice brief failed - " + error)
+        })
+})();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const btn_list = document.querySelectorAll(".notice-box");
 //console.log(btn_list);
 btn_list.forEach(function(item){

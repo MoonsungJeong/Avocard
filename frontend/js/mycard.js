@@ -4,7 +4,7 @@
         .then(list => {
             console.log(list);
         })
-        .catch(error =>{
-            console.log("see mycard list failed - " + error);
+        .catch(error => {
+            console.log("request mycard list failed - " + error);
         })
 })();
