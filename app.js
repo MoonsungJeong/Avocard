@@ -1,10 +1,31 @@
 const express = require("express");
+const session = require("express-session");
+const time = require("./backend/time");
+const limit = require("./backend/msRateLimit");
 
 const server = express();
 const port = 8080;
 
+server.use(session({
+    secret: "secret phrase abc123",
+    resave: false,
+    saveUninitialized: true,
+    cookie: {
+        secure: false
+    }
+}));
+
 // Serve static frontend resources
 server.use(express.static("frontend"));
+
+const limiter =limit.msRateLimit({
+    maxCount: 5,
+    resetTime: 30*1000, // 24 hrs = 24*60*60*1000 
+    resetMessage: "Wait 1 min for next request",
+    timePerOneClick: 1000, // 1000 miliseconds = 1 second
+    timeMessage: "Too fast request"
+}) 
+server.use(limiter);
 
 const userController = require("./backend/controllers/userController");
 server.use("/api", userController);

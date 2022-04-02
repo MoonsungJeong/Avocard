@@ -5,9 +5,8 @@ const router = express.Router();
 
 router.get("/pocket/:list", (req, res) => {
     const list = JSON.parse(req.params.list);
-    
-    console.log(req.url);
     let parameterArr = [];
+
     list.forEach(item => {parameterArr.push(item.code)});
     cardModel.getCardByPocket(parameterArr)
         .then((result) =>{

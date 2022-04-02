@@ -11,7 +11,16 @@
             fetch(`/api/pocket/${pocketList}`)
                 .then(res => res.json())
                 .then(list => {
-                    sessionStorage.setItem("pocketList",JSON.stringify(list));
+                    if(list == "429"){
+                        alert("Code 429\nToo many request!");
+                        return;
+                    }
+                    if(list == "425"){
+                        alert("Code 425\nToo early request!");
+                        return;
+                    }
+                    // Please activate this part after limit rate check! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                    //sessionStorage.setItem("pocketList",JSON.stringify(list));
                     seePocket(list);
                 })
                 .catch(error => {
