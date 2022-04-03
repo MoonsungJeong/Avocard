@@ -30,5 +30,4 @@ router.get("/pocket/:list", (req, res) => {
             res.status(500).json("query error");
         }))
 });
-
 module.exports = router;
