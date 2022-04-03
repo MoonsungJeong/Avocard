@@ -4,7 +4,7 @@
 
 ### New Features 
 * Rate limit
-* 2
+* Web storage
 
 ## Summary
 ---
