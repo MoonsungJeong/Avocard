@@ -3,8 +3,9 @@
 #### This is 3rd project with Node.js
 
 ### New Features 
-* Rate limit
-* Web storage
+* Rate limit Middleware
+* Local Stoage
+* Session Storage
 
 ## Summary
 ---
