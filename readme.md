@@ -5,7 +5,7 @@
 ### New Features 
 * Rate limit Middleware
 * Local Stoage
-* Session Storage
+* Session Storage 
 
 ## Summary
 ---
