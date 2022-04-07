@@ -44,6 +44,7 @@ server.use("/api", cardController);
 const noticeController = require("./backend/controllers/noticeController");
 server.use("/api", noticeController);
 
-server.listen(port, "192.168.1.223", () => {
+server.listen(port, "localhost", () => {
     console.log("Backend listening on http://localhost:" + port);
 }); 
+ 
