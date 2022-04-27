@@ -1,5 +1,8 @@
 .front {
 	background-color: #7ed493;
+	position: absolute;
+	width:100%;
+	height:100%;
 }
 .front__header .front__wrapper {
 	display: flex;
