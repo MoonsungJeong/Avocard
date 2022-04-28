@@ -1,29 +1,33 @@
 import Hello from './page/Hello.js';
 import Welcome from './page/Welcome.js';
-import NotFound from "./page/NotFound.js";
+import NotFound from './page/NotFound.js';
 
-import Front from "./page/front.js";
+import Front from './page/front.js';
 
 export default class App {
-    constructor($target) {
-        this.init($target);
+    constructor() {
+        this.init();
         window.addEventListener("popstate", () => {
-            this.init($target);
+            this.init();
         });
- 
+        /* 
         document.addEventListener("DOMContentLoaded", () => {
             document.body.addEventListener("click", (e) => {
                 if (e.target.matches("[data-link]")) {
                     e.preventDefault();
                     history.pushState(null, null, e.target.href);
-                    this.init($target);
+                    this.init();
                 }
             });
-            this.init($target);
-        });
+            //this.init($target);
+        }); 
+        */
     }
-    init($target){
-        const appDiv = $target;
+    rootPath(){
+        return document.querySelector('.app');
+    }
+    init(){
+        const appDiv = this.rootPath();
         // @@@@@@@ path list @@@@@@@
         const routes = [
             { path: "/", view: Front },

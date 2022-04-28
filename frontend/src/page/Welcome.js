@@ -13,4 +13,5 @@ export default class Hello {
         <div>I live in Australia111</div>
       `;
   }
+  getScript(){}
   }

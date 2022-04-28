@@ -6,7 +6,7 @@
 * Rate limit Middleware
 * Local Stoage
 * Session Storage 
-* FrontEnd & BackEnd
+* FrontEnd (SPA) & BackEnd
 
 ## Summary
 ---

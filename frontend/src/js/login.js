@@ -1,8 +1,11 @@
+import Router from "../app.js";
+
 export default class Guest {
     constructor(){
-        document.querySelector(".guest").addEventListener("click",this.guestLogin,false);
+        document.querySelector(".guest").addEventListener("click", this.guestLogin,false);
     }
-    guestLogin(){
+    guestLogin(e){
+        e.preventDefault();
         fetch("/api/guest/login", {
             method: "POST",
             headers: {
@@ -38,8 +41,11 @@ export default class Guest {
                     };
                     localStorage.setItem("Avocard",JSON.stringify(storage));
                 } 
-                window.location.href = "/pocket.html";
-                return;
+                
+                if (e.target.matches("[data-link]")) {
+                    history.pushState(null, null, e.target.href);
+                    new Router();
+                }
             }
         })
         .catch(error => {

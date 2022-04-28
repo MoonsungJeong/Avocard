@@ -2,7 +2,7 @@ import logIn from "../js/login.js";
 
 export default class Hello {
     constructor() {
-        document.title = "Abocard";
+        document.title = "Abocard - Pocket";
     }
     getHtml() {
         return `
