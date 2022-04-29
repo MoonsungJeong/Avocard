@@ -1,19 +1,20 @@
-import logIn from "../js/login.js";
+import GuestLogin from "../js/reqGuestLogin.js";
+import PageSign from "../js/movePageSign.js"
 
-export default class Hello {
+export default class FrontPage {
     constructor() {
         document.title = "Abocard";
     }
     getHtml() {
         return `
         <div class="front">
-            <header class="front__header">
-            <div class="front__wrapper">
-                <div class="front__img-box">
-                    <img src="image/avocado_card1-2.png" class="front__kakao">
+            <div class="front__header">
+                <div class="front__wrapper">
+                    <div class="front__img-box">
+                        <img src="image/avocado_card1-2.png" class="front__kakao">
+                    </div>
                 </div>
             </div>
-            </header>
             <main class="front__main">
                 <div class="front__wrapper">
                     <div class="front__box">
@@ -30,17 +31,18 @@ export default class Hello {
             </main>
             <nav class="front__nav">
                 <ul class="front__list">
-                    <li class="front__list-item"><a><span class="class__menu">Sign-Up</span></a></li>
+                    <li class="front__list-item"><a href="/sign-up" class="sign_up front_nav_item" data-link>Sign-Up</a></li>
                     <div class="front__space"><i>|</i></div>
-                    <li class="front__list-item"><a><span class="class__menu">ID/PW lost</span></a></li>
+                    <li class="front__list-item"><a class="front_nav_item">ID/PW lost</a></li>
                     <div class="front__space"><i>|</i></div>
-                    <li class="front__list-item"><a href="/welcome" class="guest nav_item pointer" data-link>Guest</a></li>
+                    <li class="front__list-item"><a href="/welcome" class="guest front_nav_item pointer" data-link>Guest</a></li>
                 </ul>
             </nav>
         </div>
         `;
     }
     getScript(){
-        new logIn();
+        new GuestLogin();
+        new PageSign();
     }
 }

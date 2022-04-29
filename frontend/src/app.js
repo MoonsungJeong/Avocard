@@ -2,7 +2,8 @@ import Hello from './page/Hello.js';
 import Welcome from './page/Welcome.js';
 import NotFound from './page/NotFound.js';
 
-import Front from './page/front.js';
+import FrontPage from './page/front.js';
+import SignPage from './page/sign.js';
 
 export default class App {
     constructor() {
@@ -30,7 +31,8 @@ export default class App {
         const appDiv = this.rootPath();
         // @@@@@@@ path list @@@@@@@
         const routes = [
-            { path: "/", view: Front },
+            { path: "/", view: FrontPage },
+            { path: "/sign-up", view: SignPage },
             { path: "/welcome", view: Welcome },
             { path: "/hello", view: Hello },
         ];

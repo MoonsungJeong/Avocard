@@ -54,6 +54,10 @@
 	padding-left: 50px;
 	margin-top: 10px;
 }
+.front_nav_item{
+	text-decoration: none;
+	color:black;
+}
 .pointer{
 	cursor: pointer;
 }
