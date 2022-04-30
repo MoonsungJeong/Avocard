@@ -1,4 +1,15 @@
 @import "reset.css";
-@import "front.css";
 @import "sign.css";
+
+@import "front.css";
+@import "nav.css";
+@import "header.css";
+
+@import "pocket.css";
+@import "card.css";
+@import "more.css";
+
+@import "main.css";
+@import "theme.css";
+@import "notice.css";
 

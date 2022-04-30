@@ -1,46 +1,112 @@
-import logIn from "../js/login.js";
+import PagePocket from "../js/movePagePocket.js"
+import PageMycard from "../js/movePageMycard.js"
+import PageMore from "../js/movePageMore.js"
 
-export default class Hello {
+export default class PocketPage {
     constructor() {
         document.title = "Abocard - Pocket";
     }
     getHtml() {
         return `
-        <div class="front">
-            <header class="front__header">
-            <div class="front__wrapper">
-                <div class="front__img-box">
-                    <img src="image/avocado_card1-2.png" class="front__kakao">
+        <div>
+            <header class="header_application">
+                <h1>Pocket</h1>
+                <div class="header-menu">
+                    <i class="nav-icon fas fa-search fa-1x search_btn"></i>
+                    <i class="nav-icon fa-solid fa-user-plus"></i>
                 </div>
-            </div>
-            </header>
-            <main class="front__main">
-                <div class="front__wrapper">
-                    <div class="front__box">
-                        <form class="front__content">
-                            <input type="text" class="front__id" placeholder=" ID"
-                                onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = ' ID'"><br>
-                            <input type="password" class="front__pw" placeholder=" Password" onfocus="this.placeholder = ''"
-                                onblur="this.placeholder = ' Password'"><br>
-                            <input type='button'value="Log-in" class="front__botton">
-                        </form>
+                <div class="search_bar_wrapper">
+                    <div class="search_bar_box">
+                        <input class="search_bar" name="keyword" type="text"/>
                     </div>
                 </div>
+            </header>
+            <main>
+                <div class="project-container">
+                    <a href="#">
+                        <div class="project-item">
+                            <div class="project-explanation">
+                                <span class="project-category">Note</span>
+                                <div class="project-info">
+                                    <div class="project-name">Moonsung</div>
+                                    <div class="project-title">CEO</div>
+                                    <div class="project-company">Avocado</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="project-item">
+                            <div class="project-explanation">
+                                <span class="project-category">Note</span>
+                                <div class="project-info">
+                                    <div class="project-name">Person1</div>
+                                    <div class="project-title">Senior Developer</div>
+                                    <div class="project-company">Apple</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="project-item">
+                            <div class="project-explanation">
+                                <span class="project-category">Note</span>
+                                <div class="project-info">
+                                    <div class="project-name">Person2</div>
+                                    <div class="project-title">Junior Developer</div>
+                                    <div class="project-company">Orange</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="project-item">
+                            <div class="project-explanation">
+                                <span class="project-category">Note</span>
+                                <div class="project-info">
+                                    <div class="project-name">Person3</div>
+                                    <div class="project-title">Desiner</div>
+                                    <div class="project-company">Mango</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="#">
+                        <div class="project-item">
+                            <div class="project-explanation">
+                                <span class="project-category">Note</span>
+                                <div class="project-info">
+                                    <div class="project-name">Person4</div>
+                                    <div class="project-title">Customer</div>
+                                    <div class="project-company">Mellon</div>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
             </main>
-            <nav class="front__nav">
-                <ul class="front__list">
-                    <li class="front__list-item"><a><span class="class__menu">Sign-Up</span></a></li>
-                    <div class="front__space"><i>|</i></div>
-                    <li class="front__list-item"><a><span class="class__menu">ID/PW lost</span></a></li>
-                    <div class="front__space"><i>|</i></div>
-                    <li class="front__list-item"><a href="/welcome" class="guest nav_item pointer" data-link>Guest</a></li>
-                </ul>
+            <nav class="nav-container">
+                <a href="/pocket" id="pocket" class="nav-icon-wrap nav-selected-fixed" data-link>
+                    <i class="nav-icon fa-solid fa-address-card"></i>
+                </a>
+                <a href="/mycard" id="mycard" class="nav-icon-wrap" data-link>
+                    <i class="nav-icon fa-solid fa-user"></i>
+                </a>
+                <a href="/more" id="more" class="nav-icon-wrap" data-link>
+                    <i class="nav-icon fa-solid fa-gear"></i>
+                </a>
+            <!--
+                <a href="/pocket"><div id="pocket" class="nav-icon-wrap nav-selected-fixed" data-link><i class="nav-icon fa-solid fa-address-card"></i></div></a>
+                <a href="/mycard"><div id="mycard" class="nav-icon-wrap" data-link><i class="nav-icon fa-solid fa-user"></i></div></a>
+                <a href="/more"><div id="more" class="nav-icon-wrap" data-link><i class="nav-icon fa-solid fa-gear"></i></div></a>
+                -->
             </nav>
         </div>
         `;
     }
     getScript(){
-        new logIn();
+        new PagePocket();
+        new PageMycard();
+        new PageMore();
     }
 }

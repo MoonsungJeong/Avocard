@@ -30,18 +30,22 @@
 	width:100%;
 	height: 40px;
 }
-.front__botton{
+.front__button{
 	width:102%;
 	height: 40px;
 }
 .front__content .front__id, .front__pw {
 	border:1px solid #CCCCCC;
 }
-.front__content .front__botton {
+.front__content .front__button {
 	margin-top: 5px;
 	color: white;
 	border:0;
 	background-color:#c89a4f;
+	display:flex;
+	justify-content: center;
+	align-items: center;
+	text-decoration: none;
 }
 .front__nav{
 	

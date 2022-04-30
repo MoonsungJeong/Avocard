@@ -4,6 +4,11 @@ import NotFound from './page/NotFound.js';
 
 import FrontPage from './page/front.js';
 import SignPage from './page/sign.js';
+import PocketPage from './page/pocket.js';
+import MyCardPage from './page/mycard.js';
+import MorePage from './page/more.js';
+import ThemePage from './page/theme.js';
+import NoticePage from './page/notice.js';
 
 export default class App {
     constructor() {
@@ -33,8 +38,13 @@ export default class App {
         const routes = [
             { path: "/", view: FrontPage },
             { path: "/sign-up", view: SignPage },
+            { path: "/pocket", view: PocketPage },
+            { path: "/mycard", view: MyCardPage },
+            { path: "/more", view: MorePage },
+            { path: "/notice", view: NoticePage },
+            { path: "/theme", view: ThemePage },
             { path: "/welcome", view: Welcome },
-            { path: "/hello", view: Hello },
+            { path: "/hello", view: Hello }
         ];
         const pageMatches = routes.map((route) => {
             return {
@@ -46,7 +56,6 @@ export default class App {
         
         if(!match){
             // @@@@@@@ show 404 Not Found if there is no path @@@@@@@
-            console.log("Wrong path");
             match = {
                 route: location.pathname,
                 isMatch: true,
@@ -55,7 +64,6 @@ export default class App {
             appDiv.innerHTML = page.getHtml();
         }else{
             // @@@@@@@ show requested page for user @@@@@@@
-            console.log("OK");
             const page = new match.route.view();
             appDiv.innerHTML = page.getHtml();
             page.getScript();

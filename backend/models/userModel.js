@@ -11,5 +11,5 @@ module.exports.createUser = (email, username, password) => {
 }
 
 module.exports.getUserByUsername = (username) => {
-    return db.query("SELECT * FROM user WHERE userName = ? and deleteFlag = 0",[username]);
+    return db.query("SELECT * FROM `user` WHERE email = ? and deleteFlag = 0",[username]);
 }

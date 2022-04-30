@@ -22,11 +22,9 @@ router.post("/guest/login", (req,res) =>{
     // res send 200
     res.status(200).json("Welcome Guest to Avocard!");
 });
- 
-
-//@@@@@@@@@@@@@@@@@@@@
 
 router.post("/user/sign", (req,res) =>{
+    //res.status(200).json("User created!");
     let user = req.body;
     let hashedPassword = bcrypt.hashSync(user.password, 6);
     userModel.createUser(
@@ -42,26 +40,24 @@ router.post("/user/sign", (req,res) =>{
         res.status(500).json("query error - failed to create user");
     });
 }); 
- 
+
+//@@@@@@@@@@@@@@@@@@@@
+
 router.post("/user/login", (req, res) => {
     let login = req.body;
-    login={'username':'Moonsung', 'password':'password'};
-    userModel.getUserByUsername(login.username)
+    
+    userModel.getUserByUsername(login.email)
         .then((results) => {
-            console.log(results);
-            // Did we find a user with mathcing username?
             if (results.length > 0) {
                 let user = results[0];
 
                 // verify the users password
-                if (login.password== user.password/* bcrypt.compareSync(login.password, user.password) */) {
-                    
+                if (bcrypt.compareSync(login.password, user.password)) {
                     // setup the session
                     req.session.user = {
                         username: user.userName
                     }
-                    res.status(200).json("login successfull");
-                    
+                    res.status(200).json("login OK!");
                 } else {
                     // This else case runs if the password did NOT match.
                     res.status(401).json("login failed");
@@ -75,6 +71,7 @@ router.post("/user/login", (req, res) => {
             console.log(error)
             res.status(500).json("failed to login - query error");
         })
+
 })
 
 router.post("/user/logout", (req, res) => {

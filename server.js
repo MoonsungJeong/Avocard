@@ -1,5 +1,8 @@
 const express = require("express");
 const session = require("express-session");
+
+const bodyParser = require('body-parser')
+
 const limit = require("./backend/msRateLimit");
 
 const server = express();
@@ -10,6 +13,10 @@ server.use(function(req, res, next){
     res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
+
+// Enable middleware for body-parser
+server.use(bodyParser.urlencoded({ extended: false }))
+server.use(bodyParser.json())
 
 server.use(session({
     secret: "secret phrase abc123",
