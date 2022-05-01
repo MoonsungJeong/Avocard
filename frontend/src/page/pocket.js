@@ -3,6 +3,7 @@ import PageMycard from "../js/movePageMycard.js";
 import PageMore from "../js/movePageMore.js";
 
 import FuncShowPocket from "../js/funcShowPocket.js";
+import ChangeTheme from "../js/funcChangeTheme.js";
 
 export default class PocketPage {
     constructor() {
@@ -46,6 +47,7 @@ export default class PocketPage {
         new PageMycard();
         new PageMore();
 
-       new FuncShowPocket();
+        new FuncShowPocket();
+        (new ChangeTheme()).setTheme();
     }
 }

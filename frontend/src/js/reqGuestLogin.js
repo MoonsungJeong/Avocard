@@ -36,7 +36,7 @@ export default class reqGuest {
                             }
                         ],
                         "setting":{
-                            "theme":"#000000"
+                            "theme":"light"
                         }
                     };
                     localStorage.setItem("Avocard",JSON.stringify(storage));
