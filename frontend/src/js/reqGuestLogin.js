@@ -21,6 +21,9 @@ export default class reqGuest {
                 
                 if(!localStorageCheck || guestCheck == null){
                     let storage = {
+                        "user":{
+                            "name":"guest"    
+                        },
                         "pocket":[
                             {
                                 "code":"111",

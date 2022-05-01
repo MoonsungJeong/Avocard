@@ -1,5 +1,5 @@
 import PagePocket from "../js/movePagePocket.js";
-import PageMycard from "../js/movePageMycard.js";
+import PageMyCard from "../js/movePageMyCard.js";
 import PageMore from "../js/movePageMore.js";
 
 import FuncShowPocket from "../js/funcShowPocket.js";
@@ -44,7 +44,7 @@ export default class PocketPage {
     }
     getScript(){
         new PagePocket();
-        new PageMycard();
+        new PageMyCard();
         new PageMore();
 
         new FuncShowPocket();

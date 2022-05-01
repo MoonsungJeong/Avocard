@@ -1,4 +1,5 @@
 import PageMore from "../js/movePageMore.js"
+import FuncShowNotice from "../js/funcShowNotice.js";
 
 export default class NoticePage {
     constructor() {
@@ -15,41 +16,6 @@ export default class NoticePage {
             </header>
             <main>
                 <div class="notice-container">
-                    <div class="notice-item">
-                        <div class="notice-box">
-                            <div class="notice-date"><div>02/03/22</div></div>
-                            <div class="notice-title"><div>New feature update! please check!</div></div>
-                        </div>
-                        <div class="notice-description"><div>This is portfolio update!</div></div>
-                    </div>
-                    <div class="notice-item">
-                        <div class="notice-box">
-                            <div class="notice-date"><div>01/01/22</div></div>
-                            <div class="notice-title"><div>Happy New Year!</div></div>
-                        </div>
-                        <div class="notice-description"><div>Happy new year message for all!!</div></div>
-                    </div>
-                    <div class="notice-item">
-                        <div class="notice-box">
-                            <div class="notice-date"><div>01/01/22</div></div>
-                            <div class="notice-title"><div>Happy New Year!</div></div>
-                        </div>
-                        <div class="notice-description"><div>Happy new year message for all!!</div></div>
-                    </div>
-                    <div class="notice-item">
-                        <div class="notice-box">
-                            <div class="notice-date"><div>01/01/22</div></div>
-                            <div class="notice-title"><div>Happy New Year!</div></div>
-                        </div>
-                        <div class="notice-description"><div>Happy new year message for all!!</div></div>
-                    </div>
-                    <div class="notice-item">
-                        <div class="notice-box">
-                            <div class="notice-date"><div>01/01/22</div></div>
-                            <div class="notice-title"><div>Happy New Year!</div></div>
-                        </div>
-                        <div class="notice-description"><div>Happy new year message for all!!</div></div>
-                    </div>
                 </div>
             </main>
         </div>
@@ -57,5 +23,6 @@ export default class NoticePage {
     }
     getScript(){
         new PageMore();
+        new FuncShowNotice();
     }
 }

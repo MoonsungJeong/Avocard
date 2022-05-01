@@ -17,9 +17,6 @@ router.get("/users", (req, res) => {
 });
 
 router.post("/guest/login", (req,res) =>{
-    // @@ guest login @@
-    // log create
-    // res send 200
     res.status(200).json("Welcome Guest to Avocard!");
 });
 
@@ -55,7 +52,8 @@ router.post("/user/login", (req, res) => {
                 if (bcrypt.compareSync(login.password, user.password)) {
                     // setup the session
                     req.session.user = {
-                        username: user.userName
+                        username: user.userName,
+                        usercode: user.userCode
                     }
                     res.status(200).json("login OK!");
                 } else {
@@ -76,7 +74,7 @@ router.post("/user/login", (req, res) => {
 
 router.post("/user/logout", (req, res) => {
     req.session.destroy();
-    res.status(200).json("logged out");
+    res.status(200).json("Thank you for using this app!");
 })
 
 

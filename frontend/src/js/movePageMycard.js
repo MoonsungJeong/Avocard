@@ -1,6 +1,6 @@
 import Router from "../app.js";
 
-export default class movePageMycard {
+export default class movePageMyCard {
     constructor(){
         document.querySelector("#mycard").addEventListener("click", this.changePage,false);
     }

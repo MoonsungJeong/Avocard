@@ -1,47 +1,29 @@
 import Router from "../app.js";
 
-export default class reqUserLogin {
+export default class reqUserLogout {
     constructor(){
-        document.querySelector("#login_btn").addEventListener("click", this.userLogin, false);
+        document.querySelector("#logout_btn").addEventListener("click", this.userLogout, false);
     }
-    userLogin(e){
+    userLogout(e){
         e.preventDefault();
-        let logInForm = document.getElementById("login-user-form");
-        
-        if(!logInForm){return};
-
-        if(!logInForm.email.checkValidity()){
-            logInForm.email.focus();
-            alert("Email is not validated");
-            return;
-        }else if(!logInForm.password.checkValidity()){
-            logInForm.password.focus();
-            alert("Password is not validated");
-            return;
-        }
-        
-        let formDataJSON = JSON.stringify(Object.fromEntries(new FormData(logInForm)));
-
-        fetch("/api/user/login", {
+        if(!confirm("Are you sure?")){ return; }
+        fetch("/api/user/logout", {
             method: "POST",
             headers: {
                 'Content-Type': "application/json"
-            },
-            body: formDataJSON
+            }
         })
         .then(res => res.json())
         .then(res => {
             alert(res)
-            if(res === "login OK!"){
-                if (e.target.matches("[data-link]")) {
-                    history.pushState(null, null, e.target.href);
-                    new Router();
-                }
-                return;
+            sessionStorage.clear();
+            if (e.target.matches("[data-link]")) {
+                history.pushState(null, null, e.target.href);
+                new Router();
             }
-            if(res === "login failed!"){
-                logInForm.email.focus();
-                return;
+            if(e.target.tagName == "I"){
+                history.pushState(null, null, e.target.parentNode.href);
+                new Router();
             }
         })
         .catch(error => {

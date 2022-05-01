@@ -1,11 +1,12 @@
 import PagePocket from "../js/movePagePocket.js";
-import PageMycard from "../js/movePageMycard.js";
+import PageMyCard from "../js/movePageMyCard.js";
 import PageMore from "../js/movePageMore.js";
 
 import PageInfo from "../js/movePageInfo.js";
 import PageNotice from "../js/movePageNotice.js";
 import PageTheme from "../js/movePageTheme.js";
 
+import UserLogout from "../js/reqUserLogout.js";
 
 export default class MorePage {
     constructor() {
@@ -35,6 +36,10 @@ export default class MorePage {
                         <a href="/theme" id="theme_btn"class="more-icon-box" data-link><i class="nav-icon fas fa-brush"></i></a>
                         <div><span class="more-icon-word">Theme</span></div>
                     </div>
+                    <div class="more-item">
+                        <a href="/" id="logout_btn" class="more-icon-box" data-link><i class="nav-icon fa-solid fa-arrow-right-from-bracket"></i></a>
+                        <div><span class="more-icon-word">Log out</span></div>
+                    </div>
                 </div>
             </main>
             <nav class="nav-container">
@@ -47,11 +52,13 @@ export default class MorePage {
     }
     getScript(){
         new PagePocket();
-        new PageMycard();
+        new PageMyCard();
         new PageMore();
 
         new PageInfo();
         new PageNotice();
         new PageTheme();
+
+        new UserLogout();
     }
 }

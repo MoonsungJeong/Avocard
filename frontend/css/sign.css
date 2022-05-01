@@ -75,21 +75,25 @@ input.sign_input[type=date]{
     content: '\f058';
     font-family: "Font Awesome 5 Free"; 
     color:green;
+    font-size:0.5rem;
 }
 .err.no_pass::before{
     content: '\f057  Please Check it again';
     font-family: "Font Awesome 5 Free"; 
     color:red;
+    font-size:0.5rem;
 }
 .err.no_match::before{
     content: '\f057  Passwords are not matched!';
     font-family: "Font Awesome 5 Free"; 
     color:red;
+    font-size:0.5rem;
 }
 .err.match::before{
     content: '\f058  Passwords are matched!';
     font-family: "Font Awesome 5 Free"; 
     color:green;
+    font-size:0.5rem;
 }
 .btn_wrap{
     position: relative;

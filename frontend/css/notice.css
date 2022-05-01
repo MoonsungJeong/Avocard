@@ -22,5 +22,5 @@ main{
     font-size:1.1rem;
 }
 .notice-description{
-    display:none;
+    display:block;
 }
