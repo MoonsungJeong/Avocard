@@ -1,3 +1,68 @@
+export default class funcShowPocket {
+    constructor(){
+        this.openPocket();
+        //document.querySelector("#guest_btn").addEventListener("click", this.openPocket,false);
+    }
+    openPocket(){
+        const localStorageCheck = localStorage.length;
+        const guestCheck = JSON.parse(localStorage.getItem("Avocard"));
+        //guest user
+        if(localStorageCheck && guestCheck != null){
+            let pocketData = JSON.parse(localStorage.Avocard).pocket;
+            let pocketList = JSON.stringify(pocketData);
+            const sessionPocket = JSON.parse(sessionStorage.getItem("pocketList"));
+            
+            if(!sessionPocket){
+                fetch(`/api/pocket/${pocketList}`)
+                    .then(res => res.json())
+                    .then(list => {
+                        if(list == "429"){
+                            alert("Code 429\nToo many request!");
+                            return;
+                        }
+                        if(list == "425"){
+                            alert("Code 425\nToo early request!");
+                            return;
+                        }
+                        // Please activate this part after limit rate check! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                        sessionStorage.setItem("pocketList",JSON.stringify(list));
+                        this.seePocket(list);
+                    })
+                    .catch(error => {
+                        console.log("see pocket failed - " + error);
+                    })
+                    return;
+            }
+            this.seePocket(sessionPocket);
+        }
+    // login user
+
+    }
+    seePocket(arr){
+        const container = document.querySelector(".project-container");
+        let result="";
+        for(let i=0; i<arr.length; i++){
+            result+=`
+            <a href="#">
+                <div class="project-item">
+                    <div class="project-explanation">
+                        <span class="project-category">${arr[i].note}</span>
+                        <div class="project-info">
+                            <input type="hidden" value="${arr[i].cardCode}">
+                            <div class="project-name">${arr[i].cardDetail.name}</div>
+                            <div class="project-title">${arr[i].cardDetail.title}</div>
+                            <div class="project-company">${arr[i].cardDetail.company}</div>
+                        </div>
+                    </div>
+                </div>
+            </a>
+            `;
+        }
+        container.innerHTML=result;
+    }
+}
+
+/* 
 (function openPocket(){
     const localStorageCheck = localStorage.length;
     const guestCheck = JSON.parse(localStorage.getItem("Avocard"));
@@ -57,7 +122,7 @@ function seePocket(arr){
     container.innerHTML=result;
 }
 
-
+ */
 
 //////////////////// search Function //////////////////////////////////////
 /* 
@@ -92,6 +157,7 @@ let pocket = {
 };
 localStorage.setItem("pocket", JSON.stringify(pocket));
  */
+/* 
 const searchBtn = document.querySelector(".search_btn");
 const searchBar = document.querySelector(".search_bar");
 
@@ -144,3 +210,4 @@ function searchCard(e){
     }
     container.innerHTML=result;
 }
+ */

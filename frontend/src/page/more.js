@@ -41,11 +41,6 @@ export default class MorePage {
                 <a href="/pocket" id="pocket" class="nav-icon-wrap" data-link><i class="nav-icon fa-solid fa-address-card"></i></a>
                 <a href="/mycard" id="mycard" class="nav-icon-wrap" data-link><i class="nav-icon fa-solid fa-user"></i></a>
                 <a href="/more" id="more" class="nav-icon-wrap nav-selected-fixed" data-link><i class="nav-icon fa-solid fa-gear"></i></a>
-            <!--
-                <a href="/pocket"><div id="pocket" class="nav-icon-wrap" data-link><i class="fa-solid fa-address-card"></i></div></a>
-                <a href="/mycard"><div id="mycard" class="nav-icon-wrap" data-link><i class="fa-solid fa-user"></i></div></a>
-                <a href="/more"><div id="setting" class="nav-icon-wrap nav-selected-fixed" data-link><i class="fa-solid fa-gear"></i></div></a>
-                -->
             </nav>
         </div>
         `;

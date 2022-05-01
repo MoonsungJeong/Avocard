@@ -1,6 +1,8 @@
-import PagePocket from "../js/movePagePocket.js"
-import PageMycard from "../js/movePageMycard.js"
-import PageMore from "../js/movePageMore.js"
+import PagePocket from "../js/movePagePocket.js";
+import PageMycard from "../js/movePageMycard.js";
+import PageMore from "../js/movePageMore.js";
+
+import FuncShowPocket from "../js/funcShowPocket.js";
 
 export default class PocketPage {
     constructor() {
@@ -23,66 +25,6 @@ export default class PocketPage {
             </header>
             <main>
                 <div class="project-container">
-                    <a href="#">
-                        <div class="project-item">
-                            <div class="project-explanation">
-                                <span class="project-category">Note</span>
-                                <div class="project-info">
-                                    <div class="project-name">Moonsung</div>
-                                    <div class="project-title">CEO</div>
-                                    <div class="project-company">Avocado</div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="project-item">
-                            <div class="project-explanation">
-                                <span class="project-category">Note</span>
-                                <div class="project-info">
-                                    <div class="project-name">Person1</div>
-                                    <div class="project-title">Senior Developer</div>
-                                    <div class="project-company">Apple</div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="project-item">
-                            <div class="project-explanation">
-                                <span class="project-category">Note</span>
-                                <div class="project-info">
-                                    <div class="project-name">Person2</div>
-                                    <div class="project-title">Junior Developer</div>
-                                    <div class="project-company">Orange</div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="project-item">
-                            <div class="project-explanation">
-                                <span class="project-category">Note</span>
-                                <div class="project-info">
-                                    <div class="project-name">Person3</div>
-                                    <div class="project-title">Desiner</div>
-                                    <div class="project-company">Mango</div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                    <a href="#">
-                        <div class="project-item">
-                            <div class="project-explanation">
-                                <span class="project-category">Note</span>
-                                <div class="project-info">
-                                    <div class="project-name">Person4</div>
-                                    <div class="project-title">Customer</div>
-                                    <div class="project-company">Mellon</div>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
                 </div>
             </main>
             <nav class="nav-container">
@@ -95,11 +37,6 @@ export default class PocketPage {
                 <a href="/more" id="more" class="nav-icon-wrap" data-link>
                     <i class="nav-icon fa-solid fa-gear"></i>
                 </a>
-            <!--
-                <a href="/pocket"><div id="pocket" class="nav-icon-wrap nav-selected-fixed" data-link><i class="nav-icon fa-solid fa-address-card"></i></div></a>
-                <a href="/mycard"><div id="mycard" class="nav-icon-wrap" data-link><i class="nav-icon fa-solid fa-user"></i></div></a>
-                <a href="/more"><div id="more" class="nav-icon-wrap" data-link><i class="nav-icon fa-solid fa-gear"></i></div></a>
-                -->
             </nav>
         </div>
         `;
@@ -108,5 +45,7 @@ export default class PocketPage {
         new PagePocket();
         new PageMycard();
         new PageMore();
+
+       new FuncShowPocket();
     }
 }

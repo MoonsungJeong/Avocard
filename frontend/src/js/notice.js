@@ -9,19 +9,6 @@
         })
 })();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
 const btn_list = document.querySelectorAll(".notice-box");
 //console.log(btn_list);
 btn_list.forEach(function(item){

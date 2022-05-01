@@ -21,7 +21,9 @@ export default class MyCardPage {
                     <a href="#">
                         <div class="project-item">
                             <div class="project-mycard-box">
-                                <span class="project-category"><i class="nav-icon fa-solid fa-square-plus"></i></span>
+                                <span class="project-category">
+                                    <i class="nav-icon fa-solid fa-square-plus"></i>
+                                </span>
                                 <div class="project-info">
                                     <div class="cv-side">
                                         <img src="image/man.png" class="profile-picture">
@@ -78,11 +80,6 @@ export default class MyCardPage {
                 <a href="/pocket" id="pocket" class="nav-icon-wrap" data-link><i class="nav-icon fa-solid fa-address-card"></i></a>
                 <a href="/mycard" id="mycard" class="nav-icon-wrap nav-selected-fixed" data-link><i class="nav-icon fa-solid fa-user"></i></a>
                 <a href="/more" id="more" class="nav-icon-wrap" data-link><i class="nav-icon fa-solid fa-gear"></i></a>
-            <!--
-                <a href="/pocket"><div id="pocket" class="nav-icon-wrap" data-link><i class="fa-solid fa-address-card"></i></div></a>
-                <a href="/mycard"><div id="mycard" class="nav-icon-wrap nav-selected-fixed" data-link><i class="fa-solid fa-user"></i></div></a>
-                <a href="/more"><div id="setting" class="nav-icon-wrap" data-link><i class="fa-solid fa-gear"></i></div></a>
-                -->
             </nav>
         </div>
         `;
