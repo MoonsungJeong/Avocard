@@ -1,4 +1,5 @@
 import Router from "../app.js";
+import Screen from "./funcScreen.js";
 
 export default class reqUserLogin {
     constructor(){
@@ -6,6 +7,8 @@ export default class reqUserLogin {
     }
     userLogin(e){
         e.preventDefault();
+        const screen = new Screen;
+
         let logInForm = document.getElementById("login-user-form");
         
         if(!logInForm){return};
@@ -21,7 +24,7 @@ export default class reqUserLogin {
         }
         
         let formDataJSON = JSON.stringify(Object.fromEntries(new FormData(logInForm)));
-
+        screen.screenOn();
         fetch("/api/user/login", {
             method: "POST",
             headers: {
@@ -32,6 +35,7 @@ export default class reqUserLogin {
         .then(res => res.json())
         .then(res => {
             alert(res)
+            screen.screenOff();
             if(res === "login OK!"){
                 if (e.target.matches("[data-link]")) {
                     history.pushState(null, null, e.target.href);
