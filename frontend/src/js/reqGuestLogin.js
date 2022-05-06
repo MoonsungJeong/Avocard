@@ -1,4 +1,5 @@
 import Router from "../app.js";
+import Screen from "./funcScreen.js";
 
 export default class reqGuest {
     constructor(){
@@ -6,6 +7,8 @@ export default class reqGuest {
     }
     guestLogin(e){
         e.preventDefault();
+        const screen = new Screen;
+        screen.screenOn();
         fetch("/api/guest/login", {
             method: "POST",
             headers: {
@@ -15,6 +18,7 @@ export default class reqGuest {
         .then(res => res.json())
         .then(res => {
             alert(res)
+            screen.screenOff();
             if (res === "Welcome Guest to Avocard!") {
                 const localStorageCheck = localStorage.length;
                 const guestCheck = JSON.parse(localStorage.getItem("Avocard"));
