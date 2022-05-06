@@ -56,7 +56,7 @@
 * Log system tracking every request
 * rate limit service to one request per second per user session
 
-#### 2-3. Minimum Visual Product
+#### 2-3. Minimum Visual Product 
 * Register
 * Login
 * Pocket

@@ -38,8 +38,6 @@ router.post("/user/sign", (req,res) =>{
     });
 }); 
 
-//@@@@@@@@@@@@@@@@@@@@
-
 router.post("/user/login", (req, res) => {
     let login = req.body;
     
@@ -75,6 +73,18 @@ router.post("/user/login", (req, res) => {
 router.post("/user/logout", (req, res) => {
     req.session.destroy();
     res.status(200).json("Thank you for using this app!");
+})
+
+//////////////////////////////////////////////////////
+router.get("/user/info", (req,res) =>{
+    userModel.getAllUsers()
+    .then((result) => {
+        res.status(200).json(result);
+    })
+    .catch((error => {
+        console.log(error);
+        res.status(500).json("query error");
+    }))
 })
 
 

@@ -45,7 +45,7 @@ export default class SignPage {
                                 type="text" 
                                 class="sign_input"
                                 placeholder="User Name" 
-                                title="Must contain first uppercase letter and at least two letter" 
+                                title="Must contain first uppercase letter and at least two letter"                     
                                 pattern="[A-Z]{1}[a-zA-Z]{1,}" 
                                 required>
                             </div>
