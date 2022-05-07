@@ -1,4 +1,3 @@
-const manifest = require("./manifest.json");
 const express = require("express");
 const session = require("express-session");
 
@@ -52,7 +51,7 @@ server.use("/api", cardController);
 const noticeController = require("./backend/controllers/noticeController");
 server.use("/api", noticeController);
 
-server.listen(manifest.port_num, manifest.start_url, () => {
-    console.log("Backend listening on http://"+manifest.start_url+":" + manifest.port_num);
+server.listen("8080", "192.168.35.11", () => {
+    console.log("Backend listening on http://"+"192.168.35.11"+":" + "8080");
 }); 
  

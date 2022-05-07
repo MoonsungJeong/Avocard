@@ -13,7 +13,7 @@ export default class FrontPage {
             <div class="front__header">
                 <div class="front__wrapper">
                     <div class="front__img-box">
-                        <img src="image/avocado_card1-2.png" class="front__kakao">
+                        <img src="image/avocado_card1-3.png" class="front__avocado">
                     </div>
                 </div>
             </div>

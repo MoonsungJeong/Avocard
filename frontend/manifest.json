@@ -1,0 +1,28 @@
+{
+  "short_name": "Avocard",
+  "name": "Avocard Business Card App",
+  "icons": [
+    {
+      "src": "image/favicon.ico",
+      "sizes": "48x48",
+      "type": "image/x-icon",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "image/avocado_card_app.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "image/avocado_card1-3.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "scope":"/",
+  "display": "standalone",
+  "theme_color": "#7ed493",
+  "background_color": "#ffffff"
+}
+
