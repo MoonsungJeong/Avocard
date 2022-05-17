@@ -5,13 +5,13 @@
     {
       "src": "image/favicon.ico",
       "sizes": "48x48",
-      "type": "image/x-icon",
-      "purpose": "any maskable"
+      "type": "image/x-icon"
     },
     {
       "src": "image/avocado_card_app.png",
       "type": "image/png",
-      "sizes": "192x192"
+      "sizes": "192x192",
+      "purpose": "any maskable"
     },
     {
       "src": "image/avocado_card1-3.png",
@@ -19,10 +19,11 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "/",
-  "scope":"/",
+  "start_url": "http://192.168.35.11:8080/",
+  "scope":"http://192.168.35.11:8080/",
   "display": "standalone",
   "theme_color": "#7ed493",
   "background_color": "#ffffff"
 }
+
 

@@ -57,6 +57,12 @@ export default class reqGuest {
         })
         .catch(error => {
             console.log("user login failed - " + error);
+            const screen = new Screen;
+            screen.screenOff();
+            if (e.target.matches("[data-link]")) {
+                history.pushState(null, null, e.target.href);
+                new Router();
+            }
         })
     }
 }
