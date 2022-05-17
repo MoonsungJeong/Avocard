@@ -48,6 +48,6 @@ export default class PocketPage {
         new PageMore();
 
         new FuncShowPocket();
-        (new ChangeTheme()).setTheme();
+        //(new ChangeTheme()).setTheme();
     }
 }

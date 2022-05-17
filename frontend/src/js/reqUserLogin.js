@@ -1,5 +1,6 @@
 import Router from "../app.js";
 import Screen from "./funcScreen.js";
+import StorageCheck from "./funcStorageCheck.js";
 
 export default class reqUserLogin {
     constructor(){
@@ -7,7 +8,9 @@ export default class reqUserLogin {
     }
     userLogin(e){
         e.preventDefault();
+
         const screen = new Screen;
+        const storage = new StorageCheck;
 
         let logInForm = document.getElementById("login-user-form");
         
@@ -25,6 +28,7 @@ export default class reqUserLogin {
         
         let formDataJSON = JSON.stringify(Object.fromEntries(new FormData(logInForm)));
         screen.screenOn();
+
         fetch("/api/user/login", {
             method: "POST",
             headers: {
@@ -37,6 +41,10 @@ export default class reqUserLogin {
             alert(res)
             screen.screenOff();
             if(res === "login OK!"){
+                if(!storage.storageCheck()){
+                    storage.storageInit();
+                }
+                storage.storageUserToLoginUser();
                 if (e.target.matches("[data-link]")) {
                     history.pushState(null, null, e.target.href);
                     new Router();
@@ -49,7 +57,9 @@ export default class reqUserLogin {
             }
         })
         .catch(error => {
-            console.log("user login failed - " + error);
+            // no Network
+            screen.screenOff();
+            alert("Need Internet to LogIn!");
         })
     }
 }

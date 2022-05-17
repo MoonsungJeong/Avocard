@@ -1,5 +1,6 @@
 import Router from "../app.js";
 import Screen from "./funcScreen.js";
+import StorageCheck from "./funcStorageCheck.js";
 
 export default class reqGuest {
     constructor(){
@@ -7,8 +8,11 @@ export default class reqGuest {
     }
     guestLogin(e){
         e.preventDefault();
+        
         const screen = new Screen;
+        const storage = new StorageCheck;
         screen.screenOn();
+
         fetch("/api/guest/login", {
             method: "POST",
             headers: {
@@ -20,35 +24,22 @@ export default class reqGuest {
             alert(res)
             screen.screenOff();
             if (res === "Welcome Guest to Avocard!") {
-                const localStorageCheck = localStorage.length;
-                const guestCheck = JSON.parse(localStorage.getItem("Avocard"));
-                
-                if(!localStorageCheck || guestCheck == null){
-                    let storage = {
-                        "user":{
+                if(!storage.storageCheck()){
+                    /* 
+                    let data = {
+                        "currentUser":{
                             "name":"guest"    
                         },
-                        "pocket":[
-                            {
-                                "code":"111",
-                                "note":"nice man"
-                            },
-                            {
-                                "code":"112",
-                                "note":"good man"
-                            },
-                            {
-                                "code":"113",
-                                "note":"work well"
-                            }
-                        ],
-                        "setting":{
+                        "guestPocket":[],
+                        "guestSetting":{
                             "theme":"light"
                         }
                     };
-                    localStorage.setItem("Avocard",JSON.stringify(storage));
-                } 
-                
+                    localStorage.setItem("Avocard",JSON.stringify(data)); 
+                    */
+                    storage.storageInit();
+                }
+                storage.storageUserToGuest();
                 if (e.target.matches("[data-link]")) {
                     history.pushState(null, null, e.target.href);
                     new Router();
@@ -56,9 +47,18 @@ export default class reqGuest {
             }
         })
         .catch(error => {
-            console.log("user login failed - " + error);
-            const screen = new Screen;
+            //const screen = new Screen;
             screen.screenOff();
+            
+            if(!storage.storageCheck()){
+            // no Network, no localStorage
+                alert("Need Internet to initialize!");
+                return;
+            }
+            // no Network, yes localStorage
+            storage.storageUserToGuest();
+            alert("Welcome Guest to Avocard!");
+            
             if (e.target.matches("[data-link]")) {
                 history.pushState(null, null, e.target.href);
                 new Router();
@@ -66,49 +66,3 @@ export default class reqGuest {
         })
     }
 }
-/* 
-function guestLogin(){
-    fetch("/api/guest/login", {
-        method: "POST",
-        headers: {
-            'Content-Type': "application/json"
-        }
-    })
-    .then(res => res.json())
-    .then(res => {
-        alert(res)
-        if (res === "Welcome Guest to Avocard!") {
-            const localStorageCheck = localStorage.length;
-            const guestCheck = JSON.parse(localStorage.getItem("Avocard"));
-            
-            if(!localStorageCheck || guestCheck == null){
-                let storage = {
-                    "pocket":[
-                        {
-                            "code":"111",
-                            "note":"nice man"
-                        },
-                        {
-                            "code":"112",
-                            "note":"good man"
-                        },
-                        {
-                            "code":"113",
-                            "note":"work well"
-                        }
-                    ],
-                    "setting":{
-                        "theme":"#000000"
-                    }
-                };
-                localStorage.setItem("Avocard",JSON.stringify(storage));
-            } 
-            window.location.href = "/pocket.html";
-            return;
-        }
-    })
-    .catch(error => {
-        console.log("user login failed - " + error);
-    })
-}
- */

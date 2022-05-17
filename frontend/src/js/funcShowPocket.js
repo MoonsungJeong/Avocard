@@ -1,42 +1,70 @@
+import StorageCheck from "./funcStorageCheck.js";
+
 export default class funcShowPocket {
     constructor(){
         this.openPocket();
         //document.querySelector("#guest_btn").addEventListener("click", this.openPocket,false);
     }
     openPocket(){
-        const localStorageCheck = localStorage.length;
-        const guestCheck = JSON.parse(localStorage.getItem("Avocard"));
+        const storage = new StorageCheck;
         //guest user
-        if(localStorageCheck && guestCheck != null){
-            let pocketData = JSON.parse(localStorage.Avocard).pocket;
-            let pocketList = JSON.stringify(pocketData);
-            const sessionPocket = JSON.parse(sessionStorage.getItem("pocketList"));
-            
-            if(!sessionPocket){
-                fetch(`/api/pocket/${pocketList}`)
-                    .then(res => res.json())
-                    .then(list => {
-                        if(list == "429"){
-                            alert("Code 429\nToo many request!");
-                            return;
-                        }
-                        if(list == "425"){
-                            alert("Code 425\nToo early request!");
-                            return;
-                        }
-                        // Please activate this part after limit rate check! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-                        sessionStorage.setItem("pocketList",JSON.stringify(list));
-                        this.seePocket(list);
-                    })
-                    .catch(error => {
-                        console.log("see pocket failed - " + error);
-                    })
-                    return;
-            }
-            this.seePocket(sessionPocket);
+        if(storage.storageCheck() && storage.storageUserCheck() == "guest"){
+            let pocket = storage.storagePocketCheck();
+            this.seePocket(pocket);
+        }    
+        //login user + session not exist
+        if(!storage.sessionCheck() && storage.storageUserCheck() == "loginUser"){
+            fetch(`/api/pocket`)
+                .then(res => res.json())
+                .then(pocket => {
+                    if(pocket == "429"){
+                        alert("Code 429\nToo many request!");
+                        return;
+                    }
+                    if(pocket == "425"){
+                        alert("Code 425\nToo early request!");
+                        return;
+                    }
+                    // Please activate this part after limit rate check! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                    sessionStorage.setItem("Avocard",JSON.stringify(pocket));
+                    this.seePocket(storage.sessionPocketCheck());
+                })
+                .catch(error => {
+                    console.log("see pocket failed - " + error);
+                })
         }
-    // login user
-
+        //login user + session exist
+        if(storage.sessionCheck() && storage.storageUserCheck() == "loginUser"){
+            let pocket = storage.sessionPocketCheck();
+            this.seePocket(pocket);
+        }
+        /*     
+        let pocketData = JSON.parse(localStorage.Avocard).pocket;
+        let pocketList = JSON.stringify(pocketData);
+        const sessionPocket = JSON.parse(sessionStorage.getItem("pocketList"));
+    
+        if(!sessionPocket){
+            fetch(`/api/pocket/${pocketList}`)
+                .then(res => res.json())
+                .then(list => {
+                    if(list == "429"){
+                        alert("Code 429\nToo many request!");
+                        return;
+                    }
+                    if(list == "425"){
+                        alert("Code 425\nToo early request!");
+                        return;
+                    }
+                    // Please activate this part after limit rate check! @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+                    sessionStorage.setItem("pocketList",JSON.stringify(list));
+                    this.seePocket(list);
+                })
+                .catch(error => {
+                    console.log("see pocket failed - " + error);
+                })
+                return;
+        }
+        this.seePocket(sessionPocket); */
     }
     seePocket(arr){
         const container = document.querySelector(".project-container");
@@ -46,7 +74,7 @@ export default class funcShowPocket {
             <a href="#">
                 <div class="project-item">
                     <div class="project-explanation">
-                        <span class="project-category">${arr[i].note}</span>
+                        <span class="project-category">${arr[i].cardDetail.note}</span>
                         <div class="project-info">
                             <input type="hidden" value="${arr[i].cardCode}">
                             <div class="project-name">${arr[i].cardDetail.name}</div>

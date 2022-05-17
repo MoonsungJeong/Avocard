@@ -20,7 +20,7 @@ export default class funcChangeTheme {
         //guest user
         if(!sessionSetting){
             const storage = JSON.parse(localStorage.Avocard);
-            const theme = storage.setting.theme;
+            const theme = storage.guestSetting.theme;
             let background = document.getElementsByTagName("body")[0];
             
             switch(theme){
