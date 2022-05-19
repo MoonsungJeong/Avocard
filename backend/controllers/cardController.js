@@ -9,8 +9,8 @@ router.get("/card", (req, res) => {
         res.status(200).json("Guest can't have card");
         return
     }
-    const session_userCode = req.session.user.usercode; // session 
-    cardModel.getCardByUserCode(session_userCode)
+    const userCode = req.session.user.usercode; // session 
+    cardModel.getCardsByUserCode(userCode)
         .then((result) => {
             res.status(200).json(result);
         }) 

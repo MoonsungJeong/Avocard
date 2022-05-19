@@ -1,20 +1,35 @@
+import StorageCheck from "./funcStorageCheck.js";
+
 export default class funcShowMyCard {
     constructor(){
         this.openMyCard();
     }
     openMyCard(){
+        const storage = new StorageCheck;
+        //guest user
+        if(storage.storageUserCheck() == "guest"){ return; }
+
+        //login user, Card exist
+        if(storage.sessionMyCardCheck()){
+            this.seeMyCard();
+            return;
+        }
+        //login user, Card not exist
         fetch(`/api/card`)
             .then(res => res.json())
-            .then(result => {  
-                this.seeMyCard(result);
+            .then(result => {
+                if(!result.length){ return; }
+                storage.sessionSetMyCard(result);
+                this.seeMyCard();
             })
             .catch(error => {
                 console.log("see pocket failed - " + error);
             })
     }
-    seeMyCard(param){
+    seeMyCard(){
+        const storage = new StorageCheck;
         const container = document.querySelector(".portfolio-container");
-        let card = param[0].cardDetail;
+        let card = storage.sessionGetMyCard()[0].cardDetail;
         let result=`
         <a>
             <div class="project-item">

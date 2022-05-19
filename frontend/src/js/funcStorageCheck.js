@@ -67,4 +67,18 @@ export default class storageCheck {
         localStorage.setItem("Avocard",JSON.stringify(data));
         return 0;
     }
+    sessionGetMyCard(){
+        const mycard = JSON.parse(sessionStorage.getItem("Avocard")).mycard;
+        return mycard;
+    }
+    sessionSetMyCard(card){
+        let data = JSON.parse(sessionStorage.getItem("Avocard"));
+        data.mycard = card;
+        sessionStorage.setItem("Avocard",JSON.stringify(data));
+        return 0;
+    }
+    sessionMyCardCheck(){
+        const mycard = JSON.parse(sessionStorage.getItem("Avocard")).mycard;
+        return mycard.length;
+    }
 }

@@ -9,7 +9,7 @@ module.exports.getCardByPocket = (arr) => {
     sql += "?";
     return db.query("SELECT cardCode, cardDetail FROM card WHERE cardCode IN ("+sql+")",arr);
 }
-module.exports.getCardByUserCode = (userCode) => {
+module.exports.getCardsByUserCode = (userCode) => {
     return db.query("SELECT cardCode, cardDetail FROM card WHERE userCode = ? and deleteFlag = 0", [userCode]);
 }
 module.exports.getCardByCardCode = (cardCode) => {
