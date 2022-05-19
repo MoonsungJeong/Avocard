@@ -10,7 +10,7 @@ export default class PocketCardPage {
         return `
         <header class="header">
             <div class="header__header-column">
-                <a href="/pocket" id="pocket" class="header__x-btn">
+                <a href="/pocket" id="pocket" class="header__x-btn" data-link>
                     <i class="far fa-times-circle"></i>
                 </a>
             </div>

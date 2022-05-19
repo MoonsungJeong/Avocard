@@ -9,15 +9,16 @@ export default class funcShowMyCard {
         //guest user
         if(storage.storageUserCheck() == "guest"){ return; }
 
-        //login user, Card exist
+        //login user, Card exist in session
         if(storage.sessionMyCardCheck()){
             this.seeMyCard();
             return;
         }
-        //login user, Card not exist
+        //login user, Card not exist in session
         fetch(`/api/card`)
             .then(res => res.json())
             .then(result => {
+                if(result == "425" || result == "429"){return;}
                 if(!result.length){ return; }
                 storage.sessionSetMyCard(result);
                 this.seeMyCard();

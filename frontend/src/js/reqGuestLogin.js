@@ -25,18 +25,6 @@ export default class reqGuest {
             screen.screenOff();
             if (res === "Welcome Guest to Avocard!") {
                 if(!storage.storageCheck()){
-                    /* 
-                    let data = {
-                        "currentUser":{
-                            "name":"guest"    
-                        },
-                        "guestPocket":[],
-                        "guestSetting":{
-                            "theme":"light"
-                        }
-                    };
-                    localStorage.setItem("Avocard",JSON.stringify(data)); 
-                    */
                     storage.storageInit();
                 }
                 storage.storageUserToGuest();

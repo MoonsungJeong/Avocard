@@ -15,3 +15,6 @@ module.exports.getCardsByUserCode = (userCode) => {
 module.exports.getCardByCardCode = (cardCode) => {
     return db.query("SELECT cardCode, cardDetail FROM card WHERE cardCode = ?", [cardCode]);
 }
+module.exports.createNewCard = (userCode, cardDetail) => {
+    return db.query("INSERT INTO card (`userCode`, `cardDetail`) VALUES (?,?)",[userCode,cardDetail]);
+}

@@ -10,6 +10,7 @@ import MorePage from './page/more.js';
 import ThemePage from './page/theme.js';
 import NoticePage from './page/notice.js';
 import PocketCardPage from './page/pocketcard.js';
+import EditPage from './page/edit.js';
 
 export default class App {
     constructor() {
@@ -34,7 +35,8 @@ export default class App {
             { path: "/theme", view: ThemePage },
             { path: "/welcome", view: Welcome },
             { path: "/hello", view: Hello },
-            { path: "/card", view: PocketCardPage }
+            { path: "/card", view: PocketCardPage },
+            { path: "/edit", view: EditPage }
         ];
         const pageMatches = routes.map((route) => {
             return {

@@ -1,6 +1,7 @@
-import PagePocket from "../js/movePagePocket.js"
-import PageMyCard from "../js/movePageMyCard.js"
-import PageMore from "../js/movePageMore.js"
+import PagePocket from "../js/movePagePocket.js";
+import PageMyCard from "../js/movePageMyCard.js";
+import PageMore from "../js/movePageMore.js";
+import PageEdit from "../js/movePageEdit.js";
 
 import FuncShowMyCard from "../js/funcShowMyCard.js";
 
@@ -14,7 +15,7 @@ export default class MyCardPage {
             <header class="header_application">
                 <h1>My Card</h1>
                 <div class="header-menu flex-right">
-                    <i class="nav-icon fa-solid fa-address-book"></i>
+                    <a href="/edit" id="edit" class="nav-icon-wrap" data-link><i class="nav-icon fa-solid fa-address-book"></i></a>
                 </div>
             </header>
             <main>
@@ -34,6 +35,7 @@ export default class MyCardPage {
         new PagePocket();
         new PageMyCard();
         new PageMore();
+        new PageEdit();
 
         new FuncShowMyCard();
     }
