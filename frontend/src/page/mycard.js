@@ -13,13 +13,13 @@ export default class MyCardPage {
         <div class="wrap">
             <header class="header_application">
                 <h1>My Card</h1>
-                <div class="header-menu">
-                    <i class="nav-icon fas fa-search fa-1x"></i>
-                    <i class="nav-icon fa-solid fa-user-plus"></i>
+                <div class="header-menu flex-right">
+                    <i class="nav-icon fa-solid fa-address-book"></i>
                 </div>
             </header>
             <main>
-                <div class="project-container">
+                <div class="portfolio-container">
+                    <img src="image/no_avocard.png" class="no-card-img">
                 </div>
             </main>
             <nav class="nav-container">

@@ -9,6 +9,7 @@ import MyCardPage from './page/mycard.js';
 import MorePage from './page/more.js';
 import ThemePage from './page/theme.js';
 import NoticePage from './page/notice.js';
+import PocketCardPage from './page/pocketcard.js';
 
 export default class App {
     constructor() {
@@ -16,18 +17,6 @@ export default class App {
         window.addEventListener("popstate", () => {
             this.init();
         });
-        /* 
-        document.addEventListener("DOMContentLoaded", () => {
-            document.body.addEventListener("click", (e) => {
-                if (e.target.matches("[data-link]")) {
-                    e.preventDefault();
-                    history.pushState(null, null, e.target.href);
-                    this.init();
-                }
-            });
-            //this.init($target);
-        }); 
-        */
     }
     rootPath(){
         return document.querySelector('.app');
@@ -44,7 +33,8 @@ export default class App {
             { path: "/notice", view: NoticePage },
             { path: "/theme", view: ThemePage },
             { path: "/welcome", view: Welcome },
-            { path: "/hello", view: Hello }
+            { path: "/hello", view: Hello },
+            { path: "/card", view: PocketCardPage }
         ];
         const pageMatches = routes.map((route) => {
             return {

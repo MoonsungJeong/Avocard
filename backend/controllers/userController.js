@@ -1,4 +1,6 @@
 const userModel = require("../models/userModel");
+const pocketModel = require("../models/pocketModel");
+const settingModel = require("../models/settingModel");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
 
@@ -29,8 +31,31 @@ router.post("/user/sign", (req,res) =>{
         validator.escape(user.username),
         hashedPassword
     )
-    .then((result) => {
-        res.status(201).json("user created");
+    .then((result_1) => {
+        userModel.getLastInsertUserCode()
+        .then((result_2) => {
+            const userCode = result_2[0]['LAST_INSERT_ID()'];
+            //console.log(userCode);
+            pocketModel.createNewPocket(userCode)
+            .then((result_3) => {
+                settingModel.createNewSetting(userCode)
+                .then((result_4) => {
+                    res.status(201).json("user created");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    res.status(500).json("query error - failed to create user");
+                });
+            })
+            .catch((error) => {
+                console.log(error);
+                res.status(500).json("query error - failed to create user");
+            });
+        })
+        .catch((error) => {
+            console.log(error);
+            res.status(500).json("query error - failed to create user");
+        });    
     })
     .catch((error) => {
         console.log(error);

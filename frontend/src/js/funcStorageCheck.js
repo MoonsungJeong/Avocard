@@ -18,9 +18,8 @@ export default class storageCheck {
     }
     storageInit(){
         let data = {
-            "currentUser":{
-                "name":"guest"    
-            },
+            "currentUser":"guest",
+            "currentCard":"",
             "guestPocket":[],
             "guestSetting":{
                 "theme":"light"
@@ -49,6 +48,22 @@ export default class storageCheck {
     storageUserToLoginUser(){
         let data = JSON.parse(localStorage.getItem("Avocard"));
         data.currentUser = "loginUser";
+        localStorage.setItem("Avocard",JSON.stringify(data));
+        return 0;
+    }
+    storageSetCardCode(code){
+        let data = JSON.parse(localStorage.getItem("Avocard"));
+        data.currentCard = code;
+        localStorage.setItem("Avocard",JSON.stringify(data));
+        return 0;
+    }
+    storageGetCardCode(){
+        const cardCode = JSON.parse(localStorage.getItem("Avocard")).currentCard;
+        return cardCode;
+    }
+    storageClearCardCode(){
+        let data = JSON.parse(localStorage.getItem("Avocard"));
+        data.currentCard = "";
         localStorage.setItem("Avocard",JSON.stringify(data));
         return 0;
     }

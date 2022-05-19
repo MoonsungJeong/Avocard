@@ -13,7 +13,8 @@ main{
     color:#ffffff;
 }
 .portfolio-container{
-    padding:0 1rem;
+    display: flex;
+    justify-content: center;
 }
 
 .project-container{
@@ -29,6 +30,10 @@ main{
     margin-right:auto;
 }
 .project-container a{
+    color:#000000;
+    text-decoration-line:none;
+}
+.portfolio-container a{
     color:#000000;
     text-decoration-line:none;
 }
@@ -51,6 +56,7 @@ main{
 .project-mycard-box{
     padding:0.6rem;
     width:80%;
+    max-width: 30rem;
     height: auto;
     background:#ffffff;
     text-align: left;
@@ -74,6 +80,9 @@ main{
     padding: 0.125rem 0.75rem;
     border-radius: 9999px;
     
+}
+.no-card-img{
+    margin-top: 30%;
 }
 .project-name{
     font-size:1.25rem;

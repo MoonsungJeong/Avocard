@@ -17,10 +17,7 @@ export default class MorePage {
         <div class="wrap">
             <header class="header_application">
                 <h1>More</h1>
-                <div class="header-menu">
-                    <i class="nav-icon fas fa-search fa-1x"></i>
-                    <i class="nav-icon fa-solid fa-user-plus"></i>
-                </div>
+                <div class="header-menu"></div>
             </header>
             <main>
                 <div class="more-container">

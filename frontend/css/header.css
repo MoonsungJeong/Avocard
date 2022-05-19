@@ -25,7 +25,10 @@
     justify-content: space-around;
     margin-right:1rem;
 }
-
+.flex-right{
+    display: flex;
+    justify-content: flex-end;
+}
 h1{
     display: grid;
     grid-template-columns: auto auto;

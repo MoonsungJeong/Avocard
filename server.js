@@ -51,6 +51,10 @@ server.use("/api", cardController);
 const noticeController = require("./backend/controllers/noticeController");
 server.use("/api", noticeController);
 
+server.get('*', (req, res) => {
+    res.redirect('/')
+}) 
+
 server.listen("8080", "192.168.35.11", () => {
     console.log("Backend listening on http://"+"192.168.35.11"+":" + "8080");
 }); 
