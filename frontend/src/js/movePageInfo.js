@@ -1,3 +1,5 @@
+import StorageCheck from "./funcStorageCheck.js";
+
 import Router from "../app.js";
 
 export default class movePageNotice {
@@ -5,9 +7,11 @@ export default class movePageNotice {
         document.querySelector("#info_btn").addEventListener("click", this.changePage,false);
     }
     changePage(e){
-        alert("Please wait");
-/* 
         e.preventDefault();
+        const storage = new StorageCheck;
+        //guest user
+        if(storage.storageUserCheck() == "guest"){ alert("Guest can't go to Info");return; }
+
         if (e.target.matches("[data-link]")) {
             history.pushState(null, null, e.target.href);
             new Router();
@@ -15,7 +19,6 @@ export default class movePageNotice {
         if(e.target.tagName == "I"){
             history.pushState(null, null, e.target.parentNode.href);
             new Router();
-        }
-         */
+        }  
     }
 }

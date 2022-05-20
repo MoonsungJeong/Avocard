@@ -4,11 +4,15 @@ import NotFound from './page/NotFound.js';
 
 import FrontPage from './page/front.js';
 import SignPage from './page/sign.js';
+
 import PocketPage from './page/pocket.js';
 import MyCardPage from './page/mycard.js';
 import MorePage from './page/more.js';
+
+import InfoPage from './page/info.js';
 import ThemePage from './page/theme.js';
 import NoticePage from './page/notice.js';
+
 import PocketCardPage from './page/pocketcard.js';
 import EditPage from './page/edit.js';
 import UpdatePage from './page/update.js';
@@ -33,6 +37,7 @@ export default class App {
             { path: "/pocket", view: PocketPage },
             { path: "/mycard", view: MyCardPage },
             { path: "/more", view: MorePage },
+            { path: "/info", view: InfoPage },
             { path: "/notice", view: NoticePage },
             { path: "/theme", view: ThemePage },
             { path: "/welcome", view: Welcome },

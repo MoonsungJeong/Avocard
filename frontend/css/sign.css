@@ -41,13 +41,23 @@
     position: relative;
     width:90%;
 }
-input.sign_input{
+input.sign_input, input.info_input{
     padding-left: 40px;
     width:100%;
     height:2rem;
     border-top: none;
     border-left: none;
     border-right:none;
+}
+input.info_input:focus{
+    outline: none;
+}
+.info_extra{
+    font-size:small;
+    color:gray;
+}
+.gray{
+    color:gray;
 }
 input.sign_input:hover{
     background-color: rgba(135, 206, 235, 0.5);

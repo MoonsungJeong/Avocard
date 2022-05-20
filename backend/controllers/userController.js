@@ -7,7 +7,21 @@ const validator = require("validator");
 const express = require("express");
 const router = express.Router();
 
+router.get("/user/info", (req, res) => {
+    if(!req.session.user){ res.status(401).json("Wrong Guest Access!"); return;}
+    const userCode = req.session.user.usercode;
+    userModel.getUserByUserCode(userCode)
+        .then((result) => {
+            res.status(200).json(result[0]);
+        })
+        .catch((error => {
+            console.log(error);
+            res.status(500).json("query error");
+        }))
+});
 router.get("/users", (req, res) => {
+    if(!req.session.user){ res.status(401).json("Wrong Access!"); return;}
+
     userModel.getAllUsers()
         .then((result) => {
             res.status(200).json(result);
@@ -17,11 +31,9 @@ router.get("/users", (req, res) => {
             res.status(500).json("query error");
         }))
 });
-
 router.post("/guest/login", (req,res) =>{
     res.status(200).json("Welcome Guest to Avocard!");
 });
-
 router.post("/user/sign", (req,res) =>{
     //res.status(200).json("User created!");
     let user = req.body;
@@ -62,11 +74,10 @@ router.post("/user/sign", (req,res) =>{
         res.status(500).json("query error - failed to create user");
     });
 }); 
-
 router.post("/user/login", (req, res) => {
     let login = req.body;
     
-    userModel.getUserByUsername(login.email)
+    userModel.getUserByEmail(login.email)
         .then((results) => {
             if (results.length > 0) {
                 let user = results[0];
@@ -93,24 +104,37 @@ router.post("/user/login", (req, res) => {
             res.status(500).json("failed to login - query error");
         })
 
-})
-
+});
 router.post("/user/logout", (req, res) => {
     req.session.destroy();
     res.status(200).json("Thank you for using this app!");
-})
+});
+router.post("/user/update", (req,res) => {
+    if(!req.session.user){ res.status(401).json("Wrong Guest Access!"); return;}
+    const data = req.body;
+    const userCode = req.session.user.usercode;
+    userModel.getPwByUserCode(userCode)
+        .then((result) => {
+            if(!bcrypt.compareSync(data.password, result[0].password)) {
+                res.status(400).json("Wrong Password!");
+                return;
+            }
+            let hashedPassword = bcrypt.hashSync(data.newpassword, 6);
+            userModel.updatePw(hashedPassword, userCode)
+                .then((result_2) => {    
+                    res.status(200).json("Password updated!");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    res.status(500).json("query error - failed to update password");
+                })
+        })
+        .catch((error => {
+            console.log(error);
+            res.status(500).json("query error");
+        }))
+});
 
-//////////////////////////////////////////////////////
-router.get("/user/info", (req,res) =>{
-    userModel.getAllUsers()
-    .then((result) => {
-        res.status(200).json(result);
-    })
-    .catch((error => {
-        console.log(error);
-        res.status(500).json("query error");
-    }))
-})
 
 
 module.exports = router;
