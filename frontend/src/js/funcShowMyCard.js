@@ -1,6 +1,6 @@
 import StorageCheck from "./funcStorageCheck.js";
 import PageUpdate from "../js/movePageUpdate.js";
-import CardDelete from "../js/reqCardDelete.js";
+import CardDelete from "./reqDeleteCard.js";
 
 export default class funcShowMyCard {
     constructor(){

@@ -52,7 +52,7 @@ router.post("/card/create", (req,res) => {
                 cardDetail
             )
                 .then((result_2) => {
-                    res.status(201).json("card created");
+                    res.status(201).json("Avocard created!");
                 })
                 .catch((error) => {
                     console.log(error);
@@ -91,6 +91,34 @@ router.post("/card/update", (req,res) =>{
                     console.log(error);
                     res.status(500).json("query error - failed to update card");
                 });
+        })
+        .catch((error) => {
+            console.log(error);
+            res.status(500).json("query error");
+        })
+});
+
+router.post("/card/delete", (req,res) =>{
+    if(!req.session.user){
+        res.status(200).json("Guest can't update card");
+        return;
+    }
+    const userCode = req.session.user.usercode;
+    const cardCode = req.body.cardCode;
+    cardModel.getCardsByUserCode(userCode)
+        .then((result) => {
+            if(cardCode != result[0].cardCode){
+                res.status(400).json("Manipulated data");
+                return;
+            }
+            cardModel.deleteCard(cardCode)
+                .then((result_2) => {
+                    res.status(200).json("Avocard deleted!");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    res.status(500).json("query error - failed to update card");
+                })
         })
         .catch((error) => {
             console.log(error);

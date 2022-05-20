@@ -68,17 +68,23 @@ export default class storageCheck {
         return 0;
     }
     sessionGetMyCard(){
-        const mycard = JSON.parse(sessionStorage.getItem("Avocard")).mycard;
-        return mycard;
+        const myCard = JSON.parse(sessionStorage.getItem("Avocard")).myCard;
+        return myCard;
     }
     sessionSetMyCard(card){
         let data = JSON.parse(sessionStorage.getItem("Avocard"));
-        data.mycard = card;
+        data.myCard = card;
         sessionStorage.setItem("Avocard",JSON.stringify(data));
         return 0;
     }
     sessionMyCardCheck(){
-        const mycard = JSON.parse(sessionStorage.getItem("Avocard")).mycard;
-        return mycard.length;
+        const myCard = JSON.parse(sessionStorage.getItem("Avocard")).myCard;
+        return myCard.length;
+    }
+    sessionClearMyCard(){
+        let data = JSON.parse(sessionStorage.getItem("Avocard"));
+        data.myCard = [];
+        sessionStorage.setItem("Avocard",JSON.stringify(data));
+        return 0;
     }
 }

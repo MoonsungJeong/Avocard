@@ -24,7 +24,7 @@ export default class UpdateCard {
         console.log(data);
 
         let formDataJSON = JSON.stringify(data);
-        // /api/card/update [post]
+        
         fetch("/api/card/update", {
             method: "POST",
             headers: {
@@ -50,45 +50,5 @@ export default class UpdateCard {
         .catch(err =>{
             console.log("Update card request failed! " + err);
         })
-        /*
-        let formDataJSON = JSON.stringify(data);
-        // /api/card/update [post]
-
-        fetch("/api/card/create", {
-            method: "POST",
-            headers: {
-                'Content-Type': "application/json"
-            },
-            body: formDataJSON
-        })
-        .then(res => res.json())
-        .then(res => {
-            if(res === "card is already existed"){
-                alert(res);
-                // back to mycard Page
-                if(e.target.matches("[data-link]")) {
-                    history.pushState(null, null, e.target.href);
-                    new Router();
-                }
-                if(e.target.tagName == "I"){
-                    history.pushState(null, null, e.target.parentNode.href);
-                    new Router();
-                }
-            }
-            // card created!
-            alert(res);
-            console.log("Avocard created!");
-            if(e.target.matches("[data-link]")) {
-                history.pushState(null, null, e.target.href);
-                new Router();
-            }
-            if(e.target.tagName == "I"){
-                history.pushState(null, null, e.target.parentNode.href);
-                new Router();
-            }
-        })
-        .catch(err =>{
-            console.log("Create user request failed! " + err);
-        }) */
     }
 }

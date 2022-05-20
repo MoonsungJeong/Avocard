@@ -16,7 +16,7 @@ router.get("/pocket", (req, res) => {
                 .then((card) => {
                     pocket.userPocket = arr[0].cardList;
                     pocket.userSetting = setting[0].setting;
-                    pocket.mycard = card;
+                    pocket.myCard = card;
                     res.status(200).json(pocket);
                 })
             })
