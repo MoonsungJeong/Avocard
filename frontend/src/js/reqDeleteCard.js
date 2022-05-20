@@ -13,7 +13,6 @@ export default class DeleteCard {
         data.cardCode = document.querySelector(".card-code").value;
         
         let formDataJSON = JSON.stringify(data);
-        // /api/card/delete 
         fetch("/api/card/delete", {
             method: "POST",
             headers: {

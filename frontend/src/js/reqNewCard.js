@@ -18,8 +18,7 @@ export default class CreateNewCard {
         console.log(data);
 
         let formDataJSON = JSON.stringify(data);
-        // /api/card/create 
-
+        
         fetch("/api/card/create", {
             method: "POST",
             headers: {

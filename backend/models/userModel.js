@@ -16,6 +16,9 @@ module.exports.createUser = (email, username, password) => {
 module.exports.updatePw = (password, userCode) => {
     return db.query("UPDATE `user` SET password = ? WHERE userCode = ?", [password, userCode]);
 }
+module.exports.deleteUser = (userCode) => {
+    return db.query("UPDATE `user` SET deleteFlag = 1 WHERE userCode = ?", [userCode]);
+}
 module.exports.getLastInsertUserCode = () =>{
     return db.query("SELECT LAST_INSERT_ID()");
 }

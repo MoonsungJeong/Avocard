@@ -5,7 +5,7 @@ import FuncShowInfo from "../js/funcShowInfo.js";
 
 export default class NoticePage {
     constructor() {
-        document.title = "Abocard - Notice";
+        document.title = "Abocard - Info";
     }
     getHtml() {
         return `

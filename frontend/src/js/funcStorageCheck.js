@@ -87,4 +87,8 @@ export default class storageCheck {
         sessionStorage.setItem("Avocard",JSON.stringify(data));
         return 0;
     }
+    sessionDestroy(){
+        sessionStorage.removeItem("Avocard");
+        return 0;
+    }
 }

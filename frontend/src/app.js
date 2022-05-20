@@ -12,6 +12,7 @@ import MorePage from './page/more.js';
 import InfoPage from './page/info.js';
 import ThemePage from './page/theme.js';
 import NoticePage from './page/notice.js';
+import DeletionPage from './page/deletion.js';
 
 import PocketCardPage from './page/pocketcard.js';
 import EditPage from './page/edit.js';
@@ -40,6 +41,7 @@ export default class App {
             { path: "/info", view: InfoPage },
             { path: "/notice", view: NoticePage },
             { path: "/theme", view: ThemePage },
+            { path: "/deletion", view: DeletionPage },
             { path: "/welcome", view: Welcome },
             { path: "/hello", view: Hello },
             { path: "/card", view: PocketCardPage },

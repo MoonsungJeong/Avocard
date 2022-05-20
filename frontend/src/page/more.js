@@ -5,6 +5,7 @@ import PageMore from "../js/movePageMore.js";
 import PageInfo from "../js/movePageInfo.js";
 import PageNotice from "../js/movePageNotice.js";
 import PageTheme from "../js/movePageTheme.js";
+import PageDeletion from "../js/movePageDeletion.js";
 
 import UserLogout from "../js/reqUserLogout.js";
 
@@ -37,6 +38,10 @@ export default class MorePage {
                         <a href="/" id="logout_btn" class="more-icon-box" data-link><i class="nav-icon fa-solid fa-arrow-right-from-bracket"></i></a>
                         <div><span class="more-icon-word">Log out</span></div>
                     </div>
+                    <div class="more-item">
+                        <a href="/deletion" id="deletion_btn" class="more-icon-box" data-link><i class="nav-icon fa-solid fa-user-slash"></i></a>
+                        <div><span class="more-icon-word">Deletion</span></div>
+                    </div>
                 </div>
             </main>
             <nav class="nav-container">
@@ -55,6 +60,7 @@ export default class MorePage {
         new PageInfo();
         new PageNotice();
         new PageTheme();
+        new PageDeletion();
 
         new UserLogout();
     }

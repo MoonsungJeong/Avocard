@@ -134,6 +134,32 @@ router.post("/user/update", (req,res) => {
             res.status(500).json("query error");
         }))
 });
+router.post("/user/delete", (req,res) => {
+    if(!req.session.user){ res.status(401).json("Wrong Guest Access!"); return;}
+    const data = req.body;
+    const userCode = req.session.user.usercode;
+    userModel.getPwByUserCode(userCode)
+        .then((result) => {
+            if(!bcrypt.compareSync(data.password, result[0].password)) {
+                res.status(400).json("Wrong Password!");
+                return;
+            }
+            // db delete
+            userModel.deleteUser(userCode)
+                .then((result) =>{
+                    req.session.destroy();
+                    res.status(200).json("User deleted!");
+                })
+                .catch((error) => {
+                    console.log(error);
+                    res.status(500).json("query error - failed to delete accout");
+                })
+        })
+        .catch((error => {
+            console.log(error);
+            res.status(500).json("query error");
+        }))
+});
 
 
 
