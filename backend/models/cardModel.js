@@ -18,3 +18,7 @@ module.exports.getCardByCardCode = (cardCode) => {
 module.exports.createNewCard = (userCode, cardDetail) => {
     return db.query("INSERT INTO card (`userCode`, `cardDetail`) VALUES (?,?)",[userCode,cardDetail]);
 }
+// UPDATE `card` SET `cardDetail` = '{\"name\": \"Eagle\", \"brief\": \"This is short explaination\", \"email\": \"Email\", \"phone\": \"Phone Number\", \"skype\": \"Skype\", \"title\": \"Title\", \"company\": \"Company\"}' WHERE `card`.`cardCode` = 117;
+module.exports.updateCard = (cardDetail, cardCode) =>{
+    return db.query("UPDATE card SET cardDetail = ? WHERE cardCode = ?", [cardDetail, cardCode]);
+}

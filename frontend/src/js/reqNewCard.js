@@ -6,6 +6,7 @@ export default class CreateNewCard {
     }
     reqNewCard(e){
         e.preventDefault();
+        if(confirm("Create new card?") == false){return;};
         let data={};
         data.name = document.querySelector(".card-name").innerText;
         data.title = document.querySelector(".card-title").innerText;

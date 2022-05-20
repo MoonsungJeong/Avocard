@@ -33,44 +33,44 @@ export default class funcShowMyCard {
         const storage = new StorageCheck;
         const container = document.querySelector(".portfolio-container");
         const cardCode = storage.sessionGetMyCard()[0].cardCode;
-        let card = storage.sessionGetMyCard()[0].cardDetail;
+        const card = storage.sessionGetMyCard()[0].cardDetail;
         let result=`
             <div class="project-item">
                 <div class="project-mycard-box">
                     <span class="project-category">
                         <a href="/update" id="update_btn" data-link><i class="nav-icon fa-solid fa-square-plus"></i></a>
                         <a href="/mycard" id="delete_btn" data-link><i class="nav-icon fa-solid fa-square-xmark"></i></a>
-                        <input type="hidden" value="${cardCode}">
+                        <input type="hidden" class="card-code" value="${cardCode}">
                     </span>
                     <div class="project-info">
                         <div class="cv-side">
                             <img src="image/man.PNG" class="profile-picture">
                             <div class="bio-panel">
                                 <div>
-                                    <h3><span>${card.name}</span></h3>
-                                    <h4><span>${card.title}</span></h4>
-                                    <h5><span>${card.company}</span></h5>
+                                    <h3><span class="card-name">${card.name}</span></h3>
+                                    <h4><span class="card-title">${card.title}</span></h4>
+                                    <h5><span class="card-company">${card.company}</span></h5>
                                 </div>
                             </div>
                             <div class="bio-brief">
-                                <span>${card.brief}</span>
+                                <span class="card-brief">${card.brief}</span>
                             </div>
                             <div class="side-panel">
                                 <span class="side-panel-icon">
                                     <i class="fas fa-phone"></i>
                                 </span>
-                                <span class="side-panel-content">${card.phone}</span>                                   </div>
+                                <span class="card-phone side-panel-content">${card.phone}</span>                                   </div>
                             <div class="side-panel">
                                 <span class="side-panel-icon">
                                     <i class="far fa-envelope"></i>
                                 </span>
-                                <span class="side-panel-content">${card.email}</span>
+                                <span class="card-email side-panel-content">${card.email}</span>
                             </div>
                             <div class="side-panel">
                                 <span class="side-panel-icon">
                                     <i class="fa-brands fa-skype"></i>
                                 </span>
-                                <span class="side-panel-content">${card.skype}</span>
+                                <span class="card-skype side-panel-content">${card.skype}</span>
                             </div>
                         </div>
                     </div>

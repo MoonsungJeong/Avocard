@@ -1,5 +1,7 @@
 import PageMyCard from "../js/movePageMyCard.js";
-import NewCard from "../js/reqNewCard.js";
+import funcShowUpdateCard from "../js/funcShowUpdateCard.js";
+
+import UpdateCard from "../js/reqUpdateCard.js";
 
 export default class UpdatePage {
     constructor() {
@@ -15,8 +17,9 @@ export default class UpdatePage {
             </div>
             <div class="header__header-column">
                 <span class="header__icon">
-                    <a href="/mycard" id="newcard_btn" data-link>
+                    <a href="/mycard" id="updatecard_btn" data-link>
                         <i class="fa-regular fa-circle-check"></i>
+                        <input type="hidden" class="card-code" value="">
                     </a>
                 </span>
             </div>
@@ -38,7 +41,7 @@ export default class UpdatePage {
                     <span class="side-panel-icon">
                         <i class="fas fa-phone"></i>
                     </span>
-                    <span class="card-phone side-panel-content">Phone Number</span>&nbsp;<i class="fa-solid fa-pen card-edit"></i>
+                    <span class="card-phone side-panel-content">Phone number</span>&nbsp;<i class="fa-solid fa-pen card-edit"></i>
                 </div>
                 <div class="side-panel">
                     <span class="side-panel-icon">
@@ -58,7 +61,9 @@ export default class UpdatePage {
     };
     getScript(){
         new PageMyCard();
-        new NewCard();
+        new UpdateCard();
+
+        new funcShowUpdateCard();
 
         this.eventEditListener();
     };

@@ -91,7 +91,6 @@
     text-overflow: ellipsis; 
 }
 .cv-side .side-panel .side-panel-content{
-    overflow: hidden;
     text-overflow: ellipsis;
     max-height:3rem;
 }
