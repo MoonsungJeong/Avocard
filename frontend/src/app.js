@@ -11,6 +11,8 @@ import ThemePage from './page/theme.js';
 import NoticePage from './page/notice.js';
 import PocketCardPage from './page/pocketcard.js';
 import EditPage from './page/edit.js';
+import UpdatePage from './page/update.js';
+
 
 export default class App {
     constructor() {
@@ -36,7 +38,8 @@ export default class App {
             { path: "/welcome", view: Welcome },
             { path: "/hello", view: Hello },
             { path: "/card", view: PocketCardPage },
-            { path: "/edit", view: EditPage }
+            { path: "/edit", view: EditPage },
+            { path: "/update", view: UpdatePage }
         ];
         const pageMatches = routes.map((route) => {
             return {

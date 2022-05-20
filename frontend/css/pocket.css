@@ -72,14 +72,10 @@ main{
 .project-info div{
     margin-top: 0.7rem;
 }
-.project-category{
-    position: relative;
-    top:0px;
-    left:78%;
-    background:#def7ec;
-    padding: 0.125rem 0.75rem;
-    border-radius: 9999px;
-    
+.project-category{ 
+    display: flex;
+    justify-content: flex-end;
+    column-gap: 10px;   
 }
 .no-card-img{
     margin-top: 30%;

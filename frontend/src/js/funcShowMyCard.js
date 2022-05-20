@@ -1,4 +1,6 @@
 import StorageCheck from "./funcStorageCheck.js";
+import PageUpdate from "../js/movePageUpdate.js";
+import CardDelete from "../js/reqCardDelete.js";
 
 export default class funcShowMyCard {
     constructor(){
@@ -30,25 +32,24 @@ export default class funcShowMyCard {
     seeMyCard(){
         const storage = new StorageCheck;
         const container = document.querySelector(".portfolio-container");
+        const cardCode = storage.sessionGetMyCard()[0].cardCode;
         let card = storage.sessionGetMyCard()[0].cardDetail;
         let result=`
-        <a>
             <div class="project-item">
                 <div class="project-mycard-box">
                     <span class="project-category">
-                        <i class="nav-icon fa-solid fa-square-plus"></i>
+                        <a href="/update" id="update_btn" data-link><i class="nav-icon fa-solid fa-square-plus"></i></a>
+                        <a href="/mycard" id="delete_btn" data-link><i class="nav-icon fa-solid fa-square-xmark"></i></a>
+                        <input type="hidden" value="${cardCode}">
                     </span>
                     <div class="project-info">
                         <div class="cv-side">
-                            <img src="image/profile_Moonsung.jpg" class="profile-picture">
+                            <img src="image/man.PNG" class="profile-picture">
                             <div class="bio-panel">
                                 <div>
                                     <h3><span>${card.name}</span></h3>
                                     <h4><span>${card.title}</span></h4>
                                     <h5><span>${card.company}</span></h5>
-                                </div>
-                                <div class="bio-logo">
-                                    <img src="image/logo.png" class="company-logo">
                                 </div>
                             </div>
                             <div class="bio-brief">
@@ -75,9 +76,13 @@ export default class funcShowMyCard {
                     </div>
                 </div>
             </div>
-        </a>
         `;
         container.innerHTML=result;
+        this.getScript();
+    }
+    getScript(){
+        new PageUpdate();
+        new CardDelete();
     }
 }
 
