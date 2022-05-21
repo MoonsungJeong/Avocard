@@ -23,7 +23,7 @@ export default class MorePage {
             <main>
                 <div class="more-container">
                     <div class="more-item">
-                        <a href="/info" id="info_btn" class="more-icon-box"><i class="nav-icon fa-solid fa-user" data-link></i></a>
+                        <a href="/info" id="info_btn" class="more-icon-box" data-link><i class="nav-icon fa-solid fa-user" data-link></i></a>
                         <div><span class="more-icon-word">Info</span></div>
                     </div>
                     <div class="more-item">

@@ -10,9 +10,12 @@ const router = express.Router();
 router.get("/user/info", (req, res) => {
     if(!req.session.user){ res.status(401).json("Wrong Guest Access!"); return;}
     const userCode = req.session.user.usercode;
+    let data = {};
     userModel.getUserByUserCode(userCode)
         .then((result) => {
-            res.status(200).json(result[0]);
+            data.email = result[0].email;
+            data.userName = result[0].userName;
+            res.status(200).json(data);
         })
         .catch((error => {
             console.log(error);

@@ -7,7 +7,7 @@ export default class funcShowInfo {
     showInfo(){
         const storage = new StorageCheck;
         //guest user
-        if(storage.storageUserCheck() == "guest"){ console.log("Wrong Access!"); return; }
+        if(storage.storageUserCheck() == "guest"){ alert("Guest can't access");console.log("Wrong Access!"); return; }
 
         fetch(`/api/user/info`)
             .then(res => res.json())

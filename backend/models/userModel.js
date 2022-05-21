@@ -7,7 +7,7 @@ module.exports.getPwByUserCode = (userCode) => {
     return db.query("SELECT password FROM `user` WHERE userCode = ? and deleteFlag = 0",[userCode]);
 }
 module.exports.getUserByUserCode = (userCode) =>{
-    return db.query("SELECT email, userName FROM `user` WHERE userCode = ? and deleteFlag = 0",[userCode]);
+    return db.query("SELECT * FROM `user` WHERE userCode = ? and deleteFlag = 0",[userCode]);
 }
 module.exports.createUser = (email, username, password) => {
     return db.query("INSERT INTO `user` (email, username, password) " +
