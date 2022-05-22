@@ -4,6 +4,7 @@ const session = require("express-session");
 const bodyParser = require('body-parser')
 
 const limit = require("./backend/msRateLimit");
+const block = require("./backend/blockCSRF");
 
 const server = express();
 const port = 8080;
@@ -27,9 +28,15 @@ server.use(session({
     }
 }));
 
+// CSRF block Middleware
+const hostURL = "192.168.35.11:8080";
+const blocker = block.blockCSRF(hostURL);
+server.use(blocker);
+
 // Serve static frontend resources
 server.use(express.static("frontend"));
 
+// Too fast request block Middleware
 const limiter =limit.msRateLimit({
     maxCount: 1000,
     resetTime: 24*60*60*1000 , // 24 hrs = 24*60*60*1000 
