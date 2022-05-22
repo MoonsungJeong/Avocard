@@ -51,6 +51,9 @@ server.use("/api", cardController);
 const noticeController = require("./backend/controllers/noticeController");
 server.use("/api", noticeController);
 
+const adminController = require("./backend/controllers/adminController");
+server.use("/api", adminController);
+
 server.get('*', (req, res) => {
     res.redirect('/')
 }) 

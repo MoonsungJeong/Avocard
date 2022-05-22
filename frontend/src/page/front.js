@@ -22,7 +22,7 @@ export default class FrontPage {
                     <div class="front__box">
                         <form id="login-user-form" class="front__content" autocomplete="off">
                             <input id="email"
-                            value="bird@gmail.com"
+                            value="ms@gmail.com"
                             name="email"
                             type="text" 
                             class="front__id" 

@@ -4,7 +4,6 @@ import Router from "../app.js";
 export default class funcShowPocket {
     constructor(){
         this.openPocket();
-        //document.querySelector("#guest_btn").addEventListener("click", this.openPocket,false);
     }
     openPocket(){
         const storage = new StorageCheck;

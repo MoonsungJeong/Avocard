@@ -9,6 +9,8 @@ import PageDeletion from "../js/movePageDeletion.js";
 
 import UserLogout from "../js/reqUserLogout.js";
 
+import AddAdminBtn from "../js/funcAddAdminBtn.js";
+
 export default class MorePage {
     constructor() {
         document.title = "Abocard - More";
@@ -63,5 +65,7 @@ export default class MorePage {
         new PageDeletion();
 
         new UserLogout();
+
+        new AddAdminBtn();
     }
 }

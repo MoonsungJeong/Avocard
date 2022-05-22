@@ -1,7 +1,7 @@
 const db = require("../database");
 
 module.exports.getAllUsers = () => {
-    return db.query("SELECT * FROM user WHERE deleteFlag = 0");
+    return db.query("SELECT userCode,userName,email,userType,deleteFlag FROM user");
 }
 module.exports.getPwByUserCode = (userCode) => {
     return db.query("SELECT password FROM `user` WHERE userCode = ? and deleteFlag = 0",[userCode]);
@@ -18,6 +18,9 @@ module.exports.updatePw = (password, userCode) => {
 }
 module.exports.deleteUser = (userCode) => {
     return db.query("UPDATE `user` SET deleteFlag = 1 WHERE userCode = ?", [userCode]);
+}
+module.exports.activateUser = (userCode) => {
+    return db.query("UPDATE `user` SET deleteFlag = 0 WHERE userCode = ?", [userCode]);
 }
 module.exports.getLastInsertUserCode = () =>{
     return db.query("SELECT LAST_INSERT_ID()");

@@ -51,9 +51,6 @@
 	align-items: center;
 	text-decoration: none;
 }
-.front__nav{
-	
-}
 .front__list{
 	display:flex;
 	justify-content:space-around;

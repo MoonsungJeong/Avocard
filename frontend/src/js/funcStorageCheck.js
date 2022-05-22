@@ -31,6 +31,10 @@ export default class storageCheck {
         const user = JSON.parse(localStorage.getItem("Avocard")).currentUser;
         return user;
     }
+    sessionUserTypeCheck(){
+        const type = JSON.parse(sessionStorage.getItem("Avocard")).userType;
+        return type;
+    }
     storagePocketCheck(){
         const pocket = JSON.parse(localStorage.getItem("Avocard")).guestPocket;
         return pocket;

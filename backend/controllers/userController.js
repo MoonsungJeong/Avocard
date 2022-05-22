@@ -22,18 +22,6 @@ router.get("/user/info", (req, res) => {
             res.status(500).json("query error");
         }))
 });
-router.get("/users", (req, res) => {
-    if(!req.session.user){ res.status(401).json("Wrong Access!"); return;}
-
-    userModel.getAllUsers()
-        .then((result) => {
-            res.status(200).json(result);
-        })
-        .catch((error => {
-            console.log(error);
-            res.status(500).json("query error");
-        }))
-});
 router.post("/guest/login", (req,res) =>{
     res.status(200).json("Welcome Guest to Avocard!");
 });
@@ -90,7 +78,8 @@ router.post("/user/login", (req, res) => {
                     // setup the session
                     req.session.user = {
                         username: user.userName,
-                        usercode: user.userCode
+                        usercode: user.userCode,
+                        usertype: user.userType
                     }
                     res.status(200).json("login OK!");
                 } else {
@@ -163,7 +152,19 @@ router.post("/user/delete", (req,res) => {
             res.status(500).json("query error");
         }))
 });
+/* 
+router.get("/users", (req, res) => {
+    if(!req.session.user){ res.status(401).json("Wrong Access!"); return;}
 
-
+    userModel.getAllUsers()
+        .then((result) => {
+            res.status(200).json(result);
+        })
+        .catch((error => {
+            console.log(error);
+            res.status(500).json("query error");
+        }))
+});
+ */
 
 module.exports = router;
