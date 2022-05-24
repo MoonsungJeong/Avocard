@@ -28,9 +28,16 @@ export default class UpdatePocket {
                 alert(res);
                 return;
             }
-            storage.storageAddPocket(res);
-            let pocket = storage.storagePocketCheck();
-            (new ShowPocket()).seePocket(pocket);
+            if(storage.storageUserCheck() === "loginUser"){
+                storage.sessionAddPocket(res);
+                let pocket = storage.sessionPocketCheck();
+                (new ShowPocket()).seePocket(pocket);
+            }
+            if(storage.storageUserCheck() === "guest"){
+                storage.storageAddPocket(res);
+                let pocket = storage.storagePocketCheck();
+                (new ShowPocket()).seePocket(pocket);
+            }
         })
         .catch(err =>{
             alert("Please check Internet connection");

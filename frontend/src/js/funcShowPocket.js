@@ -49,7 +49,7 @@ export default class funcShowPocket {
                 <div class="project-item">
                     <div class="project-explanation">
                     <!-- <span class="project-category">${arr[i].cardDetail.note}</span> -->
-                        <span class="card-delete-btn project-category"><i class="nav-icon fa-solid fa-square-xmark"></i></span>
+                        <span class="project-category"><i class="card-delete-btn nav-icon fa-solid fa-square-xmark"></i></span>
                         <div class="project-info">
                             <input type="hidden" class="cardcode" value="${arr[i].cardCode}">
                             <div class="project-name">${arr[i].cardDetail.name}</div>

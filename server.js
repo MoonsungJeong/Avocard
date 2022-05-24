@@ -46,7 +46,7 @@ const limiter =limit.msRateLimit({
     maxCount: 1000,
     resetTime: 24*60*60*1000 , // 24 hrs = 24*60*60*1000 
     resetMessage: "Wait 1 min for next request",
-    timePerOneClick: 1000, // 1000 miliseconds = 1 second
+    timePerOneClick: 2000, // 1000 miliseconds = 1 second
     timeMessage: "Too fast request"
 }) 
 server.use(limiter);

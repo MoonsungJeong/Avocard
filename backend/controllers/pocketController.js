@@ -36,7 +36,22 @@ router.post("/pocket/update", (req,res) => {
             cardModel.getCardsByUserCode(userCode)
             .then((card) =>{
                 if(!card.length){res.status(200).json("card is not existed");return;}
-                res.status(200).json(card[0]);
+                // If guest, send card info to client 
+                if(!req.session.user){ 
+                    res.status(200).json(card[0]); 
+                    return
+                }
+                // If loginUser, save it to pocket(DB) first
+                let owner_code = req.session.user.usercode;
+                // Get Requester's pocket
+                pocketModel.getPocketByUserCode(owner_code)
+                    .then((pocket) =>{
+                        pocket[0].cardList.push(card[0]);
+                        pocketModel.updatePocket(JSON.stringify(pocket[0].cardList),owner_code)
+                        .then((result) =>{
+                            res.status(200).json(card[0]); 
+                        })
+                    })
             })
             .catch((error) => {
                 console.log(error);
