@@ -11,6 +11,11 @@ export default class funcShowAdmin {
         fetch(`/api/admin/users`)
             .then((res) => res.json())
             .then((res) => {
+                if(res === "wrong IP access"){
+                    alert("wrong IP access");
+                    history.pushState(null, null, "/more");
+                    new Router();
+                }
                 this.showAdminUsers(res);
             })
             .catch((error) => {

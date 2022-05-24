@@ -15,6 +15,7 @@ export default class AddAdminBtn {
     }
     AddAdminBtn(){
         const storage = new StorageCheck();
+        if(!storage.sessionCheck()){return;}
         if(storage.sessionUserTypeCheck() !== "admin"){return;}
         
         const container = document.querySelector(".more-container");

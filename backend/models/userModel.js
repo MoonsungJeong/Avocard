@@ -3,6 +3,9 @@ const db = require("../database");
 module.exports.getAllUsers = () => {
     return db.query("SELECT userCode,userName,email,userType,deleteFlag FROM user");
 }
+module.exports.getUserByUserName = (userName) => {
+    return db.query("SELECT * FROM `user` WHERE userName = ? and deleteFlag = 0",[userName]);
+}
 module.exports.getPwByUserCode = (userCode) => {
     return db.query("SELECT password FROM `user` WHERE userCode = ? and deleteFlag = 0",[userCode]);
 }

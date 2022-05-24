@@ -32,7 +32,6 @@ export default class NoticePage {
                                     placeholder="Password" 
                                     title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" 
                                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                                    value="Passw0rd"
                                     required>
                                 </div>
                                 <div class="err"></div>
@@ -52,7 +51,6 @@ export default class NoticePage {
                                     placeholder="Retype Password" 
                                     title="Must contain at least one  number and one uppercase and lowercase letter, and at least 8 or more characters" 
                                     pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" 
-                                    value="Passw0rd"
                                     required>
                                 </div>
                                 <div class="err"></div>

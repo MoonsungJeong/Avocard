@@ -48,7 +48,8 @@ export default class funcShowPocket {
             <a href="/card" class="card-btn" data-link>
                 <div class="project-item">
                     <div class="project-explanation">
-                        <!-- <span class="project-category">${arr[i].cardDetail.note}</span> -->
+                    <!-- <span class="project-category">${arr[i].cardDetail.note}</span> -->
+                        <span class="card-delete-btn project-category"><i class="nav-icon fa-solid fa-square-xmark"></i></span>
                         <div class="project-info">
                             <input type="hidden" class="cardcode" value="${arr[i].cardCode}">
                             <div class="project-name">${arr[i].cardDetail.name}</div>
@@ -65,8 +66,11 @@ export default class funcShowPocket {
     }
     eventPocketCard(){
         const card_list = document.querySelectorAll(".card-btn");
+        //const card_delete_list = card_list.querySelectorAll("card-delete-btn");
+        //console.log(card_delete_list);
         card_list.forEach((card)=>{
             card.addEventListener("click",this.movePocketCard,false);
+            card.querySelector(".card-delete-btn").addEventListener("click",this.deletePocketCard, false);
         })
     }
     movePocketCard(e){
@@ -85,6 +89,11 @@ export default class funcShowPocket {
             history.pushState(null, null, card.href);
             new Router();
         }
+    }
+    deletePocketCard(e){
+        e.stopPropagation();
+        e.preventDefault();
+        alert("delete");
     }
 }
 

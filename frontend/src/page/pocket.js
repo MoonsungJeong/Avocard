@@ -3,6 +3,8 @@ import PageMyCard from "../js/movePageMyCard.js";
 import PageMore from "../js/movePageMore.js";
 
 import FuncShowPocket from "../js/funcShowPocket.js";
+
+import UpdatePocket from "../js/reqUpdatePocket.js";
 import ChangeTheme from "../js/funcChangeTheme.js";
 
 export default class PocketPage {
@@ -15,8 +17,12 @@ export default class PocketPage {
             <header class="header_application">
                 <h1>Pocket</h1>
                 <div class="header-menu">
-                    <i class="nav-icon fas fa-search fa-1x search_btn"></i>
-                    <i class="nav-icon fa-solid fa-user-plus"></i>
+                    <a href="#" class="nav-icon-wrap" data-link>
+                        <i class="nav-icon fas fa-search fa-1x search_btn"></i>
+                    </a>
+                    <a href="/pocket" id="updatepocket_btn" class="nav-icon-wrap" data-link>
+                        <i class="nav-icon fa-solid fa-user-plus"></i>
+                    </a>
                 </div>
                 <div class="search_bar_wrapper">
                     <div class="search_bar_box">
@@ -48,6 +54,7 @@ export default class PocketPage {
         new PageMore();
 
         new FuncShowPocket();
+        new UpdatePocket();
         //(new ChangeTheme()).setTheme(); //activate later Please@@@@@@@@@@@@
     }
 }

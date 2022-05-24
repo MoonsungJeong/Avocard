@@ -3,32 +3,73 @@ const pocketModel = require("../models/pocketModel");
 const settingModel = require("../models/settingModel");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
+const passwordRule = {
+    minLength: 8, 
+    minLowercase: 1, 
+    minUppercase: 1, 
+    minNumbers: 1,
+    minSymbols: 0
+}
 
 const express = require("express");
 const router = express.Router();
 
-router.get("/user/info", (req, res) => {
-    if(!req.session.user){ res.status(401).json("Wrong Guest Access!"); return;}
-    const userCode = req.session.user.usercode;
-    let data = {};
-    userModel.getUserByUserCode(userCode)
-        .then((result) => {
-            data.email = result[0].email;
-            data.userName = result[0].userName;
-            res.status(200).json(data);
-        })
-        .catch((error => {
-            console.log(error);
-            res.status(500).json("query error");
-        }))
-});
+
 router.post("/guest/login", (req,res) =>{
     res.status(200).json("Welcome Guest to Avocard!");
+}); 
+router.post("/user/login", (req, res) => {
+    let login = req.body;
+
+    if(!validator.isEmail(login.email) || !validator.isStrongPassword(login.password,passwordRule)){
+        res.status(400).json("input is invalid");
+        return;
+    }
+
+    userModel.getUserByEmail(login.email)
+        .then((results) => {
+            if (results.length > 0) {
+                let user = results[0];
+
+                // verify the users password
+                if (bcrypt.compareSync(login.password, user.password)) {
+                    // setup the session
+                    req.session.user = {
+                        username: user.userName,
+                        usercode: user.userCode,
+                        usertype: user.userType
+                    }
+                    res.status(200).json("login OK!");
+                } else {
+                    // This else case runs if the password did NOT match.
+                    res.status(401).json("login failed");
+                }
+            }else{
+                // This else case runs if the username did NOT match.
+                res.status(401).json("login failed");
+            }
+        })
+        .catch((error) => {
+            console.log(error)
+            res.status(500).json("failed to login - query error");
+        })
+
 });
+router.post("/user/logout", (req, res) => {
+    req.session.destroy();
+    res.status(200).json("Thank you for using this app!");
+});
+
 router.post("/user/sign", (req,res) =>{
     //res.status(200).json("User created!");
     let user = req.body;
     let hashedPassword = bcrypt.hashSync(user.password, 6);
+
+    if(!validator.isEmail(user.email) || !validator.isStrongPassword(user.password,passwordRule)){
+        res.status(400).json("input is invalid");
+        return;
+    }
+
     userModel.createUser(
         validator.escape(user.email),
         validator.escape(user.username),
@@ -64,47 +105,34 @@ router.post("/user/sign", (req,res) =>{
         console.log(error);
         res.status(500).json("query error - failed to create user");
     });
-}); 
-router.post("/user/login", (req, res) => {
-    let login = req.body;
-    
-    userModel.getUserByEmail(login.email)
-        .then((results) => {
-            if (results.length > 0) {
-                let user = results[0];
-
-                // verify the users password
-                if (bcrypt.compareSync(login.password, user.password)) {
-                    // setup the session
-                    req.session.user = {
-                        username: user.userName,
-                        usercode: user.userCode,
-                        usertype: user.userType
-                    }
-                    res.status(200).json("login OK!");
-                } else {
-                    // This else case runs if the password did NOT match.
-                    res.status(401).json("login failed");
-                }
-            }else{
-                // This else case runs if the username did NOT match.
-                res.status(401).json("login failed");
-            }
-        })
-        .catch((error) => {
-            console.log(error)
-            res.status(500).json("failed to login - query error");
-        })
-
 });
-router.post("/user/logout", (req, res) => {
-    req.session.destroy();
-    res.status(200).json("Thank you for using this app!");
+router.get("/user/info", (req, res) => {
+    // User check, if it's guest send 401 status 
+    if(!req.session.user){ res.status(401).json("Wrong Guest Access!"); return;}
+    // If it's user start API
+    const userCode = req.session.user.usercode;
+    let data = {};
+    userModel.getUserByUserCode(userCode)
+        .then((result) => {
+            data.email = result[0].email;
+            data.userName = result[0].userName;
+            res.status(200).json(data);
+        })
+        .catch((error => {
+            console.log(error);
+            res.status(500).json("query error");
+        }))
 });
 router.post("/user/update", (req,res) => {
     if(!req.session.user){ res.status(401).json("Wrong Guest Access!"); return;}
     const data = req.body;
     const userCode = req.session.user.usercode;
+    
+    if(!validator.isStrongPassword(data.password,passwordRule)){
+        res.status(400).json("input is invalid");
+        return;
+    }
+
     userModel.getPwByUserCode(userCode)
         .then((result) => {
             if(!bcrypt.compareSync(data.password, result[0].password)) {
@@ -130,6 +158,12 @@ router.post("/user/delete", (req,res) => {
     if(!req.session.user){ res.status(401).json("Wrong Guest Access!"); return;}
     const data = req.body;
     const userCode = req.session.user.usercode;
+
+    if(!validator.isStrongPassword(data.password,passwordRule)){
+        res.status(400).json("input is invalid");
+        return;
+    }
+    
     userModel.getPwByUserCode(userCode)
         .then((result) => {
             if(!bcrypt.compareSync(data.password, result[0].password)) {
@@ -152,19 +186,6 @@ router.post("/user/delete", (req,res) => {
             res.status(500).json("query error");
         }))
 });
-/* 
-router.get("/users", (req, res) => {
-    if(!req.session.user){ res.status(401).json("Wrong Access!"); return;}
 
-    userModel.getAllUsers()
-        .then((result) => {
-            res.status(200).json(result);
-        })
-        .catch((error => {
-            console.log(error);
-            res.status(500).json("query error");
-        }))
-});
- */
 
 module.exports = router;

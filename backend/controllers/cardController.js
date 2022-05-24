@@ -65,7 +65,6 @@ router.post("/card/create", (req,res) => {
         })
 });
 
-
 router.post("/card/update", (req,res) =>{
     if(!req.session.user){
         res.status(200).json("Guest can't update card");

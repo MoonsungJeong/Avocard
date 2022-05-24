@@ -25,11 +25,28 @@ router.get("/pocket", (req, res) => {
                     })
                 })
             })
-        })
-    
-    
+        })    
+});
 
-    
+router.post("/pocket/update", (req,res) => {
+    userModel.getUserByUserName(req.body.userName)
+        .then((user) =>{
+            if(!user.length){res.status(200).json("card is not existed");return;}
+            let userCode = user[0].userCode;
+            cardModel.getCardsByUserCode(userCode)
+            .then((card) =>{
+                if(!card.length){res.status(200).json("card is not existed");return;}
+                res.status(200).json(card[0]);
+            })
+            .catch((error) => {
+                console.log(error);
+                res.status(500).json("query error");
+            })
+        })
+        .catch((error) => {
+            console.log(error);
+            res.status(500).json("query error");
+        })
 });
 
 module.exports = router;

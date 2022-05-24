@@ -53,8 +53,8 @@ export default class FrontPage {
             <nav class="front__nav">
                 <ul class="front__list">
                     <li class="front__list-item"><a href="/sign-up" class="sign_up front_nav_item" data-link>Sign-Up</a></li>
-                    <div class="front__space"><i>|</i></div>
-                    <li class="front__list-item"><a class="SW_BTN front_nav_item">ID/PW lost</a></li>
+                    <!--<div class="front__space"><i>|</i></div>-->
+                    <!--<li class="front__list-item"><a class="SW_BTN front_nav_item">ID/PW lost</a></li>-->
                     <div class="front__space"><i>|</i></div>
                     <li class="front__list-item"><a href="/pocket" id="guest_btn" class="front_nav_item pointer" data-link>Guest</a></li>
                 </ul>

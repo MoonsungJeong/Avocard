@@ -25,7 +25,7 @@ export default class reqUserLogin {
             alert("Password is not validated");
             return;
         }
-        
+
         let formDataJSON = JSON.stringify(Object.fromEntries(new FormData(logInForm)));
         screen.screenOn();
 
@@ -41,9 +41,12 @@ export default class reqUserLogin {
             alert(res)
             screen.screenOff();
             if(res === "login OK!"){
+                // storage check when "login ok!"
                 if(!storage.storageCheck()){
+                    // If no storage, Create Storage
                     storage.storageInit();
                 }
+                // Change current User (loginUser)
                 storage.storageUserToLoginUser();
                 if (e.target.matches("[data-link]")) {
                     history.pushState(null, null, e.target.href);

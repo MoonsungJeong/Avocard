@@ -9,12 +9,11 @@ export default class movePageMore {
     changePage(e){
         e.preventDefault();
         const storage = new StorageCheck;
-        //guest user
+        // check user: guest user
         if(storage.storageUserCheck() == "guest"){ 
             alert("Guest can't make Avocard!");
             return; 
         }
-
         // login user, Card already exist
         if(storage.sessionMyCardCheck()){
             alert("Only one card!");

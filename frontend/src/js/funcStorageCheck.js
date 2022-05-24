@@ -39,6 +39,12 @@ export default class storageCheck {
         const pocket = JSON.parse(localStorage.getItem("Avocard")).guestPocket;
         return pocket;
     }
+    storageAddPocket(card){
+        let data = JSON.parse(localStorage.getItem("Avocard"));
+        data.guestPocket.push(card);
+        localStorage.setItem("Avocard",JSON.stringify(data));
+        return;
+    }
     sessionPocketCheck(){
         const pocket = JSON.parse(sessionStorage.getItem("Avocard")).userPocket;
         return pocket;

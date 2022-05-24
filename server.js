@@ -7,6 +7,9 @@ const limit = require("./backend/msRateLimit");
 const block = require("./backend/blockCSRF");
 
 const server = express();
+
+
+
 const port = 8080;
 
 server.use(function(req, res, next){
@@ -19,6 +22,7 @@ server.use(function(req, res, next){
 server.use(bodyParser.urlencoded({ extended: false }))
 server.use(bodyParser.json())
 
+// Create Session
 server.use(session({
     secret: "secret phrase abc123",
     resave: false,
@@ -29,6 +33,7 @@ server.use(session({
 }));
 
 // CSRF block Middleware
+// hostURL can be changed depend on server environment
 const hostURL = "192.168.35.11:8080";
 const blocker = block.blockCSRF(hostURL);
 server.use(blocker);
