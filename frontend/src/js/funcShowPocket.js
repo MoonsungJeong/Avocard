@@ -1,4 +1,5 @@
 import StorageCheck from "./funcStorageCheck.js";
+import ShowPocket from "./funcShowPocket.js";
 import Router from "../app.js";
 
 export default class funcShowPocket {
@@ -66,8 +67,6 @@ export default class funcShowPocket {
     }
     eventPocketCard(){
         const card_list = document.querySelectorAll(".card-btn");
-        //const card_delete_list = card_list.querySelectorAll("card-delete-btn");
-        //console.log(card_delete_list);
         card_list.forEach((card)=>{
             card.addEventListener("click",this.movePocketCard,false);
             card.querySelector(".card-delete-btn").addEventListener("click",this.deletePocketCard, false);
@@ -93,7 +92,54 @@ export default class funcShowPocket {
     deletePocketCard(e){
         e.stopPropagation();
         e.preventDefault();
-        alert("delete");
+        if(!confirm("Are you sure?")){ return; }
+
+        const storage = new StorageCheck;
+        if(storage.storageUserCheck() === "guest"){
+            let pocket = storage.storagePocketCheck();
+            let code = e.target.parentNode.parentNode.querySelector(".cardcode").value;
+            for(let i=0; i< pocket.length; i++){
+                if(pocket[i].cardCode == code){
+                    pocket.splice(i,1);
+                }
+            }
+            storage.storageSetPocket(pocket);
+            let newpocket = storage.storagePocketCheck();
+            (new ShowPocket()).seePocket(newpocket);
+        }
+        if(storage.storageUserCheck() === "loginUser"){
+            let pocket = storage.sessionPocketCheck();
+            let code = e.target.parentNode.parentNode.querySelector(".cardcode").value;
+            for(let i=0; i< pocket.length; i++){
+                if(pocket[i].cardCode == code){
+                    pocket.splice(i,1);
+                }
+            }
+            let data = {"pocket":pocket};
+            let formDataJSON = JSON.stringify(data);
+            fetch("/api/pocket/delete", {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json"
+                },
+                body: formDataJSON
+            })
+            .then(res => res.json())
+            .then(res => {
+               if(res !== "pocket delete"){
+                   //alert("Delete failed!")
+                   console.log("Delete pocket request failed! " + err);
+               }
+               alert("card deleted!");
+               storage.sessionSetPocket(pocket);
+               let newpocket = storage.sessionPocketCheck();
+               (new ShowPocket()).seePocket(newpocket);
+            })
+            .catch(err =>{
+                alert("Please check Internet connection");
+                console.log("Delete pocket request failed! " + err);
+            })
+        }
     }
 }
 

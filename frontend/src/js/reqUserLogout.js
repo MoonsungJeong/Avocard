@@ -27,7 +27,15 @@ export default class reqUserLogout {
             }
         })
         .catch(error => {
-            console.log("user login failed - " + error);
+            alert("Thank you for using this app!");
+            if (e.target.matches("[data-link]")) {
+                history.pushState(null, null, e.target.href);
+                new Router();
+            }
+            if(e.target.tagName == "I"){
+                history.pushState(null, null, e.target.parentNode.href);
+                new Router();
+            }
         })
     }
 }

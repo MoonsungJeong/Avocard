@@ -42,7 +42,7 @@ router.post("/pocket/update", (req,res) => {
                     return
                 }
                 // If loginUser, save it to pocket(DB) first
-                let owner_code = req.session.user.usercode;
+                const owner_code = req.session.user.usercode;
                 // Get Requester's pocket
                 pocketModel.getPocketByUserCode(owner_code)
                     .then((pocket) =>{
@@ -63,5 +63,16 @@ router.post("/pocket/update", (req,res) => {
             res.status(500).json("query error");
         })
 });
-
+router.post("/pocket/delete", (req,res) => {
+    const owner_code = req.session.user.usercode;
+    const pocket = req.body.pocket;
+    pocketModel.updatePocket(JSON.stringify(pocket),owner_code)
+        .then((result) => {
+            res.status(200).json("pocket delete");
+        })
+        .catch((error) => {
+            console.log(error);
+            res.status(500).json("query error");
+        })
+})
 module.exports = router;

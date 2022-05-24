@@ -45,6 +45,12 @@ export default class storageCheck {
         localStorage.setItem("Avocard",JSON.stringify(data));
         return;
     }
+    storageSetPocket(pocket){
+        let data = JSON.parse(localStorage.getItem("Avocard"));
+        data.guestPocket = pocket;
+        localStorage.setItem("Avocard", JSON.stringify(data));
+        return;
+    }
     sessionPocketCheck(){
         const pocket = JSON.parse(sessionStorage.getItem("Avocard")).userPocket;
         return pocket;
@@ -53,6 +59,12 @@ export default class storageCheck {
         let data = JSON.parse(sessionStorage.getItem("Avocard"));
         data.userPocket.push(card);
         sessionStorage.setItem("Avocard",JSON.stringify(data));
+        return;
+    }
+    sessionSetPocket(pocket){
+        let data = JSON.parse(sessionStorage.getItem("Avocard"));
+        data.userPocket = pocket;
+        sessionStorage.setItem("Avocard", JSON.stringify(data));
         return;
     }
     storageUserToGuest(){
