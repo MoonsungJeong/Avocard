@@ -68,7 +68,6 @@ function searchCard(e){
         <a href="#">
             <div class="project-item">
                 <div class="project-explanation">
-                    <span class="project-category">Note</span>
                     <div class="project-info">
                         <div class="project-name">${list[i].name}</div>
                         <div class="project-title">${list[i].title}</div>

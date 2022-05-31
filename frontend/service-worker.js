@@ -26,6 +26,7 @@ const PRECACHE_URLS = [
   'service-worker.js',
   '/src/main.js',
   '/image/avocado_card1-3.png',
+  'image/avocado_basic2.PNG',
   '/image/favicon.ico',
   '/image/dark.jpg',
   '/image/cherry.jpg',

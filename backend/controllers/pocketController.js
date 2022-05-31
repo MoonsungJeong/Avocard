@@ -50,7 +50,12 @@ router.post("/pocket/update", (req,res) => {
                 // Get Requester's pocket
                 pocketModel.getPocketByUserCode(owner_code)
                     .then((pocket) =>{
+                        // For deploy @@@@@@@@@@@@@@@@@
+                        // block -> pocket[0].cardList.push(card[0]);
+                        //let tmp_pocket = JSON.parse(pocket[0].cardList);
+                        //tmp_pocket.push(card[0]);
                         pocket[0].cardList.push(card[0]);
+                        // tmp_pocket -> go to updatePocket
                         pocketModel.updatePocket(JSON.stringify(pocket[0].cardList),owner_code)
                         .then((result) =>{
                             logModel.createNewLog(req.socket.remoteAddress, JSON.stringify(req.session), req.session.user.username, req.session.user.usertype, time.currentTime(), JSON.stringify(`{ api : '/pocket/update' }`));

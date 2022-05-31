@@ -40,7 +40,9 @@ export default class funcShowPocketCard {
         const phone = document.querySelector(".card-phone");
         const email = document.querySelector(".card-email");
         const skype = document.querySelector(".card-skype");
-        
+        // For deploy @@@@@@@@@@@@@@@@@
+        // card -> x, card.name -> data.cardDetail.name;
+        //let card = JSON.parse(data.cardDetail);
         name.innerText = data.cardDetail.name;
         title.innerText = data.cardDetail.title;
         company.innerText = data.cardDetail.company;

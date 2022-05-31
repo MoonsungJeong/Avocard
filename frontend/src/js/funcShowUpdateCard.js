@@ -10,11 +10,15 @@ export default class funcShowUpdateCard {
         //alert("update function!");
         const storage = new StorageCheck;
         const cardCode = storage.sessionGetMyCard()[0].cardCode;
+        // For deploy @@@@@@@@@@@@@@@@@
+        // JSON.parse(storage.sessionGetMyCard()[0].cardDetail); -> storage.sessionGetMyCard()[0].cardDetail;
+        //const card = JSON.parse(storage.sessionGetMyCard()[0].cardDetail);
         const card = storage.sessionGetMyCard()[0].cardDetail;
         if(!storage.sessionMyCardCheck){
             history.pushState(null, null, "/mycard");
             new Router();
         }
+        
         document.querySelector(".card-code").value = cardCode;
         document.querySelector(".card-name").innerText = card.name;
         document.querySelector(".card-title").innerText= card.title;

@@ -34,6 +34,10 @@ export default class funcShowMyCard {
         const container = document.querySelector(".portfolio-container");
         const cardCode = storage.sessionGetMyCard()[0].cardCode;
         const card = storage.sessionGetMyCard()[0].cardDetail;
+        // For deploy @@@@@@@@@@@@@@@@@
+        //
+        //const card = JSON.parse(storage.sessionGetMyCard()[0].cardDetail);
+
         let result=`
             <div class="project-item">
                 <div class="project-mycard-box">

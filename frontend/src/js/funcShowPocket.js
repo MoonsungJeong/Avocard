@@ -45,17 +45,19 @@ export default class funcShowPocket {
         const container = document.querySelector(".project-container");
         let result="";
         for(let i=0; i<arr.length; i++){
+            // For deploy @@@@@@@@@@@@@@@@@
+            // let card -> X, card.name -> arr[i].cardList.name
+            //let card = JSON.parse(arr[i].cardDetail);
             result+=`
             <a href="/card" class="card-btn" data-link>
                 <div class="project-item">
                     <div class="project-explanation">
-                    <!-- <span class="project-category">${arr[i].cardDetail.note}</span> -->
                         <span class="project-category"><i class="card-delete-btn nav-icon fa-solid fa-square-xmark"></i></span>
                         <div class="project-info">
                             <input type="hidden" class="cardcode" value="${arr[i].cardCode}">
-                            <div class="project-name">${arr[i].cardDetail.name}</div>
-                            <div class="project-title">${arr[i].cardDetail.title}</div>
-                            <div class="project-company">${arr[i].cardDetail.company}</div>
+                            <div class="project-name">${arr[i].cardList.name}</div>
+                            <div class="project-title">${arr[i].cardList.title}</div>
+                            <div class="project-company">${arr[i].cardList.company}</div>
                         </div>
                     </div>
                 </div>

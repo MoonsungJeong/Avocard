@@ -41,6 +41,7 @@ export default class UserUpdate {
                 alert(res);
                 // sessionStorage Destroy!!!!!!!!!!!!!!!.
                 storage.sessionDestroy();
+                storage.storageUserToEmpty();
                 if(e.target.matches("[data-link]")) {
                     history.pushState(null, null, e.target.href);
                     new Router();
