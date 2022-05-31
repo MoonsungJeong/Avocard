@@ -1,3 +1,4 @@
+import StorageCheck from "./funcStorageCheck.js";
 import Router from "../app.js";
 
 export default class reqUserLogout {
@@ -6,6 +7,7 @@ export default class reqUserLogout {
     }
     userLogout(e){
         e.preventDefault();
+
         if(!confirm("Are you sure?")){ return; }
         fetch("/api/user/logout", {
             method: "POST",
@@ -15,8 +17,16 @@ export default class reqUserLogout {
         })
         .then(res => res.json())
         .then(res => {
-            alert(res)
+            alert(res);
+            const storage = new StorageCheck;
+            storage.storageUserToEmpty();
             sessionStorage.clear();
+
+            // background init
+            let background = document.getElementsByTagName("body")[0];
+            background.style.background="#ffffff";
+            background.style.color="#000000";
+
             if (e.target.matches("[data-link]")) {
                 history.pushState(null, null, e.target.href);
                 new Router();
@@ -28,6 +38,15 @@ export default class reqUserLogout {
         })
         .catch(error => {
             alert("Thank you for using this app!");
+            const storage = new StorageCheck;
+            storage.storageUserToEmpty();
+            sessionStorage.clear();
+            
+            // background init
+            let background = document.getElementsByTagName("body")[0];
+            background.style.background="#ffffff";
+            background.style.color="#000000";
+            
             if (e.target.matches("[data-link]")) {
                 history.pushState(null, null, e.target.href);
                 new Router();

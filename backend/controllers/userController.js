@@ -1,6 +1,9 @@
 const userModel = require("../models/userModel");
 const pocketModel = require("../models/pocketModel");
 const settingModel = require("../models/settingModel");
+const logModel = require("../models/logModel");
+
+const time = require("../time.js");
 const bcrypt = require("bcrypt");
 const validator = require("validator");
 const passwordRule = {
@@ -39,6 +42,13 @@ router.post("/user/login", (req, res) => {
                         usercode: user.userCode,
                         usertype: user.userType
                     }
+                    logModel.createNewLog(req.socket.remoteAddress, 
+                                            JSON.stringify(req.session), 
+                                            "guest", 
+                                            "guest", 
+                                            time.currentTime(), 
+                                            JSON.stringify(`{ api : '/user/login' }`));
+                                            
                     res.status(200).json("login OK!");
                 } else {
                     // This else case runs if the password did NOT match.
@@ -56,6 +66,9 @@ router.post("/user/login", (req, res) => {
 
 });
 router.post("/user/logout", (req, res) => {
+    if(req.session.user != null){
+        logModel.createNewLog(req.socket.remoteAddress, JSON.stringify(req.session), req.session.user.username, req.session.user.usertype, time.currentTime(), JSON.stringify(`{ api : '/user/logout' }`));
+    }
     req.session.destroy();
     res.status(200).json("Thank you for using this app!");
 });
@@ -84,6 +97,7 @@ router.post("/user/sign", (req,res) =>{
             .then((result_3) => {
                 settingModel.createNewSetting(userCode)
                 .then((result_4) => {
+                    logModel.createNewLog(req.socket.remoteAddress, JSON.stringify(req.session), "guest", "guest", time.currentTime(), JSON.stringify(`{ api : '/user/sign' }`));
                     res.status(201).json("user created");
                 })
                 .catch((error) => {
@@ -116,6 +130,7 @@ router.get("/user/info", (req, res) => {
         .then((result) => {
             data.email = result[0].email;
             data.userName = result[0].userName;
+            logModel.createNewLog(req.socket.remoteAddress, JSON.stringify(req.session), req.session.user.username, req.session.user.usertype, time.currentTime(), JSON.stringify(`{ api : '/user/info' }`));
             res.status(200).json(data);
         })
         .catch((error => {
@@ -142,6 +157,7 @@ router.post("/user/update", (req,res) => {
             let hashedPassword = bcrypt.hashSync(data.newpassword, 6);
             userModel.updatePw(hashedPassword, userCode)
                 .then((result_2) => {    
+                    logModel.createNewLog(req.socket.remoteAddress, JSON.stringify(req.session), req.session.user.username, req.session.user.usertype, time.currentTime(), JSON.stringify(`{ api : '/user/update' }`));
                     res.status(200).json("Password updated!");
                 })
                 .catch((error) => {

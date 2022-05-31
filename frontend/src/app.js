@@ -1,7 +1,3 @@
-import Hello from './page/Hello.js';
-import Welcome from './page/Welcome.js';
-import NotFound from './page/NotFound.js';
-
 import FrontPage from './page/front.js';
 import SignPage from './page/sign.js';
 
@@ -44,8 +40,6 @@ export default class App {
             { path: "/theme", view: ThemePage },
             { path: "/deletion", view: DeletionPage },
             { path: "/admin", view: AdminPage },
-            { path: "/welcome", view: Welcome },
-            { path: "/hello", view: Hello },
             { path: "/card", view: PocketCardPage },
             { path: "/edit", view: EditPage },
             { path: "/update", view: UpdatePage }

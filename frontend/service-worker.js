@@ -14,7 +14,7 @@
 // Names of the two caches used in this version of the service worker.
 // Change to v2, etc. when you update any of the local resources, which will
 // in turn trigger the install event again.
-const PRECACHE = 'precache-v1';
+/* const PRECACHE = 'precache-v1';
 const RUNTIME = 'runtime';
 
 // A list of local resources we always want to be cached.
@@ -73,6 +73,7 @@ self.addEventListener('activate', event => {
 // from the network before returning it to the page.
 self.addEventListener('fetch', event => {
   // Skip cross-origin requests, like those for Google Analytics.
+  if(event.request.method == "POST"){return};
   if (event.request.url.startsWith(self.location.origin)) {
     event.respondWith(
       caches.match(event.request).then(cachedResponse => {
@@ -91,4 +92,4 @@ self.addEventListener('fetch', event => {
       })
     );
   }
-});
+}); */

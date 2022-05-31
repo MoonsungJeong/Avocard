@@ -61,6 +61,7 @@ export default class reqUserLogin {
         })
         .catch(error => {
             // no Network
+            if(JSON.parse(localStorage.Avocard).currentUser == "loginUser"){ return;}
             screen.screenOff();
             alert("Need Internet to LogIn!");
         })

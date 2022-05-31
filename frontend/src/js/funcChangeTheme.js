@@ -1,28 +1,56 @@
+import StorageCheck from "./funcStorageCheck.js";
+
 export default class funcChangeTheme {
     constructor(){
         const theme = document.getElementsByName("theme");
         theme.forEach(element => { element.addEventListener("change",(e)=>{this.changeTheme(e)},false);});
     }
     changeTheme(e){ 
-        const sessionSetting = JSON.parse(sessionStorage.getItem("setting"));
+        const storage = new StorageCheck();
         //guest user
-        if(!sessionSetting){
-            let storage = JSON.parse(localStorage.Avocard);
-            storage.setting.theme = e.target.id;
-            localStorage.setItem("Avocard",JSON.stringify(storage));
+        if(storage.storageUserCheck() == "guest"){
+            let data = JSON.parse(localStorage.Avocard);
+            data.guestSetting.theme = e.target.id;
+            localStorage.setItem("Avocard",JSON.stringify(data));
             this.setTheme();
         }
         //login user
-
+        if(storage.storageUserCheck() == "loginUser"){
+            let data = JSON.parse(sessionStorage.Avocard);
+            data.userSetting.theme = e.target.id;
+            sessionStorage.setItem("Avocard", JSON.stringify(data));
+            this.setTheme();
+        }
     }
     setTheme(){
-        const sessionSetting = JSON.parse(sessionStorage.getItem("setting"));
+        const storage = new StorageCheck();
         //guest user
-        if(!sessionSetting){
-            const storage = JSON.parse(localStorage.Avocard);
-            const theme = storage.guestSetting.theme;
+        if(storage.storageUserCheck() == "guest"){
+            const data = JSON.parse(localStorage.Avocard);
+            const theme = data.guestSetting.theme;
             let background = document.getElementsByTagName("body")[0];
             
+            switch(theme){
+                case 'light':
+                    background.style.background="#ffffff";
+                    background.style.color="#000000";
+                    break;
+                case 'dark':
+                    background.style.background="#000000";
+                    background.style.color="#ffffff";
+                    break;
+                case 'cherry':
+                    background.style.background="#FFC0CB";
+                    background.style.color="#C0FFF4";
+                    break;
+            }
+        }
+        //login user
+        if(storage.storageUserCheck() == "loginUser"){
+            const data = JSON.parse(sessionStorage.Avocard);
+            const theme = data.userSetting.theme;
+
+            let background = document.getElementsByTagName("body")[0];
             switch(theme){
                 case 'light':
                     background.style.background="#ffffff";
@@ -41,36 +69,3 @@ export default class funcChangeTheme {
     }
 }
 
-
-/* 
-
-localStorage.setItem("theme", "light");
-
-const theme = document.getElementsByName("theme");
-theme.forEach(element => {
-    element.addEventListener("change",changeTheme);
-});
-function changeTheme(e){
-    localStorage.setItem("theme", e.target.id);
-    setTheme();
-}
-function setTheme(){
-    const theme = localStorage.getItem("theme");
-    const background = document.getElementsByTagName("body")[0];
-    switch(theme){
-        case 'light':
-            background.style.background="#ffffff";
-            background.style.color="#000000";
-            break;
-        case 'dark':
-            background.style.background="#000000";
-            background.style.color="#ffffff";
-            break;
-        case 'cherry':
-            background.style.background="#FFC0CB";
-            background.style.color="#C0FFF4";
-            break;
-    }
-}
-
- */

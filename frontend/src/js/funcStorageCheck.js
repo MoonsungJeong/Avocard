@@ -79,6 +79,12 @@ export default class storageCheck {
         localStorage.setItem("Avocard",JSON.stringify(data));
         return 0;
     }
+    storageUserToEmpty(){
+        let data = JSON.parse(localStorage.getItem("Avocard"));
+        data.currentUser = "";
+        localStorage.setItem("Avocard",JSON.stringify(data));
+        return 0;
+    }
     storageSetCardCode(code){
         let data = JSON.parse(localStorage.getItem("Avocard"));
         data.currentCard = code;

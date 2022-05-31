@@ -19,8 +19,8 @@
       "sizes": "512x512"
     }
   ],
-  "start_url": "http://192.168.35.11:8080/",
-  "scope":"http://192.168.35.11:8080/",
+  "start_url": "http://localhost:8080/",
+  "scope":"http://localhost:8080/",
   "display": "standalone",
   "theme_color": "#7ed493",
   "background_color": "#ffffff"

@@ -1,7 +1,9 @@
 import UserLogin from "../js/reqUserLogin.js";
 import GuestLogin from "../js/reqGuestLogin.js";
 
-import PageSign from "../js/movePageSign.js"
+import PageSign from "../js/movePageSign.js";
+
+import frontInit from "../js/funcFrontInit.js";
 
 export default class FrontPage {
     constructor() {
@@ -66,5 +68,7 @@ export default class FrontPage {
         new UserLogin();
         new GuestLogin();
         new PageSign();
+
+        new frontInit();
     }
 }

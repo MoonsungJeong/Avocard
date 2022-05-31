@@ -6,11 +6,9 @@ const bodyParser = require('body-parser')
 const limit = require("./backend/msRateLimit");
 const block = require("./backend/blockCSRF");
 
+const init = require("./init.js");
+
 const server = express();
-
-
-
-const port = 8080;
 
 server.use(function(req, res, next){
     res.header("Access-Control-Allow-Origin", "*");
@@ -34,7 +32,7 @@ server.use(session({
 
 // CSRF block Middleware
 // hostURL can be changed depend on server environment
-const hostURL = "192.168.35.11:8080";
+const hostURL = init.CSRF.hostURL;
 const blocker = block.blockCSRF(hostURL);
 server.use(blocker);
 
@@ -70,7 +68,7 @@ server.get('*', (req, res) => {
     res.redirect('/')
 }) 
 
-server.listen("8080", "192.168.35.11", () => {
-    console.log("Backend listening on http://"+"192.168.35.11"+":" + "8080");
+server.listen(init.connect.port, init.connect.hostname, () => {
+    console.log("Backend listening on http://"+"avocard.app");
 }); 
  

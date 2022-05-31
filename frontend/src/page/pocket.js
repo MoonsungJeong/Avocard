@@ -55,6 +55,6 @@ export default class PocketPage {
 
         new FuncShowPocket();
         new UpdatePocket();
-        //(new ChangeTheme()).setTheme(); //activate later Please@@@@@@@@@@@@
+        (new ChangeTheme()).setTheme(); //activate later Please@@@@@@@@@@@@
     }
 }

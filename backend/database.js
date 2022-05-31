@@ -1,10 +1,11 @@
 const mysql = require("mysql2");
+const init = require("../init.js");
 
 const connection = mysql.createPool({
-    host: "localhost",
-    user: "root",
-    password: "111111",
-    database:"avocado"
+    host: init.db.host,
+    user: init.db.user,
+    password: init.db.password,
+    database:init.db.database
 });
 
 function query(sql, parameters) {
