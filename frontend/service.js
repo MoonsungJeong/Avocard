@@ -11,7 +11,7 @@
         });
     }
 } */
-/* 
+
 if ('serviceWorker' in navigator){
     navigator.serviceWorker.register('service-worker.js');
 }
@@ -20,4 +20,4 @@ document.querySelector('.app').addEventListener('click', () => {
     let imgElement = document.createElement('img');
     imgElement.src = iconUrl;
     //document.querySelector('#container').appendChild(imgElement);
-}); */
+});
