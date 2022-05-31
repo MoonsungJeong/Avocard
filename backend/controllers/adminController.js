@@ -5,7 +5,7 @@ const router = express.Router();
 
 // Allowed IP
 const whiteList = [
-    "192.168.35.11"
+    "127.0.0.1"
 ]
 router.get("/admin/users", (req, res) => {
     if(req.session.user.usertype !== 'admin'){ res.status(401).json("Wrong Access!"); return;}

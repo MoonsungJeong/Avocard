@@ -73,6 +73,18 @@ self.addEventListener('activate', event => {
 // from the network before returning it to the page.
 self.addEventListener('fetch', event => {
   // Skip cross-origin requests, like those for Google Analytics.
+  
+  let URL = "http://localhost:8080";
+  let AllowedURLs =[
+    `${URL}/api/pocket`,
+    `${URL}/api/admin/users`,
+    `${URL}/api/user/info`,
+    `${URL}/api/card`,
+  ]
+  if(AllowedURLs.includes(event.request.url)){
+    console.log(event.request.url);
+    return;
+  }
   if(event.request.method == "POST"){return};
   if (event.request.url.startsWith(self.location.origin)) {
     event.respondWith(

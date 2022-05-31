@@ -44,9 +44,13 @@ const limiter =limit.msRateLimit({
     maxCount: 1000,
     resetTime: 24*60*60*1000 , // 24 hrs = 24*60*60*1000 
     resetMessage: "Wait 1 min for next request",
-    timePerOneClick: 2000, // 1000 miliseconds = 1 second
+    timePerOneClick: 500, // 1000 miliseconds = 1 second
     timeMessage: "Too fast request"
 }) 
+
+const adminController = require("./backend/controllers/adminController");
+server.use("/api", adminController);
+
 server.use(limiter);
 
 const userController = require("./backend/controllers/userController");
@@ -61,10 +65,8 @@ server.use("/api", cardController);
 const noticeController = require("./backend/controllers/noticeController");
 server.use("/api", noticeController);
 
-const adminController = require("./backend/controllers/adminController");
-server.use("/api", adminController);
 
-server.get('*', (req, res) => {
+server.get('/*', (req, res) => {
     res.redirect('/')
 }) 
 

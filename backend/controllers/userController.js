@@ -72,7 +72,6 @@ router.post("/user/logout", (req, res) => {
     req.session.destroy();
     res.status(200).json("Thank you for using this app!");
 });
-
 router.post("/user/sign", (req,res) =>{
     //res.status(200).json("User created!");
     let user = req.body;
