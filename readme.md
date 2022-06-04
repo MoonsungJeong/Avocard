@@ -130,7 +130,7 @@
 * AWS
 
 
-#### 2-5. Project Detail Design (Page, Server, Database)
+#### 2-6. Project Detail Design (Page, Server, Database)
 * Front Page List
     - Index(front)
     - Sign up
@@ -167,7 +167,7 @@
     - Log
 
 
-#### 2-6. API (Model, View, Control)
+#### 2-7. API (Model, View, Control)
 * View
 
         / [get]             : show "front" page
@@ -248,7 +248,7 @@
         lM.createNewLog         : create log
         
 
-#### 2-7. Database Tables
+#### 2-8. Database Tables
 |User|   |   |   |   |   |
 |-- |---------------|-------------|------------|-----|---|
 |Key|Logical_Name   |Physical_Name|Datatype    |NULL?|Opt|
@@ -298,7 +298,7 @@
 |   |Log Time       |logTime      |Datetime    |N.N  |   |
 |   |Action         |action       |JSON        |N.N  |   |
 
-#### 2-8. API Access Right (Guest, User)
+#### 2-9. API Access Right (Guest, User)
 * Guest can not access:
     - /api/user/info [get]
     - /api/user/update [post]
@@ -317,4 +317,55 @@
     - /api/admin/user/active [post]   
     - /api/admin/user/deactive [post] 
 
-#### 2-8. Development
+#### 2-10. Development Process (Roadmap)
+1. Node JS server setting
+    - make file structure
+    - make server.js (http)
+    - connect to DB (mysql)
+
+2. Front page design (prototype) 
+    - make HTML Tags
+    - add 'id' and 'class'
+    - make css and apply
+
+3. DB table sql
+    - write sql to set up DB
+
+4. Make Single Page Application (SPA) structure
+    - make JS file working as a SPA router (app.js)
+    - make two example pages for SPA (Hello.js and Welcome.js)
+    - make one example component for SPA (nav.js)
+
+5. Make Front pages in FrontEnd (View)
+    - copy prototype design (2) and paste to "/frontend/src/page"
+    - make a list of paths to each page in the "app.js"
+    - check that the routing (changing pages) is working properly
+
+6. Implement Server API (BackEnd, Control & Model) one by one
+    - make fetch API to send data to server (Page: login, Data: ID and PW)
+    - make server API to get request from client (Control, API: /api/user/login )
+    - make database function to get data from database (Model, SQL: Select....)
+    - repeats above 3 steps for all process
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
