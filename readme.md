@@ -347,6 +347,12 @@
     - make database function to get data from database (Model, SQL: Select....)
     - repeats above 3 steps for all process
 
+7. Implement Progressive Web Application (PWA)
+    - make manifest.json
+    - make service-worker
+    - do lighthouse audit
+    
+
 
 
 
