@@ -45,8 +45,8 @@
     }
 ##### ④. modify "start_url" and "scope" in "manifest.json"
 ##### Example : 
-    "start_url": "http://localhost:8080/",  // IP address or Domain Name
-    "scope": "http://localhost:8080/",      // IP address or Domain Name
+    "start_url" : "http://localhost:8080/",  // IP address or Domain Name
+    "scope"     : "http://localhost:8080/",      // IP address or Domain Name
 ##### ⑤. start "node server.js"
 
 #### 1-3. Login information (default)
@@ -299,9 +299,22 @@
 |   |Action         |action       |JSON        |N.N  |   |
 
 #### 2-8. API Access Right (Guest, User)
-* Guest
-    -  / [get]
-* User
-    - /api/users
+* Guest can not access:
+    - /api/user/info [get]
+    - /api/user/update [post]
+    - /api/user/delete [post]
 
-#### 2-8. Development Process
+    - /api/card/create [post]
+    - /api/card/update [post]
+    - /api/card/remove [post]
+
+    - /api/admin/users [get]          
+    - /api/admin/user/active [post]   
+    - /api/admin/user/deactive [post]
+
+* User can not access:
+    - /api/admin/users [get]          
+    - /api/admin/user/active [post]   
+    - /api/admin/user/deactive [post] 
+
+#### 2-8. Development
