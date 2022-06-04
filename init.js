@@ -12,6 +12,6 @@ const init = {
     CSRF:{
         hostURL : 'localhost:8080'
     }
-    
 }
+
 module.exports = init;

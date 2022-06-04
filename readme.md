@@ -3,10 +3,15 @@
 #### This is 3rd project with Node.js
 
 ### New Features 
-* Rate limit Middleware
+* FrontEnd (SPA) & BackEnd
 * Local Stoage
 * Session Storage 
-* FrontEnd (SPA) & BackEnd
+* CSRF block Middleware (IP white list)
+* Rate limit Middleware
+
+### Features
+* MVC pattern
+* FrontEnd and BackEnd validation check
 
 ## Summary
 ---
@@ -16,23 +21,40 @@
 ---
 ### 1. How to set up
 #### 1-1. File list to set up
-
-* app.js
+* init.js
 * avocard.sql
-* backend/database.js
+* manifest.json
  
 #### 1-2. Process to set up
 ##### ①. "npm install" to install modules into node_modules
-##### ②. Check port number in "app.js" line 6
-##### ③. Use SQL in "avocard.sql" to set up database structure and insert example data into database (IP adress is "localhost" or "127.0.0.1")
-##### ④. Modify database information (line 4:host, line 5:user, line 6:password) in backend/database.js file
+##### ②. Use SQL in "avocard.sql" to set up database structure and insert example data into database
+##### ③. Fill in the "init.js" file
+##### Example : 
+    connect:{
+        hostname:'localhost',       // IP address or Domain Name
+        port:'8080'                 // Port number
+    },
+    db:{
+        host:'127.0.0.1',           // DB IP address
+        user:'root',                // DB username
+        password:'******',          // DB password
+        database:'avocado'          // DB table name
+    },
+    CSRF:{
+        hostURL : 'localhost:8080'  // Host Domain Name
+    }
+##### ④. modify "start_url" and "scope" in "manifest.json"
+##### Example : 
+    "start_url": "http://localhost:8080/",  // IP address or Domain Name
+    "scope": "http://localhost:8080/",      // IP address or Domain Name
+##### ⑤. start "node server.js"
 
 #### 1-3. Login information (default)
 |  |  |  |
 |--|--|--|
 |Role|Username|Password|
-|Admin|cat|Passw0rd|
-|User|dog|Passw0rd123|
+|Admin|admin|1|
+|User|user|2|
 
 
 ---
@@ -41,29 +63,45 @@
 * App that archive people's business card information
 * Users can create their own digital business card
 * Users can add other's business card in their pocket
-* Users can see list of other's business card in their pocket
+* Users can see a list of other's business card in their pocket
 * Anonymous users can add other's business card in their pocket
 * Anonymous users can see list of other's business card in their pocket
 
-#### 2-2. Functional Feature
+#### 2-2. Functional Feature for user
+* Sign up
 * Login/authentication
-* Password hashing
-* Displaying cards information existing in the database
-* Admin page
-* CRUD business card
+* Guest login
 * CRUD pocket (list of card)
-* Validation check in both (client and server) side(Form input validation check and input sanitizing before insert into the database)
-* Log system tracking every request
+* CRUD business card
+* Update and Delete user
+* Theme
+* Notice page
+* Admin page
+
+#### 2- . Functional Feature in this system
+* password hashing
+* validation check in both (client and server) side(Form input validation check and input sanitizing before insert into the database)
+* localStorage and sessionStorage
+* alert error message if users try unexpected action
 * rate limit service to one request per second per user session
+* CSRF block using http referer and IP address
+* allow ip address in whitelist for admin page
+* Log system tracking every request
+* redirect to front page when users try to go to wrong url
+
 
 #### 2-3. Minimum Visual Product 
-* Register
+* Front
+* Sign up
 * Login
 * Pocket
 * MyCard
-* Notice (More)
 * Theme (More)
 * Info (More)
+* Notice (More)
+* Deletion (More)
+* Admin (More)
+* Logout (More)
 
 #### 2-4. Technology and Modules
 HTML, CSS, JavaScript, NodeJS, Express, MySql
