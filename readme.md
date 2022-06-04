@@ -77,8 +77,9 @@
 * Theme
 * Notice page
 * Admin page
+* PWA
 
-#### 2- . Functional Feature in this system
+#### 2-3. Functional Feature in this system
 * password hashing
 * validation check in both (client and server) side(Form input validation check and input sanitizing before insert into the database)
 * localStorage and sessionStorage
@@ -90,7 +91,7 @@
 * redirect to front page when users try to go to wrong url
 
 
-#### 2-3. Minimum Visual Product 
+#### 2-4. Minimum Visual Product 
 * Front
 * Sign up
 * Login
@@ -102,33 +103,60 @@
 * Deletion (More)
 * Admin (More)
 * Logout (More)
+* PWA
 
-#### 2-4. Technology and Modules
-HTML, CSS, JavaScript, NodeJS, Express, MySql
+#### 2-5. Technology and Modules
+#### FrontEnd: 
+* HTML 
+* CSS 
+* JavaScript  
+* Bootstrap
+#### BackEnd: 
+* Express 
+* MySql
+#### Module:
+* bcrypt: ^5.0.1
+* body-parser: ^1.20.0
+* express: ^4.17.3
+* express-session: ^1.17.2
+* mysql2: ^2.3.3
+* validator: ^13.7.0
+* webpack: ^5.72.0
+* webpack-cli: ^4.9.2
+#### Customized Middleware:
+* blockCSRF.js
+* msRateLimit.js
+#### Server:
+* AWS
 
-express-session, bcrypt, validator, express-fileupload, express-rate-limit
 
 #### 2-5. Project Detail Design (Page, Server, Database)
 * Front Page List
     - Index(front)
     - Sign up
     - Pocket
-    - Card
+    - PocketCard
     - Mycard
     - Edit
+    - Update
     - More
     - Notice
     - Theme
     - Info
+    - Deletion
+    - Admin
 
 * Server Function
     - Sign up
     - Log in
     - Log out
     - Validation (input sanitize)
-    - CRUD (Pocket, Card)
+    - Pocket CRUD
+    - Card CRUD
+    - User RU (Info)
+    - User Delete
     - Theme change
-    - Info change
+    - Admin
 
 * Database
     - User
@@ -142,31 +170,32 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
 #### 2-6. API (Model, View, Control)
 * View
 
-        / [get]             : request "front" page
-        /sign-up [get]      : request "sign up" page
-        /pocket [get]       : request "pocket" page
-        /card/:code [get]   : request card with code
-        /mycard [get]       : request "mycard" page
-        /edit/:code [get]   : request "edit" page with code
-        /more [get]         : request "more" page
-        /notice [get]       : request "notice" page
-        /theme [get]        : request "theme" page
-        /info [get]         : request "info" page
+        / [get]             : show "front" page
+        /sign-up [get]      : show "sign up" page
+        /pocket [get]       : show "pocket" page
+        /card/ [get]        : show card with code
+        /mycard [get]       : show "mycard" page
+        /edit/ [get]        : show "edit" page (create new card)
+        /update/ [get]      : show "update" page (update card)
+        /more [get]         : show "more" page
+        /info [get]         : show "info" page
+        /notice [get]       : show "notice" page
+        /theme [get]        : show "theme" page
+        /deletion [get]     : show "deletion" page
+        /admin [get]        : show "admin" page
 
 * Control
 
-        /api/guest/login [post]     : guest login process
-
-        /api/user/:code [get]       : show user with code
+        /api/guest/login [post]     : guest login
+        /api/user/login [post]      : login
+        /api/user/logout [post]     : logout
         /api/user/sign [post]       : create new user
+        /api/user/info [get]        : read user information
         /api/user/update [post]     : update user
         /api/user/delete [post]     : delete user
-        /api/user/login [post]      : login process
-        /api/user/logout [post]     : logout process
 
-        /api/pocket/:list [get]     : show card in pocket
-        /api/pocket/add    [post]   : add new card into pocket 
-        /api/pocket/update   [post] : update pocket
+        /api/pocket/ [get]          : show pocket
+        /api/pocket/update [post]   : update pocket
         /api/pocket/remove [post]   : remove a card from pocket
 
         /api/card [get]             : show mycard
@@ -175,16 +204,11 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
         /api/card/update [post]     : update card
         /api/card/remove [post]     : remove a card
 
-        /api/setting/update [post]  : update setting
-        /api/setting/initialize [post] : initialize setting
+        /api/notice [get]           : show notice title and description
 
-        /api/notice [get]           : show notice title and date
-        /api/notice/:code [get]     : show notice content with code
-        /api/notice/create [post]   : create notice
-        /api/notice/update [post]   : update notice 
-        /api/notice/delete [post]   : delete notice
-
-        /api/log [get]              : show log
+        /api/admin/users [get]          : show user information in admin panel
+        /api/admin/user/active [post]   : activate user
+        /api/admin/user/deactive [post] : deactivate user
 
 * Model [
     userModel: uM, 
@@ -195,34 +219,33 @@ express-session, bcrypt, validator, express-fileupload, express-rate-limit
     logModel: lM
     ]
 
-        uM.createUser           : request create user
-        uM.getUserByUserCode    : get user with usercode
-        uM.getUserByUsername    : get user with username
-        uM.updateUser           : request update user
-        uM.deleteUser           : request delete user
-        
-        pM.createPocket         : request create pocket
-        pM.getCardByPocket      : get pocket with usercode
-        pM.updatePocket         : request update pocket
-        pM.deletePocket         : request delete pocket
+        uM.getAllUsers              : get All users information
+        uM.getUserByUserName        : get user with username
+        uM.getPwByUserCode          : get password with usercode
+        uM.getUserByUserCode        : get user with usercode
+        uM.getUserByEmail           : get user with email
+        uM.createUser               : create user
+        uM.updatePw                 : update user
+        uM.deleteUser               : delete user
+        uM.activateUser             : change user's deleteFlag
+        uM.getLastInsertUserCode    : get last Inserted usercode
 
-        cM.createCard           : request create card
-        cM.getCardByUserCode    : get card(list) with usercode
+        pM.createNewPocket          : create new pocket
+        pM.getPocketByUserCode      : get pocket with usercode
+        pM.updatePocket             : update pocket
+
+        cM.getCardsByUserCode   : get card with usercode
         cM.getCardByCardCode    : get card with cardcode
-        cM.updateCard           : request update card
-        cM.deleteCard           : request delete card
+        cM.createNewCard        : create new card
+        cM.updateCard           : update card
+        cM.deleteCard           : delete card
 
-        sM.createSetting        : request create setting
         sM.getSettingByUserCode : get setting with usercode
-        sM.updateSetting        : request update setting
-        sM.initializeSetting    : request initialize setting
+        sM.createNewSetting     : create new setting
 
-        nM.createNotice         : request create notice
-        nM.getNotice            : get notice(list)
-        nM.updateNotice         : request update notice
-        nM.deleteNotice         : request delete notice
+        nM.getNoticeBrief       : get notice information
 
-        lM.createLog            : request create log
+        lM.createNewLog         : create log
         
 
 #### 2-7. Database Tables

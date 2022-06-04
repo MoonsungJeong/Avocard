@@ -9,8 +9,5 @@ module.exports.createNewPocket = (userCode) => {
 module.exports.updatePocket = (pocket, userCode) =>{
     return db.query(`UPDATE pocket SET cardList = ? WHERE userCode = ?`, [pocket, userCode]);
 }
-module.exports.updateCard = (cardDetail, cardCode) =>{
-    return db.query("UPDATE card SET cardDetail = ? WHERE cardCode = ?", [cardDetail, cardCode]);
-}
 
 

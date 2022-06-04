@@ -31,7 +31,6 @@ router.get("/pocket", (req, res) => {
             })
         })    
 });
-
 router.post("/pocket/update", (req,res) => {
     userModel.getUserByUserName(req.body.userName)
         .then((user) =>{
