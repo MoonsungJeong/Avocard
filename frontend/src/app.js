@@ -15,6 +15,9 @@ import PocketCardPage from './page/pocketcard.js';
 import EditPage from './page/edit.js';
 import UpdatePage from './page/update.js';
 
+import HelpPage from './page/help.js';
+import HelpPage2 from './page/help front.js';
+
 
 export default class App {
     constructor() {
@@ -42,7 +45,9 @@ export default class App {
             { path: "/admin", view: AdminPage },
             { path: "/card", view: PocketCardPage },
             { path: "/edit", view: EditPage },
-            { path: "/update", view: UpdatePage }
+            { path: "/update", view: UpdatePage },
+            { path: "/help", view: HelpPage },
+            { path: "/help_front", view: HelpPage2 }
         ];
         const pageMatches = routes.map((route) => {
             return {

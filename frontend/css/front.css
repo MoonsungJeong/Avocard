@@ -54,6 +54,7 @@
 .front__list{
 	display:flex;
 	justify-content:space-around;
+	align-items: center;
 	opacity:0.6;
 	padding-right: 50px;
 	padding-left: 50px;

@@ -7,6 +7,8 @@ import PageNotice from "../js/movePageNotice.js";
 import PageTheme from "../js/movePageTheme.js";
 import PageDeletion from "../js/movePageDeletion.js";
 
+import PageHelp from "../js/movePageHelp.js";
+
 import UserLogout from "../js/reqUserLogout.js";
 
 import AddAdminBtn from "../js/funcAddAdminBtn.js";
@@ -20,7 +22,11 @@ export default class MorePage {
         <div class="wrap">
             <header class="header_application">
                 <h1>More</h1>
-                <div class="header-menu"></div>
+                <div class="header-menu">
+                    <a href="/help" id="help_btn" class="nav-icon-wrap" data-link>
+                        <i class="nav-icon fa-solid fa-circle-question"></i>
+                    </a>
+                </div>
             </header>
             <main>
                 <div class="more-container">
@@ -58,6 +64,7 @@ export default class MorePage {
         new PagePocket();
         new PageMyCard();
         new PageMore();
+        new PageHelp();
 
         new PageInfo();
         new PageNotice();

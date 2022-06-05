@@ -55,9 +55,9 @@ export default class funcShowPocket {
                         <span class="project-category"><i class="card-delete-btn nav-icon fa-solid fa-square-xmark"></i></span>
                         <div class="project-info">
                             <input type="hidden" class="cardcode" value="${arr[i].cardCode}">
-                            <div class="project-name">${arr[i].cardList.name}</div>
-                            <div class="project-title">${arr[i].cardList.title}</div>
-                            <div class="project-company">${arr[i].cardList.company}</div>
+                            <div class="project-name">${arr[i].cardDetail.name}</div>
+                            <div class="project-title">${arr[i].cardDetail.title}</div>
+                            <div class="project-company">${arr[i].cardDetail.company}</div>
                         </div>
                     </div>
                 </div>

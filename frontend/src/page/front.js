@@ -1,3 +1,5 @@
+import PageHelp from "../js/movePageHelp.js";
+
 import UserLogin from "../js/reqUserLogin.js";
 import GuestLogin from "../js/reqGuestLogin.js";
 
@@ -53,10 +55,14 @@ export default class FrontPage {
             <nav class="front__nav">
                 <ul class="front__list">
                     <li class="front__list-item"><a href="/sign-up" class="sign_up front_nav_item" data-link>Sign-Up</a></li>
-                    <!--<div class="front__space"><i>|</i></div>-->
-                    <!--<li class="front__list-item"><a class="SW_BTN front_nav_item">ID/PW lost</a></li>-->
                     <div class="front__space"><i>|</i></div>
                     <li class="front__list-item"><a href="/pocket" id="guest_btn" class="front_nav_item pointer" data-link>Guest</a></li>
+                    <div class="front__space"><i>|</i></div>
+                    <li class="front__list-item">
+                        <a href="/help_front" id="help_btn" class="nav-icon-wrap" data-link>
+                            <i class="nav-icon fa-solid fa-circle-question"></i>
+                        </a>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -66,6 +72,7 @@ export default class FrontPage {
         new UserLogin();
         new GuestLogin();
         new PageSign();
+        new PageHelp();
 
         new frontInit();
     }
