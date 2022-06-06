@@ -53,8 +53,8 @@
 |  |  |  |
 |--|--|--|
 |Role|Username|Password|
-|Admin|admin|1|
-|User|user|2|
+|Admin|ms@gmail.com|Passw0rd|
+
 
 
 ---

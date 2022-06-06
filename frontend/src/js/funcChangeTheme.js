@@ -41,7 +41,7 @@ export default class funcChangeTheme {
                     break;
                 case 'cherry':
                     background.style.background="#FFC0CB";
-                    background.style.color="#C0FFF4";
+                    background.style.color="#007504";
                     break;
             }
         }
@@ -62,7 +62,7 @@ export default class funcChangeTheme {
                     break;
                 case 'cherry':
                     background.style.background="#FFC0CB";
-                    background.style.color="#C0FFF4";
+                    background.style.color="#007504";
                     break;
             }
         }
