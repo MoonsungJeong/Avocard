@@ -53,7 +53,7 @@
 |  |  |  |
 |--|--|--|
 |Role|Username|Password|
-|Admin|ms@gmail.com|Passw0rd|
+|Admin|`ms@gmail.com`|Passw0rd|
 
 
 
