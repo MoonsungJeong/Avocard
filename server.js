@@ -41,9 +41,9 @@ server.use(express.static("frontend"));
 
 // Too fast request block Middleware
 const limiter =limit.msRateLimit({
-    maxCount: 1000,
+    maxCount: 500,
     resetTime: 24*60*60*1000 , // 24 hrs = 24*60*60*1000 
-    resetMessage: "Wait 1 min for next request",
+    resetMessage: "Wait 24 hours for next request",
     timePerOneClick: 500, // 1000 miliseconds = 1 second
     timeMessage: "Too fast request"
 }) 

@@ -13,6 +13,21 @@ const passwordRule = {
     minNumbers: 1,
     minSymbols: 0
 }
+class User{
+    constructor(name, code, type){
+        this.userName = name;
+        this.userCode = code;
+        this.userType = type;
+    }
+    sendObject(){
+        const res= {
+            "username":this.userName,
+            "usercode":this.userCode,
+            "usertype":this.userType
+        }
+        return res;
+    }
+}
 
 const express = require("express");
 const router = express.Router();
@@ -37,11 +52,14 @@ router.post("/user/login", (req, res) => {
                 // verify the users password
                 if (bcrypt.compareSync(login.password, user.password)) {
                     // setup the session
-                    req.session.user = {
+                    const userClass= new User(user.userName, user.userCode, user.userType);
+                    req.session.user = userClass.sendObject()
+                    
+                    /* req.session.user = {
                         username: user.userName,
                         usercode: user.userCode,
-                        usertype: user.userType
-                    }
+                        usertype: user.userType,
+                    } */
                     logModel.createNewLog(req.socket.remoteAddress, 
                                             JSON.stringify(req.session), 
                                             "guest", 

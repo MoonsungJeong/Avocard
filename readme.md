@@ -112,6 +112,7 @@
 * JavaScript  
 * Bootstrap
 #### BackEnd: 
+* Node v10.16.0
 * Express 
 * MySql
 #### Module:
