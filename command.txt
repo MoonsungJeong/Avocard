@@ -1,0 +1,40 @@
+@PM2
+pm2 start app.js --watch
+pm2 log
+pm2 stop app.js
+
+
+@Webpack
+npx webpack --entry ./frontend/src/main.js --output-path ./public/
+
+old local storage
+{"currentUser":{"name":"guest"},"user":{"name":"guest"},"pocket":[{"code":"111","note":"nice man"},{"code":"112","note":"good man"},{"code":"113","note":"work well"}],"setting":{"theme":"light"}}
+old session storage
+[{"cardCode":111,"cardDetail":{"name":"Moonsung","title":"CEO","company":"Avocado"},"note":"nice man"},{"cardCode":112,"cardDetail":{"name":"Lion","title":"Senior Developer","company":"Apple"},"note":"good man"},{"cardCode":113,"cardDetail":{"name":"Tiger","title":"Junior Developer","company":"Orange"},"note":"work well"}]
+
+new local storage
+{"currentUser":"guest","guestPocket":[{"cardCode":112,"cardDetail":{"name":"Lion","brief": "I'm SD in company Apple","email": "sd@apple.com","phone": "+61411122233","skype": "app123","title":"Senior Developer","company":"Apple","note":"good man"}},{"cardCode":113,"cardDetail":{"name":"Tiger","brief": "I'm working hard like tiger","email": "tiger@orange.com","phone": "+61454455566","skype": "tiger123","title":"Junior Developer","company":"Orange","note":"work well"}}],"guestSetting":{"theme":"light"}}
+
+pocket example
+{"userPocket":[{"cardCode":112,"cardDetail":{"name":"Lion","brief": "I'm SD in company Apple","email": "sd@apple.com","phone": "+61411122233","skype": "app123","title":"Senior Developer","company":"Apple","note":"good man"}},{"cardCode":113,"cardDetail":{"name":"Tiger","brief": "I'm working hard like tiger","email": "tiger@orange.com","phone": "+61454455566","skype": "tiger123","title":"Junior Developer","company":"Orange","note":"work well"}}]}
+
+pocket update 2
+UPDATE `pocket` SET `cardList` = '[{\"cardCode\":112,\"cardDetail\":{\"name\":\"Lion\",\"brief\": \"I\'m SD in company Apple\",\"email\": \"sd@apple.com\",\"phone\": \"+61411122233\",\"skype\": \"app123\",\"title\":\"Senior Developer\",\"company\":\"Apple\",\"note\":\"good man\"}},{\"cardCode\":113,\"cardDetail\":{\"name\":\"Tiger\",\"brief\": \"I\'m working hard like tiger\",\"email\": \"tiger@orange.com\",\"phone\": \"+61454455566\",\"skype\": \"tiger123\",\"title\":\"Junior Developer\",\"company\":\"Orange\",\"note\":\"work well\"}}]' WHERE `pocket`.`userCode` = 1;
+
+setting update
+UPDATE `setting` SET `setting` = '{\"theme\":\"light\"}' WHERE `setting`.`userCode` = 1;
+
+
+
+
+INSERT INTO card (`userCode`, `cardDetail`) VALUES (15,'{"name":"Eagle","title":"Title","company":"Company","brief":"This is short explaination","phone":"Phone Number","email":"Email","skype":"Skype"}');
+
+
+
+///////////////////////
+
+funcShowMyCard.js -> line 37
+funcShowPocket.js -> line 48
+funcShowPocketCard.js -> line 43
+funcShowUpdateCard.js -> line 13
+pocketController.js -> line 53
